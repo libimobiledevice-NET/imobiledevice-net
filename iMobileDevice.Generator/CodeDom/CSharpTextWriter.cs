@@ -25,7 +25,8 @@
             this.WriteLine("//------------------------------------------------------------------------------");
             this.WriteLine();
             this.WriteLine($@"// <copyright file=""{ns.Types.OfType<CodeTypeDeclaration>().First().Name}.cs"" company=""Quamotion"">");
-            this.WriteLine($@"// Copyright (c) 2016-{DateTime.Now.Year} Quamotion. All rights reserved.");
+            this.WriteLine($@"// Copyright (c) 2016-2021 Quamotion. All rights reserved.");
+            this.WriteLine($@"// Copyright (c) 2022 Wayne Bonnici.");
             this.WriteLine($@"// </copyright>");
 
             // Disable documentation warnings on generated code.
