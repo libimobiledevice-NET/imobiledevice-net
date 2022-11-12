@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="IDiagnosticsRelayApi.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -162,17 +163,18 @@ namespace iMobileDevice.DiagnosticsRelay
         DiagnosticsRelayError diagnostics_relay_shutdown(DiagnosticsRelayClientHandle client, DiagnosticsRelayAction flags);
         
         /// <summary>
-        /// Shutdown of the device and optionally show a user notification.
+        /// Request diagnostics information for a given type.
         /// </summary>
         /// <param name="client">
         /// The diagnostics_relay client
         /// </param>
-        /// <param name="flags">
-        /// A binary flag combination of
-        /// DIAGNOSTICS_RELAY_ACTION_FLAG_WAIT_FOR_DISCONNECT to wait until
-        /// diagnostics_relay_client_free() disconnects before execution and
-        /// DIAGNOSTICS_RELAY_ACTION_FLAG_DISPLAY_FAIL to show a "FAIL" dialog
-        /// or DIAGNOSTICS_RELAY_ACTION_FLAG_DISPLAY_PASS to show an "OK" dialog
+        /// <param name="type">
+        /// The type or domain to query for diagnostics. Some known values
+        /// are "All", "WiFi", "GasGauge", and "NAND".
+        /// </param>
+        /// <param name="diagnostics">
+        /// A pointer to plist_t that will receive the diagnostics information.
+        /// The consumer has to free the allocated memory with plist_free() when no longer needed.
         /// </param>
         /// <returns>
         /// DIAGNOSTICS_RELAY_E_SUCCESS on success,
@@ -182,10 +184,70 @@ namespace iMobileDevice.DiagnosticsRelay
         /// </returns>
         DiagnosticsRelayError diagnostics_relay_request_diagnostics(DiagnosticsRelayClientHandle client, string type, out PlistHandle diagnostics);
         
+        /// <summary>
+        /// Query one or multiple MobileGestalt keys.
+        /// </summary>
+        /// <param name="client">
+        /// The diagnostics_relay client
+        /// </param>
+        /// <param name="keys">
+        /// A PLIST_ARRAY with the keys to query.
+        /// </param>
+        /// <param name="result">
+        /// A pointer to plist_t that will receive the result. The consumer
+        /// has to free the allocated memory with plist_free() when no longer needed.
+        /// </param>
+        /// <returns>
+        /// DIAGNOSTICS_RELAY_E_SUCCESS on success,
+        /// DIAGNOSTICS_RELAY_E_INVALID_ARG when client is NULL,
+        /// DIAGNOSTICS_RELAY_E_PLIST_ERROR if the device did not acknowledge the
+        /// request
+        /// </returns>
         DiagnosticsRelayError diagnostics_relay_query_mobilegestalt(DiagnosticsRelayClientHandle client, PlistHandle keys, out PlistHandle result);
         
+        /// <summary>
+        /// Query an IORegistry entry of a given class.
+        /// </summary>
+        /// <param name="client">
+        /// The diagnostics_relay client
+        /// </param>
+        /// <param name="entry_name">
+        /// The IORegistry entry name to query.
+        /// </param>
+        /// <param name="entry_class">
+        /// The IORegistry class to query.
+        /// </param>
+        /// <param name="result">
+        /// A pointer to plist_t that will receive the result. The consumer
+        /// has to free the allocated memory with plist_free() when no longer needed.
+        /// </param>
+        /// <returns>
+        /// DIAGNOSTICS_RELAY_E_SUCCESS on success,
+        /// DIAGNOSTICS_RELAY_E_INVALID_ARG when client is NULL,
+        /// DIAGNOSTICS_RELAY_E_PLIST_ERROR if the device did not acknowledge the
+        /// request
+        /// </returns>
         DiagnosticsRelayError diagnostics_relay_query_ioregistry_entry(DiagnosticsRelayClientHandle client, string entryName, string entryClass, out PlistHandle result);
         
+        /// <summary>
+        /// Query an IORegistry plane.
+        /// </summary>
+        /// <param name="client">
+        /// The diagnostics_relay client
+        /// </param>
+        /// <param name="plane">
+        /// The IORegistry plane name to query.
+        /// </param>
+        /// <param name="result">
+        /// A pointer to plist_t that will receive the result. The consumer
+        /// has to free the allocated memory with plist_free() when no longer needed.
+        /// </param>
+        /// <returns>
+        /// DIAGNOSTICS_RELAY_E_SUCCESS on success,
+        /// DIAGNOSTICS_RELAY_E_INVALID_ARG when client is NULL,
+        /// DIAGNOSTICS_RELAY_E_PLIST_ERROR if the device did not acknowledge the
+        /// request
+        /// </returns>
         DiagnosticsRelayError diagnostics_relay_query_ioregistry_plane(DiagnosticsRelayClientHandle client, string plane, out PlistHandle result);
     }
 }

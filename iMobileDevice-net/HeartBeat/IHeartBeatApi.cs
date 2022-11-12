@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="IHeartBeatApi.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -129,7 +130,7 @@ namespace iMobileDevice.HeartBeat
         /// pointer to a plist_t that will point to the received plist
         /// upon successful return
         /// </param>
-        /// <param name="timeout">
+        /// <param name="timeout_ms">
         /// Maximum time in milliseconds to wait for data.
         /// </param>
         /// <returns>

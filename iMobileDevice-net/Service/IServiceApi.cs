@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="IServiceApi.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -73,6 +74,12 @@ namespace iMobileDevice.Service
         /// <param name="label">
         /// The label to use for communication. Usually the program name.
         /// Pass NULL to disable sending the label in requests to lockdownd.
+        /// </param>
+        /// <param name="constructor_func">
+        /// Constructor function for the service client to create (e.g. afc_client_new())
+        /// </param>
+        /// <param name="error_code">
+        /// Pointer to an int32_t that will receive the service start error code.
         /// </param>
         /// <returns>
         /// SERVICE_E_SUCCESS on success, or a SERVICE_E_* error code
@@ -189,7 +196,7 @@ namespace iMobileDevice.Service
         /// Disable SSL for the given service client.
         /// </summary>
         /// <param name="client">
-        /// The connected service client for that SSL should be disabled.
+        /// The connected service client for which SSL should be disabled.
         /// </param>
         /// <returns>
         /// SERVICE_E_SUCCESS on success,
@@ -199,10 +206,14 @@ namespace iMobileDevice.Service
         ServiceError service_disable_ssl(ServiceClientHandle client);
         
         /// <summary>
-        /// Disable SSL for the given service client without sending SSL terminate messages.
+        /// Disable SSL for the given service client, optionally without sending SSL terminate messages.
         /// </summary>
         /// <param name="client">
-        /// The connected service client for that SSL should be disabled.
+        /// The connected service client for which SSL should be disabled.
+        /// </param>
+        /// <param name="sslBypass">
+        /// A boolean value indicating wether to disable SSL with a proper
+        /// SSL shutdown (0), or bypass the shutdown (1).
         /// </param>
         /// <returns>
         /// SERVICE_E_SUCCESS on success,
@@ -210,5 +221,20 @@ namespace iMobileDevice.Service
         /// NULL, or SERVICE_E_UNKNOWN_ERROR otherwise.
         /// </returns>
         ServiceError service_disable_bypass_ssl(ServiceClientHandle client, char sslbypass);
+        
+        /// <summary>
+        /// Return a handle to the parent #idevice_connection_t of the given service client.
+        /// </summary>
+        /// <param name="client">
+        /// The service client
+        /// </param>
+        /// <param name="connection">
+        /// Pointer to be assigned to the #idevice_connection_t.
+        /// </param>
+        /// <returns>
+        /// SERVICE_E_SUCCESS on success,
+        /// SERVICE_E_INVALID_ARG if one or more of the arguments are invalid.
+        /// </returns>
+        ServiceError service_get_connection(ServiceClientHandle client, out iDeviceConnectionHandle connection);
     }
 }

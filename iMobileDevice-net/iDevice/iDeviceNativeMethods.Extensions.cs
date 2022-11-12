@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="iDeviceNativeMethods.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -44,16 +45,6 @@ namespace iMobileDevice.iDevice
             iDeviceError returnValue = iDeviceNativeMethods.idevice_get_udid(device, out udidNative);
             udid = ((string)udidMarshaler.MarshalNativeToManaged(udidNative));
             udidMarshaler.CleanUpNativeData(udidNative);
-            return returnValue;
-        }
-        
-        public static iDeviceError idevice_get_tcp_endpoint(out string host, ref ushort port)
-        {
-            System.Runtime.InteropServices.ICustomMarshaler hostMarshaler = NativeStringMarshaler.GetInstance(null);
-            System.IntPtr hostNative = System.IntPtr.Zero;
-            iDeviceError returnValue = iDeviceNativeMethods.idevice_get_tcp_endpoint(out hostNative, ref port);
-            host = ((string)hostMarshaler.MarshalNativeToManaged(hostNative));
-            hostMarshaler.CleanUpNativeData(hostNative);
             return returnValue;
         }
     }

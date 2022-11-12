@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="CompanionProxyApi.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -166,7 +167,7 @@ namespace iMobileDevice.CompanionProxy
         /// <param name="client">
         /// The companion_proxy client
         /// </param>
-        /// <param name="devices">
+        /// <param name="paired_devices">
         /// Point that will receive a PLIST_ARRAY with paired device UDIDs
         /// </param>
         /// <returns>
@@ -237,6 +238,10 @@ namespace iMobileDevice.CompanionProxy
         /// </param>
         /// <param name="key">
         /// The key to retrieve the value for
+        /// </param>
+        /// <param name="value">
+        /// A pointer to a plist_t that will receive the value for the given key.
+        /// The consumer is responsible for freeing the value with plist_free() when no longer needed.
         /// </param>
         /// <returns>
         /// COMPANION_PROXY_E_SUCCESS on success,

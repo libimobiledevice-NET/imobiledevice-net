@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="SyslogRelayNativeMethods.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -199,9 +200,6 @@ namespace iMobileDevice.SyslogRelay
         /// </param>
         /// <param name="received">
         /// Number of bytes received (can be NULL to ignore)
-        /// </param>
-        /// <param name="timeout">
-        /// Maximum time in milliseconds to wait for data.
         /// </param>
         /// <returns>
         /// SYSLOG_RELAY_E_SUCCESS on success,

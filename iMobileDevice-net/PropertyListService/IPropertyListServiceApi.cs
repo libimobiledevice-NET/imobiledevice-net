@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="IPropertyListServiceApi.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -161,8 +162,8 @@ namespace iMobileDevice.PropertyListService
         /// </param>
         /// <returns>
         /// PROPERTY_LIST_SERVICE_E_SUCCESS on success,
-        /// PROPERTY_LIST_SERVICE_E_INVALID_ARG if client or client->connection is
-        /// NULL, PROPERTY_LIST_SERVICE_E_SSL_ERROR when SSL could not be enabled,
+        /// PROPERTY_LIST_SERVICE_E_INVALID_ARG if one or more of the arguments are invalid,
+        /// PROPERTY_LIST_SERVICE_E_SSL_ERROR when SSL could not be enabled,
         /// or PROPERTY_LIST_SERVICE_E_UNKNOWN_ERROR otherwise.
         /// </returns>
         PropertyListServiceError property_list_service_enable_ssl(PropertyListServiceClientHandle client);
@@ -176,9 +177,24 @@ namespace iMobileDevice.PropertyListService
         /// </param>
         /// <returns>
         /// PROPERTY_LIST_SERVICE_E_SUCCESS on success,
-        /// PROPERTY_LIST_SERVICE_E_INVALID_ARG if client or client->connection is
-        /// NULL, or PROPERTY_LIST_SERVICE_E_UNKNOWN_ERROR otherwise.
+        /// PROPERTY_LIST_SERVICE_E_INVALID_ARG if one or more of the arguments are invalid,
+        /// or PROPERTY_LIST_SERVICE_E_UNKNOWN_ERROR otherwise.
         /// </returns>
         PropertyListServiceError property_list_service_disable_ssl(PropertyListServiceClientHandle client);
+        
+        /// <summary>
+        /// Return a handle to the parent #service_client_t of the given property list service client.
+        /// </summary>
+        /// <param name="client">
+        /// The property list service client
+        /// </param>
+        /// <param name="service_client">
+        /// Pointer to be assigned to the parent #service_client_t
+        /// </param>
+        /// <returns>
+        /// PROPERTY_LIST_SERVICE_E_SUCCESS on success,
+        /// PROPERTY_LIST_SERVICE_E_INVALID_ARG if one or more of the arguments are invalid.
+        /// </returns>
+        PropertyListServiceError property_list_service_get_service_client(PropertyListServiceClientHandle client, ref System.IntPtr serviceClient);
     }
 }

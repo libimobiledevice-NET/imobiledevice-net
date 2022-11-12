@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="IInstallationProxyApi.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -195,7 +196,7 @@ namespace iMobileDevice.InstallationProxy
         /// <remarks>
         /// If a callback function is given (async mode), this function returns
         /// INSTPROXY_E_SUCCESS immediately if the status updater thread has been
-        /// created successfully; any error occuring during the command has to be
+        /// created successfully; any error occurring during the command has to be
         /// handled inside the specified callback function.
         /// </remarks>
         InstallationProxyError instproxy_install(InstallationProxyClientHandle client, string pkgPath, PlistHandle clientOptions, InstallationProxyStatusCallBack statusCallBack, System.IntPtr userData);
@@ -234,7 +235,7 @@ namespace iMobileDevice.InstallationProxy
         /// <remarks>
         /// If a callback function is given (async mode), this function returns
         /// INSTPROXY_E_SUCCESS immediately if the status updater thread has been
-        /// created successfully; any error occuring during the command has to be
+        /// created successfully; any error occurring during the command has to be
         /// handled inside the specified callback function.
         /// </remarks>
         InstallationProxyError instproxy_upgrade(InstallationProxyClientHandle client, string pkgPath, PlistHandle clientOptions, InstallationProxyStatusCallBack statusCallBack, System.IntPtr userData);
@@ -266,7 +267,7 @@ namespace iMobileDevice.InstallationProxy
         /// <remarks>
         /// If a callback function is given (async mode), this function returns
         /// INSTPROXY_E_SUCCESS immediately if the status updater thread has been
-        /// created successfully; any error occuring during the command has to be
+        /// created successfully; any error occurring during the command has to be
         /// handled inside the specified callback function.
         /// </remarks>
         InstallationProxyError instproxy_uninstall(InstallationProxyClientHandle client, string appid, PlistHandle clientOptions, InstallationProxyStatusCallBack statusCallBack, System.IntPtr userData);
@@ -323,7 +324,7 @@ namespace iMobileDevice.InstallationProxy
         /// <remarks>
         /// If a callback function is given (async mode), this function returns
         /// INSTPROXY_E_SUCCESS immediately if the status updater thread has been
-        /// created successfully; any error occuring during the command has to be
+        /// created successfully; any error occurring during the command has to be
         /// handled inside the specified callback function.
         /// </remarks>
         InstallationProxyError instproxy_archive(InstallationProxyClientHandle client, string appid, PlistHandle clientOptions, InstallationProxyStatusCallBack statusCallBack, System.IntPtr userData);
@@ -357,7 +358,7 @@ namespace iMobileDevice.InstallationProxy
         /// <remarks>
         /// If a callback function is given (async mode), this function returns
         /// INSTPROXY_E_SUCCESS immediately if the status updater thread has been
-        /// created successfully; any error occuring during the command has to be
+        /// created successfully; any error occurring during the command has to be
         /// handled inside the specified callback function.
         /// </remarks>
         InstallationProxyError instproxy_restore(InstallationProxyClientHandle client, string appid, PlistHandle clientOptions, InstallationProxyStatusCallBack statusCallBack, System.IntPtr userData);
@@ -391,7 +392,7 @@ namespace iMobileDevice.InstallationProxy
         /// <remarks>
         /// If a callback function is given (async mode), this function returns
         /// INSTPROXY_E_SUCCESS immediately if the status updater thread has been
-        /// created successfully; any error occuring during the command has to be
+        /// created successfully; any error occurring during the command has to be
         /// handled inside the specified callback function.
         /// </remarks>
         InstallationProxyError instproxy_remove_archive(InstallationProxyClientHandle client, string appid, PlistHandle clientOptions, InstallationProxyStatusCallBack statusCallBack, System.IntPtr userData);
@@ -496,9 +497,9 @@ namespace iMobileDevice.InstallationProxy
         /// <param name="status">
         /// The dictionary status response to use.
         /// </param>
-        /// <param name="name">
-        /// Pointer to store the progress in percent (0-100) or -1 if not
-        /// progress was found in the status.
+        /// <param name="percent">
+        /// Pointer to an int to store the progress in percent (0-100)
+        /// or -1 if no progress was found in the status.
         /// </param>
         void instproxy_status_get_percent_complete(PlistHandle status, ref int percent);
         
@@ -555,7 +556,7 @@ namespace iMobileDevice.InstallationProxy
         /// <param name="client">
         /// The connected installation proxy client.
         /// </param>
-        /// <param name="appid">
+        /// <param name="bundle_id">
         /// ApplicationIdentifier of app to retrieve the path for.
         /// </param>
         /// <param name="path">

@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="IFileRelayApi.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -115,9 +116,6 @@ namespace iMobileDevice.FileRelay
         /// automatically by the device, but use file_relay_client_free() to clean
         /// up properly.
         /// </param>
-        /// <param name="timeout">
-        /// Maximum time in milliseconds to wait for data.
-        /// </param>
         /// <returns>
         /// FILE_RELAY_E_SUCCESS on succes, FILE_RELAY_E_INVALID_ARG when one or
         /// more parameters are invalid, FILE_RELAY_E_MUX_ERROR if a communication
@@ -157,6 +155,9 @@ namespace iMobileDevice.FileRelay
         /// data using idevice_connection_receive(). The connection will be closed
         /// automatically by the device, but use file_relay_client_free() to clean
         /// up properly.
+        /// </param>
+        /// <param name="timeout">
+        /// Maximum time in milliseconds to wait for data.
         /// </param>
         /// <returns>
         /// FILE_RELAY_E_SUCCESS on succes, FILE_RELAY_E_INVALID_ARG when one or

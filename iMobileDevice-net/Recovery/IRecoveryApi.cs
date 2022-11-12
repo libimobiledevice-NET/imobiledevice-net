@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="IRecoveryApi.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -83,6 +84,8 @@ namespace iMobileDevice.Recovery
         
         RecoveryError irecv_send_command(RecoveryClientHandle client, string command);
         
+        RecoveryError irecv_send_command_breq(RecoveryClientHandle client, string command, char bRequest);
+        
         RecoveryError irecv_send_buffer(RecoveryClientHandle client, ref char buffer, int length, int dfuNotifyFinished);
         
         RecoveryError irecv_recv_buffer(RecoveryClientHandle client, System.IntPtr buffer, int length);
@@ -92,6 +95,8 @@ namespace iMobileDevice.Recovery
         RecoveryError irecv_getenv(RecoveryClientHandle client, string variable, out string value);
         
         RecoveryError irecv_setenv(RecoveryClientHandle client, string variable, string value);
+        
+        RecoveryError irecv_setenv_np(RecoveryClientHandle client, string variable, string value);
         
         RecoveryError irecv_reboot(RecoveryClientHandle client);
         
@@ -108,5 +113,7 @@ namespace iMobileDevice.Recovery
         RecoveryError irecv_devices_get_device_by_product_type(string productType, out RecoveryDeviceHandle device);
         
         RecoveryError irecv_devices_get_device_by_hardware_model(string hardwareModel, out RecoveryDeviceHandle device);
+        
+        int irecv_devices_get_all_count();
     }
 }

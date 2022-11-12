@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="RecoveryApi.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -184,6 +185,11 @@ namespace iMobileDevice.Recovery
             return RecoveryNativeMethods.irecv_send_command(client, command);
         }
         
+        public virtual RecoveryError irecv_send_command_breq(RecoveryClientHandle client, string command, char bRequest)
+        {
+            return RecoveryNativeMethods.irecv_send_command_breq(client, command, bRequest);
+        }
+        
         public virtual RecoveryError irecv_send_buffer(RecoveryClientHandle client, ref char buffer, int length, int dfuNotifyFinished)
         {
             return RecoveryNativeMethods.irecv_send_buffer(client, ref buffer, length, dfuNotifyFinished);
@@ -207,6 +213,11 @@ namespace iMobileDevice.Recovery
         public virtual RecoveryError irecv_setenv(RecoveryClientHandle client, string variable, string value)
         {
             return RecoveryNativeMethods.irecv_setenv(client, variable, value);
+        }
+        
+        public virtual RecoveryError irecv_setenv_np(RecoveryClientHandle client, string variable, string value)
+        {
+            return RecoveryNativeMethods.irecv_setenv_np(client, variable, value);
         }
         
         public virtual RecoveryError irecv_reboot(RecoveryClientHandle client)
@@ -259,6 +270,11 @@ namespace iMobileDevice.Recovery
             returnValue = RecoveryNativeMethods.irecv_devices_get_device_by_hardware_model(hardwareModel, out device);
             device.Api = this.Parent;
             return returnValue;
+        }
+        
+        public virtual int irecv_devices_get_all_count()
+        {
+            return RecoveryNativeMethods.irecv_devices_get_all_count();
         }
     }
 }

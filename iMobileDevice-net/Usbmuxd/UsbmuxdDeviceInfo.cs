@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="UsbmuxdDeviceInfo.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -37,7 +38,7 @@ namespace iMobileDevice.Usbmuxd
         
         public UsbmuxConnectionType conn_type;
         
-        [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst=200)]
-        public string conn_data;
+        [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.ByValArray, SizeConst=200)]
+        public byte[] conn_data;
     }
 }

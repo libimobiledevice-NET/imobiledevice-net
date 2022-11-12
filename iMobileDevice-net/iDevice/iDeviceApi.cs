@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="iDeviceApi.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -53,24 +54,10 @@ namespace iMobileDevice.iDevice
         }
         
         /// <summary>
-        /// Sets the callback to invoke when writing out debug messages. If this callback is set, messages
-        /// will be written to this callback instead of the standard output.
-        /// </summary>
-        /// <param name="callback">
-        /// The callback which will receive the debug messages. Set to NULL to redirect to stdout.
-        /// </param>
-        public virtual void idevice_set_debug_callback(iDeviceDebugCallBack callback)
-        {
-            iDeviceNativeMethods.idevice_set_debug_callback(callback);
-        }
-        
-        /// <summary>
         /// Set the level of debugging.
         /// </summary>
         /// <param name="level">
-        /// Set to 0 for no debug output, 1 to enable basic debug output and 2 to enable full debug output.
-        /// When set to 2, the values of buffers being sent across the wire are printed out as well, this results in very
-        /// verbose output.
+        /// Set to 0 for no debug output or 1 to enable debug output.
         /// </param>
         public virtual void idevice_set_debug_level(int level)
         {
@@ -78,7 +65,49 @@ namespace iMobileDevice.iDevice
         }
         
         /// <summary>
-        /// Register a callback function that will be called when device add/remove
+        /// Subscribe a callback function that will be called when device add/remove
+        /// events occur.
+        /// </summary>
+        /// <param name="context">
+        /// A pointer to a idevice_subscription_context_t that will be
+        /// set upon creation of the subscription. The returned context must be
+        /// passed to idevice_events_unsubscribe() to unsubscribe the callback.
+        /// </param>
+        /// <param name="callback">
+        /// Callback function to call.
+        /// </param>
+        /// <param name="user_data">
+        /// Application-specific data passed as parameter
+        /// to the registered callback function.
+        /// </param>
+        /// <returns>
+        /// IDEVICE_E_SUCCESS on success or an error value when an error occurred.
+        /// </returns>
+        public virtual iDeviceError idevice_events_subscribe(out iDeviceSubscriptionContextHandle context, iDeviceEventCallBack callback, System.IntPtr userData)
+        {
+            iDeviceError returnValue;
+            returnValue = iDeviceNativeMethods.idevice_events_subscribe(out context, callback, userData);
+            context.Api = this.Parent;
+            return returnValue;
+        }
+        
+        /// <summary>
+        /// Unsubscribe the event callback function that has been registered with
+        /// idevice_events_subscribe().
+        /// </summary>
+        /// <param name="context">
+        /// A valid context as returned from idevice_events_subscribe().
+        /// </param>
+        /// <returns>
+        /// IDEVICE_E_SUCCESS on success or an error value when an error occurred.
+        /// </returns>
+        public virtual iDeviceError idevice_events_unsubscribe(iDeviceSubscriptionContextHandle context)
+        {
+            return iDeviceNativeMethods.idevice_events_unsubscribe(context);
+        }
+        
+        /// <summary>
+        /// (DEPRECATED) Register a callback function that will be called when device add/remove
         /// events occur.
         /// </summary>
         /// <param name="callback">
@@ -97,7 +126,7 @@ namespace iMobileDevice.iDevice
         }
         
         /// <summary>
-        /// Release the event callback function that has been registered with
+        /// (DEPRECATED) Release the event callback function that has been registered with
         /// idevice_event_subscribe().
         /// </summary>
         /// <returns>
@@ -439,86 +468,37 @@ namespace iMobileDevice.iDevice
         }
         
         /// <summary>
-        /// Gets the handle or (usbmux device id) of the device.
+        /// Gets the handle or (USBMUX device id) of the device.
         /// </summary>
+        /// <param name="device">
+        /// The device to get the USBMUX device id for.
+        /// </param>
+        /// <param name="handle">
+        /// Pointer to a uint32_t that will be set to the USBMUX handle value.
+        /// </param>
+        /// <returns>
+        /// IDEVICE_E_SUCCESS on success, otherwise an error code.
+        /// </returns>
         public virtual iDeviceError idevice_get_handle(iDeviceHandle device, ref uint handle)
         {
             return iDeviceNativeMethods.idevice_get_handle(device, ref handle);
         }
         
         /// <summary>
-        /// Gets the unique id for the device.
+        /// Gets the Unique Device ID for the device.
         /// </summary>
+        /// <param name="device">
+        /// The device to get the Unique Device ID for.
+        /// </param>
+        /// <param name="udid">
+        /// Pointer that will be set to an allocated buffer with the device UDID. The consumer is responsible for releasing the allocated memory.
+        /// </param>
+        /// <returns>
+        /// IDEVICE_E_SUCCESS on success, otherwise an error code.
+        /// </returns>
         public virtual iDeviceError idevice_get_udid(iDeviceHandle device, out string udid)
         {
             return iDeviceNativeMethods.idevice_get_udid(device, out udid);
-        }
-        
-        /// <summary>
-        /// Sets the socket type (Unix socket or TCP socket) libimobiledevice should use when connecting
-        /// to usbmuxd.
-        /// </summary>
-        /// <param name="value">
-        /// IDEVICE_SOCKET_TYPE_UNIX or IDEVICE_SOCKET_TYPE_TCP
-        /// </param>
-        /// <returns>
-        /// 0 on success or negative on error
-        /// </returns>
-        public virtual iDeviceError idevice_set_socket_type(int value)
-        {
-            return iDeviceNativeMethods.idevice_set_socket_type(value);
-        }
-        
-        /// <summary>
-        /// Gets the socket type (Unix socket or TCP socket) libimobiledevice should use when connecting
-        /// to usbmuxd.
-        /// </summary>
-        /// <param name="value">
-        /// A pointer to an integer which will reveive the current socket type
-        /// </param>
-        /// <returns>
-        /// 0 on success or negative on error
-        /// </returns>
-        public virtual iDeviceError idevice_get_socket_type(ref int value)
-        {
-            return iDeviceNativeMethods.idevice_get_socket_type(ref value);
-        }
-        
-        /// <summary>
-        /// Sets the TCP endpoint to which libimobiledevice will connect if the socket type is set to
-        /// SOCKET_TYPE_TCP
-        /// </summary>
-        /// <param name="host">
-        /// The hostname or IP address to which to connect
-        /// </param>
-        /// <param name="port">
-        /// The port to which to connect.
-        /// </param>
-        /// <returns>
-        /// 0 on success or negative on error
-        /// </returns>
-        public virtual iDeviceError idevice_set_tcp_endpoint(string host, ushort port)
-        {
-            return iDeviceNativeMethods.idevice_set_tcp_endpoint(host, port);
-        }
-        
-        /// <summary>
-        /// Gets the TCP endpoint to which libimobiledevice will connect if the socket type is set to
-        /// SOCKET_TYPE_TCP
-        /// </summary>
-        /// <param name="host">
-        /// A pointer which will be set to the hostname or IP address to which to connect.
-        /// The caller must free this string.
-        /// </param>
-        /// <param name="port">
-        /// The port to which to connect
-        /// </param>
-        /// <returns>
-        /// 0 on success or negative on error
-        /// </returns>
-        public virtual iDeviceError idevice_get_tcp_endpoint(out string host, ref ushort port)
-        {
-            return iDeviceNativeMethods.idevice_get_tcp_endpoint(out host, ref port);
         }
     }
 }

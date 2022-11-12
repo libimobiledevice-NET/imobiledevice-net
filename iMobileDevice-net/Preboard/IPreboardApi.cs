@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="IPreboardApi.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -131,6 +132,9 @@ namespace iMobileDevice.Preboard
         /// <param name="plist">
         /// Pointer to a plist_t what will be set to the received plist
         /// </param>
+        /// <param name="timeout_ms">
+        /// Timeout in milliseconds
+        /// </param>
         /// <returns>
         /// PREBOARD_E_SUCCESS on success,
         /// PREBOARD_E_INVALID_ARG when client or plist is NULL,
@@ -138,7 +142,7 @@ namespace iMobileDevice.Preboard
         /// or a PREBOARD_E_* error code on error.
         /// </returns>
         PreboardError preboard_receive_with_timeout(PreboardClientHandle client, out PlistHandle plist, uint timeoutMs);
-        
+
         /// <summary>
         /// Tells the preboard service to create a stashbag. This will make the device
         /// show a passcode entry so it can generate and store a token that is later
@@ -175,7 +179,7 @@ namespace iMobileDevice.Preboard
         /// or a PREBOARD_E_* error code on error.
         /// </returns>
         PreboardError preboard_create_stashbag(PreboardClientHandle client, PlistHandle manifest, PreboardStatusCallBack statusCallBack, System.IntPtr userData);
-        
+
         /// <summary>
         /// Instructs the preboard service to commit a previously created stashbag.
         /// The callback or following preboard_receive* invocations will usually

@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="PlistType.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -50,9 +51,11 @@ namespace iMobileDevice.Plist
         
         Uid = 9,
         
+        Null = 10,
+        
         /// <summary>
         /// No type 
         /// </summary>
-        None = 10,
+        None = 11,
     }
 }

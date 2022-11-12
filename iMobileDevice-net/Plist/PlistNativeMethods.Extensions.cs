@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="PlistNativeMethods.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -72,22 +73,34 @@ namespace iMobileDevice.Plist
             valMarshaler.CleanUpNativeData(valNative);
         }
         
-        public static void plist_to_xml(PlistHandle plist, out string plistXml, ref uint length)
+        public static PlistError plist_to_xml(PlistHandle plist, out string plistXml, ref uint length)
         {
             System.Runtime.InteropServices.ICustomMarshaler plistXmlMarshaler = NativeStringMarshaler.GetInstance(null);
             System.IntPtr plistXmlNative = System.IntPtr.Zero;
-            PlistNativeMethods.plist_to_xml(plist, out plistXmlNative, ref length);
+            PlistError returnValue = PlistNativeMethods.plist_to_xml(plist, out plistXmlNative, ref length);
             plistXml = ((string)plistXmlMarshaler.MarshalNativeToManaged(plistXmlNative));
             plistXmlMarshaler.CleanUpNativeData(plistXmlNative);
+            return returnValue;
         }
         
-        public static void plist_to_bin(PlistHandle plist, out string plistBin, ref uint length)
+        public static PlistError plist_to_bin(PlistHandle plist, out string plistBin, ref uint length)
         {
             System.Runtime.InteropServices.ICustomMarshaler plistBinMarshaler = NativeStringMarshaler.GetInstance(null);
             System.IntPtr plistBinNative = System.IntPtr.Zero;
-            PlistNativeMethods.plist_to_bin(plist, out plistBinNative, ref length);
+            PlistError returnValue = PlistNativeMethods.plist_to_bin(plist, out plistBinNative, ref length);
             plistBin = ((string)plistBinMarshaler.MarshalNativeToManaged(plistBinNative));
             plistBinMarshaler.CleanUpNativeData(plistBinNative);
+            return returnValue;
+        }
+        
+        public static PlistError plist_to_json(PlistHandle plist, out string plistJson, ref uint length, int prettify)
+        {
+            System.Runtime.InteropServices.ICustomMarshaler plistJsonMarshaler = NativeStringMarshaler.GetInstance(null);
+            System.IntPtr plistJsonNative = System.IntPtr.Zero;
+            PlistError returnValue = PlistNativeMethods.plist_to_json(plist, out plistJsonNative, ref length, prettify);
+            plistJson = ((string)plistJsonMarshaler.MarshalNativeToManaged(plistJsonNative));
+            plistJsonMarshaler.CleanUpNativeData(plistJsonNative);
+            return returnValue;
         }
     }
 }

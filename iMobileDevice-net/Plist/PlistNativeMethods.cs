@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="PlistNativeMethods.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -141,6 +142,19 @@ namespace iMobileDevice.Plist
         /// </returns>
         [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_new_uid", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
         public static extern PlistHandle plist_new_uid(ulong val);
+        
+        /// <summary>
+        /// Create a new plist_t type #PLIST_NULL
+        /// </summary>
+        /// <returns>
+        /// the created item
+        /// </returns>
+        /// <remarks>
+        /// This type is not valid for all formats, e.g. the XML format
+        /// does not support it.
+        /// </remarks>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_new_null", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern PlistHandle plist_new_null();
         
         /// <summary>
         /// Destruct a plist_t node and all its children recursively
@@ -475,6 +489,9 @@ namespace iMobileDevice.Plist
         /// a pointer to a C-string. This function allocates the memory,
         /// caller is responsible for freeing it.
         /// </param>
+        /// <remarks>
+        /// Use plist_mem_free() to free the allocated memory.
+        /// </remarks>
         [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_get_key_val", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
         public static extern void plist_get_key_val(PlistHandle node, out System.IntPtr val);
         
@@ -489,6 +506,9 @@ namespace iMobileDevice.Plist
         /// a pointer to a C-string. This function allocates the memory,
         /// caller is responsible for freeing it. Data is UTF-8 encoded.
         /// </param>
+        /// <remarks>
+        /// Use plist_mem_free() to free the allocated memory.
+        /// </remarks>
         [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_get_string_val", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
         public static extern void plist_get_string_val(PlistHandle node, out System.IntPtr val);
         
@@ -564,6 +584,9 @@ namespace iMobileDevice.Plist
         /// <param name="length">
         /// the length of the buffer
         /// </param>
+        /// <remarks>
+        /// Use plist_mem_free() to free the allocated memory.
+        /// </remarks>
         [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_get_data_val", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
         public static extern void plist_get_data_val(PlistHandle node, out System.IntPtr val, ref ulong length);
         
@@ -740,17 +763,14 @@ namespace iMobileDevice.Plist
         /// <param name="length">
         /// a pointer to an uint32_t variable. Represents the length of the allocated buffer.
         /// </param>
+        /// <returns>
+        /// PLIST_ERR_SUCCESS on success or a #plist_err_t on failure
+        /// </returns>
+        /// <remarks>
+        /// Use plist_mem_free() to free the allocated memory.
+        /// </remarks>
         [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_to_xml", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
-        public static extern void plist_to_xml(PlistHandle plist, out System.IntPtr plistXml, ref uint length);
-        
-        /// <summary>
-        /// Frees the memory allocated by plist_to_xml().
-        /// </summary>
-        /// <param name="plist_xml">
-        /// The buffer allocated by plist_to_xml().
-        /// </param>
-        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_to_xml_free", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
-        public static extern void plist_to_xml_free(System.IntPtr plistXml);
+        public static extern PlistError plist_to_xml(PlistHandle plist, out System.IntPtr plistXml, ref uint length);
         
         /// <summary>
         /// Export the #plist_t structure to binary format.
@@ -765,17 +785,39 @@ namespace iMobileDevice.Plist
         /// <param name="length">
         /// a pointer to an uint32_t variable. Represents the length of the allocated buffer.
         /// </param>
+        /// <returns>
+        /// PLIST_ERR_SUCCESS on success or a #plist_err_t on failure
+        /// </returns>
+        /// <remarks>
+        /// Use plist_mem_free() to free the allocated memory.
+        /// </remarks>
         [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_to_bin", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
-        public static extern void plist_to_bin(PlistHandle plist, out System.IntPtr plistBin, ref uint length);
+        public static extern PlistError plist_to_bin(PlistHandle plist, out System.IntPtr plistBin, ref uint length);
         
         /// <summary>
-        /// Frees the memory allocated by plist_to_bin().
+        /// Export the #plist_t structure to JSON format.
         /// </summary>
-        /// <param name="plist_bin">
-        /// The buffer allocated by plist_to_bin().
+        /// <param name="plist">
+        /// the root node to export
         /// </param>
-        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_to_bin_free", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
-        public static extern void plist_to_bin_free(System.IntPtr plistBin);
+        /// <param name="plist_json">
+        /// a pointer to a char* buffer. This function allocates the memory,
+        /// caller is responsible for freeing it.
+        /// </param>
+        /// <param name="length">
+        /// a pointer to an uint32_t variable. Represents the length of the allocated buffer.
+        /// </param>
+        /// <param name="prettify">
+        /// pretty print the output if != 0
+        /// </param>
+        /// <returns>
+        /// PLIST_ERR_SUCCESS on success or a #plist_err_t on failure
+        /// </returns>
+        /// <remarks>
+        /// Use plist_mem_free() to free the allocated memory.
+        /// </remarks>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_to_json", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern PlistError plist_to_json(PlistHandle plist, out System.IntPtr plistJson, ref uint length, int prettify);
         
         /// <summary>
         /// Import the #plist_t structure from XML format.
@@ -789,8 +831,11 @@ namespace iMobileDevice.Plist
         /// <param name="plist">
         /// a pointer to the imported plist.
         /// </param>
+        /// <returns>
+        /// PLIST_ERR_SUCCESS on success or a #plist_err_t on failure
+        /// </returns>
         [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_from_xml", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
-        public static extern void plist_from_xml([System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string plistXml, uint length, out PlistHandle plist);
+        public static extern PlistError plist_from_xml([System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string plistXml, uint length, out PlistHandle plist);
         
         /// <summary>
         /// Import the #plist_t structure from binary format.
@@ -804,13 +849,35 @@ namespace iMobileDevice.Plist
         /// <param name="plist">
         /// a pointer to the imported plist.
         /// </param>
+        /// <returns>
+        /// PLIST_ERR_SUCCESS on success or a #plist_err_t on failure
+        /// </returns>
         [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_from_bin", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
-        public static extern void plist_from_bin([System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string plistBin, uint length, out PlistHandle plist);
+        public static extern PlistError plist_from_bin([System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string plistBin, uint length, out PlistHandle plist);
+        
+        /// <summary>
+        /// Import the #plist_t structure from JSON format.
+        /// </summary>
+        /// <param name="json">
+        /// a pointer to the JSON buffer.
+        /// </param>
+        /// <param name="length">
+        /// length of the buffer to read.
+        /// </param>
+        /// <param name="plist">
+        /// a pointer to the imported plist.
+        /// </param>
+        /// <returns>
+        /// PLIST_ERR_SUCCESS on success or a #plist_err_t on failure
+        /// </returns>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_from_json", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern PlistError plist_from_json([System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string json, uint length, out PlistHandle plist);
         
         /// <summary>
         /// Import the #plist_t structure from memory data.
         /// This method will look at the first bytes of plist_data
-        /// to determine if plist_data contains a binary or XML plist.
+        /// to determine if plist_data contains a binary, JSON, or XML plist
+        /// and tries to parse the data in the appropriate format.
         /// </summary>
         /// <param name="plist_data">
         /// a pointer to the memory buffer containing plist data.
@@ -821,16 +888,23 @@ namespace iMobileDevice.Plist
         /// <param name="plist">
         /// a pointer to the imported plist.
         /// </param>
+        /// <returns>
+        /// PLIST_ERR_SUCCESS on success or a #plist_err_t on failure
+        /// </returns>
+        /// <remarks>
+        /// This is just a convenience function and the format detection is
+        /// very basic. It checks with plist_is_binary() if the data supposedly
+        /// contains binary plist data, if not it checks if the first byte is
+        /// either '{' or '[' and assumes JSON format, otherwise it will try
+        /// to parse the data as XML.
+        /// </remarks>
         [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_from_memory", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
-        public static extern void plist_from_memory([System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string plistData, uint length, out PlistHandle plist);
+        public static extern PlistError plist_from_memory([System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string plistData, uint length, out PlistHandle plist);
         
         /// <summary>
-        /// Test if in-memory plist data is binary or XML
-        /// This method will look at the first bytes of plist_data
-        /// to determine if plist_data contains a binary or XML plist.
-        /// This method is not validating the whole memory buffer to check if the
-        /// content is truly a plist, it's only using some heuristic on the first few
-        /// bytes of plist_data.
+        /// Test if in-memory plist data is in binary format.
+        /// This function will look at the first bytes of plist_data to determine
+        /// if it supposedly contains a binary plist.
         /// </summary>
         /// <param name="plist_data">
         /// a pointer to the memory buffer containing plist data.
@@ -841,6 +915,11 @@ namespace iMobileDevice.Plist
         /// <returns>
         /// 1 if the buffer is a binary plist, 0 otherwise.
         /// </returns>
+        /// <remarks>
+        /// The function is not validating the whole memory buffer to check
+        /// if the content is truly a plist, it is only using some heuristic on
+        /// the first few bytes of plist_data.
+        /// </remarks>
         [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_is_binary", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
         public static extern int plist_is_binary([System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string plistData, uint length);
         
@@ -1183,5 +1262,23 @@ namespace iMobileDevice.Plist
         /// </returns>
         [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_data_val_contains", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
         public static extern int plist_data_val_contains(PlistHandle datanode, ref char cmpval, uint n);
+        
+        /// <summary>
+        /// Free memory allocated by relevant libplist API calls:
+        /// - plist_to_xml()
+        /// - plist_to_bin()
+        /// - plist_get_key_val()
+        /// - plist_get_string_val()
+        /// - plist_get_data_val()
+        /// </summary>
+        /// <param name="ptr">
+        /// pointer to the memory to free
+        /// </param>
+        /// <remarks>
+        /// Do not use this function to free plist_t nodes, use plist_free()
+        /// instead.
+        /// </remarks>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_mem_free", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern void plist_mem_free(System.IntPtr ptr);
     }
 }

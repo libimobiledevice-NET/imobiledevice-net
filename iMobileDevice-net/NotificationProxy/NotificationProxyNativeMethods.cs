@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="NotificationProxyNativeMethods.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -169,6 +170,6 @@ namespace iMobileDevice.NotificationProxy
         /// any previously set callback function will be removed automatically.
         /// </remarks>
         [System.Runtime.InteropServices.DllImportAttribute(NotificationProxyNativeMethods.LibraryName, EntryPoint="np_set_notify_callback", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
-        public static extern NotificationProxyError np_set_notify_callback(NotificationProxyClientHandle client, NotificationProxyNotifyCallBack notifyCallBack, System.IntPtr userdata);
+        public static extern NotificationProxyError np_set_notify_callback(NotificationProxyClientHandle client, NotificationProxyNotifyCallBack notifyCallBack, System.IntPtr userData);
     }
 }

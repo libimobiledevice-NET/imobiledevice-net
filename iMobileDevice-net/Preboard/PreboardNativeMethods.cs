@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="PreboardNativeMethods.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -135,6 +136,9 @@ namespace iMobileDevice.Preboard
         /// <param name="plist">
         /// Pointer to a plist_t what will be set to the received plist
         /// </param>
+        /// <param name="timeout_ms">
+        /// Timeout in milliseconds
+        /// </param>
         /// <returns>
         /// PREBOARD_E_SUCCESS on success,
         /// PREBOARD_E_INVALID_ARG when client or plist is NULL,
@@ -157,7 +161,7 @@ namespace iMobileDevice.Preboard
         /// followed by { HideDialog: true }
         /// If the user aborts the passcode entry, the device sends a dictionary:
         /// { Error: 1, ErrorString:
-        /// <error
+        /// <error 
         /// string> }
         /// followed by { HideDialog: true }
         /// </summary>
@@ -191,7 +195,7 @@ namespace iMobileDevice.Preboard
         /// { StashbagCommitComplete: 0, Error: 1,
         /// <optional
         /// > ErrorString:
-        /// <error
+        /// <error 
         /// string> }
         /// </summary>
         /// <param name="client">

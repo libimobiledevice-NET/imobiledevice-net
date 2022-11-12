@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="PreboardClientHandleDelegateMarshaler.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572

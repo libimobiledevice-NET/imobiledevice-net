@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="RecoveryNativeMethods.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -106,6 +107,9 @@ namespace iMobileDevice.Recovery
         [System.Runtime.InteropServices.DllImportAttribute(RecoveryNativeMethods.LibraryName, EntryPoint="irecv_send_command", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
         public static extern RecoveryError irecv_send_command(RecoveryClientHandle client, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string command);
         
+        [System.Runtime.InteropServices.DllImportAttribute(RecoveryNativeMethods.LibraryName, EntryPoint="irecv_send_command_breq", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern RecoveryError irecv_send_command_breq(RecoveryClientHandle client, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string command, char bRequest);
+        
         [System.Runtime.InteropServices.DllImportAttribute(RecoveryNativeMethods.LibraryName, EntryPoint="irecv_send_buffer", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
         public static extern RecoveryError irecv_send_buffer(RecoveryClientHandle client, ref char buffer, int length, int dfuNotifyFinished);
         
@@ -120,6 +124,9 @@ namespace iMobileDevice.Recovery
         
         [System.Runtime.InteropServices.DllImportAttribute(RecoveryNativeMethods.LibraryName, EntryPoint="irecv_setenv", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
         public static extern RecoveryError irecv_setenv(RecoveryClientHandle client, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string variable, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string value);
+        
+        [System.Runtime.InteropServices.DllImportAttribute(RecoveryNativeMethods.LibraryName, EntryPoint="irecv_setenv_np", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern RecoveryError irecv_setenv_np(RecoveryClientHandle client, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string variable, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string value);
         
         [System.Runtime.InteropServices.DllImportAttribute(RecoveryNativeMethods.LibraryName, EntryPoint="irecv_reboot", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
         public static extern RecoveryError irecv_reboot(RecoveryClientHandle client);
@@ -144,5 +151,8 @@ namespace iMobileDevice.Recovery
         
         [System.Runtime.InteropServices.DllImportAttribute(RecoveryNativeMethods.LibraryName, EntryPoint="irecv_devices_get_device_by_hardware_model", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
         public static extern RecoveryError irecv_devices_get_device_by_hardware_model([System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string hardwareModel, out RecoveryDeviceHandle device);
+        
+        [System.Runtime.InteropServices.DllImportAttribute(RecoveryNativeMethods.LibraryName, EntryPoint="irecv_devices_get_all_count", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern int irecv_devices_get_all_count();
     }
 }

@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="ILockdownApi.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -434,6 +435,114 @@ namespace iMobileDevice.Lockdown
         /// request
         /// </returns>
         LockdownError lockdownd_goodbye(LockdownClientHandle client);
+        
+        /// <summary>
+        /// Creates a CU pairing session for the current lockdown client.
+        /// This is required to allow lockdownd_cu_send_request_and_get_reply(),
+        /// lockdownd_get_value_cu() and lockdonwd_pair_cu() requests, and eventually
+        /// allows to perform an actual wireless pairing.
+        /// Through the callback function, the PIN displayed on the device has to be
+        /// supplied during the process. Currently, only AppleTV devices have this
+        /// capability.
+        /// </summary>
+        /// <param name="client">
+        /// The lockdown client to perform the CU pairing for
+        /// </param>
+        /// <param name="pairing_callback">
+        /// Callback function that is used to supply the PIN
+        /// for the pairing process, but also to receive device information or
+        /// pairing error messages.
+        /// </param>
+        /// <param name="cb_user_data">
+        /// User data that will be passed as additional argument
+        /// to the callback function.
+        /// </param>
+        /// <param name="host_info">
+        /// (Optional) A dictionary containing host information to
+        /// send to the device when finalizing the CU pairing. The supplied
+        /// values will override the default values gathered for the current host.
+        /// </param>
+        /// <param name="acl">
+        /// (Optional) A dictionary containing ACL information. Currently
+        /// only com.apple.ScreenCapture:true and com.apple.developer:true are known
+        /// valid ACL values, which are used as default when NULL is passed.
+        /// </param>
+        /// <returns>
+        /// LOCKDOWN_E_SUCCESS on success, LOCKDOWN_E_INVALID_ARG if one of the
+        /// parameters is invalid, LOCKDOWN_E_PAIRING_FAILED if the pairing failed,
+        /// or a LOCKDOWN_E_* error code otherwise.
+        /// </returns>
+        LockdownError lockdownd_cu_pairing_create(LockdownClientHandle client, LockdownCuPairingCallBack pairingCallback, System.IntPtr callBackUserData, PlistHandle hostInfo, PlistHandle acl);
+        
+        /// <summary>
+        /// Sends a request via lockdown client with established CU pairing session
+        /// and attempts to retrieve a reply. This function is used internally
+        /// by lockdownd_get_value_cu() and lockdownd_pair_cu(), but exposed here to
+        /// allow custom requests being sent and their replies being received.
+        /// </summary>
+        /// <param name="client">
+        /// A lockdown client with an established CU pairing.
+        /// </param>
+        /// <param name="request">
+        /// The request to perform.
+        /// </param>
+        /// <param name="request_payload">
+        /// The payload for the request.
+        /// </param>
+        /// <param name="reply">
+        /// (Optional) If not NULL, the plist_t will be set to the reply
+        /// dictionary that has been received. Consumer is responsible to free it
+        /// using plist_free() when no longer required.
+        /// </param>
+        /// <returns>
+        /// LOCKDOWN_E_SUCCESS on success, LOCKDOWN_E_INVALID_ARG if one of the
+        /// parameters is invalid, LOCKDOWN_E_NO_RUNNING_SESSION if the current
+        /// lockdown client does not have an established CU pairing session,
+        /// or a LOCKDOWN_E_* error code otherwise.
+        /// </returns>
+        LockdownError lockdownd_cu_send_request_and_get_reply(LockdownClientHandle client, string request, PlistHandle requestPayload, out PlistHandle reply);
+        
+        /// <summary>
+        /// Retrieves a value using an optional domain and/or key name from a lockdown
+        /// client with established CU pairing session.
+        /// This is used to retrieve values that are only accessible after a CU pairing
+        /// has been established, and would otherwise only be accessible with a valid
+        /// device pairing.
+        /// </summary>
+        /// <param name="client">
+        /// A lockdown client with an established CU pairing.
+        /// </param>
+        /// <param name="domain">
+        /// The domain to query on or NULL for global domain
+        /// </param>
+        /// <param name="key">
+        /// The key name to request or NULL to query for all keys
+        /// </param>
+        /// <param name="value">
+        /// A plist node representing the result value node
+        /// </param>
+        /// <returns>
+        /// LOCKDOWN_E_SUCCESS on success, LOCKDOWN_E_INVALID_ARG if one of the
+        /// parameters is invalid, LOCKDOWN_E_NO_RUNNING_SESSION if the current
+        /// lockdown client does not have an established CU pairing session,
+        /// or a LOCKDOWN_E_* error code otherwise.
+        /// </returns>
+        LockdownError lockdownd_get_value_cu(LockdownClientHandle client, string domain, string key, out PlistHandle value);
+        
+        /// <summary>
+        /// Perform a device pairing with a lockdown client that has an established
+        /// CU pairing session.
+        /// </summary>
+        /// <param name="client">
+        /// A lockdown client with an established CU pairing.
+        /// </param>
+        /// <returns>
+        /// LOCKDOWN_E_SUCCESS on success, LOCKDOWN_E_INVALID_ARG when client
+        /// is NULL, LOCKDOWN_E_NO_RUNNING_SESSION if the current lockdown client
+        /// does not have an established CU pairing session, or a LOCKDOWN_E_* error
+        /// code otherwise.
+        /// </returns>
+        LockdownError lockdownd_pair_cu(LockdownClientHandle client);
         
         /// <summary>
         /// Sets the label to send for requests to lockdownd.

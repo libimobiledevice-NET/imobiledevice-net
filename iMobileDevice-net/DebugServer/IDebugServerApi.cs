@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="IDebugServerApi.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -134,7 +135,8 @@ namespace iMobileDevice.DebugServer
         /// DEBUGSERVER_E_SUCCESS on success,
         /// DEBUGSERVER_E_INVALID_ARG when one or more parameters are
         /// invalid, DEBUGSERVER_E_MUX_ERROR when a communication error
-        /// occurs, or DEBUGSERVER_E_UNKNOWN_ERROR when an unspecified
+        /// occurs, DEBUGSERVER_E_TIMEOUT when the timeout is reached,
+        /// or DEBUGSERVER_E_UNKNOWN_ERROR when an unspecified
         /// error occurs.
         /// </returns>
         DebugServerError debugserver_client_receive_with_timeout(DebugServerClientHandle client, byte[] data, uint size, ref uint received, uint timeout);
@@ -217,6 +219,28 @@ namespace iMobileDevice.DebugServer
         /// code otherwise.
         /// </returns>
         DebugServerError debugserver_client_set_ack_mode(DebugServerClientHandle client, int enabled);
+        
+        /// <summary>
+        /// Sets behavior when awaiting a response from the server.
+        /// </summary>
+        /// <param name="client">
+        /// The debugserver client
+        /// </param>
+        /// <param name="cancel_receive">
+        /// A function pointer that will be called approximately
+        /// every receive_loop_timeout milliseconds; the function should return a
+        /// boolean flag specifying whether to stop waiting for a response. If NULL,
+        /// behaves as if it always returns true.
+        /// </param>
+        /// <param name="receive_loop_timeout">
+        /// Time in milliseconds between calls to
+        /// cancel_receive.
+        /// </param>
+        /// <returns>
+        /// DEBUGSERVER_E_SUCCESS on success, or an DEBUGSERVER_E_* error
+        /// code otherwise.
+        /// </returns>
+        DebugServerError debugserver_client_set_receive_params(DebugServerClientHandle client, ref CancelReceive cancelReceive, int receiveLoopTimeout);
         
         /// <summary>
         /// Sets the argv which launches an app.

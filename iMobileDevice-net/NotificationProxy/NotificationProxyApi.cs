@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 // <copyright file="NotificationProxyApi.cs" company="Quamotion">
-// Copyright (c) 2016-2020 Quamotion. All rights reserved.
+// Copyright (c) 2016-2021 Quamotion. All rights reserved.
+// Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -204,9 +205,9 @@ namespace iMobileDevice.NotificationProxy
         /// Only one callback function can be registered at the same time;
         /// any previously set callback function will be removed automatically.
         /// </remarks>
-        public virtual NotificationProxyError np_set_notify_callback(NotificationProxyClientHandle client, NotificationProxyNotifyCallBack notifyCallBack, System.IntPtr userdata)
+        public virtual NotificationProxyError np_set_notify_callback(NotificationProxyClientHandle client, NotificationProxyNotifyCallBack notifyCallBack, System.IntPtr userData)
         {
-            return NotificationProxyNativeMethods.np_set_notify_callback(client, notifyCallBack, userdata);
+            return NotificationProxyNativeMethods.np_set_notify_callback(client, notifyCallBack, userData);
         }
     }
 }
