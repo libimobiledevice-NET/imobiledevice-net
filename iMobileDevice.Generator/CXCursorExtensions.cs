@@ -41,6 +41,17 @@ namespace iMobileDevice.Generator
                         fixedLengthString.CustomAttributes.Add(Argument.MarshalAsFixedLengthStringDeclaration((int)size));
                         yield return fixedLengthString;
                     }
+                    else if (canonical.ArrayElementType.CanonicalType.kind == CXTypeKind.CXType_UChar)
+                    {
+                        var size = canonical.ArraySize;
+
+                        CodeMemberField byteArray = new CodeMemberField();
+                        byteArray.Attributes = MemberAttributes.Public | MemberAttributes.Final;
+                        byteArray.Name = cursorSpelling;
+                        byteArray.Type = new CodeTypeReference(typeof(byte[]));
+                        byteArray.CustomAttributes.Add(Argument.MarshalAsFixedLengthArrayDeclaration((int)size));
+                        yield return byteArray;
+                    }
                     else
                     {
                         throw new NotImplementedException();

@@ -39,6 +39,23 @@ namespace iMobileDevice.Generator
             return value;
         }
 
+        public static CodeAttributeDeclaration MarshalAsFixedLengthArrayDeclaration(int size)
+        {
+            var value = new CodeAttributeDeclaration(
+                new CodeTypeReference(typeof(MarshalAsAttribute)),
+                new CodeAttributeArgument(
+                    new CodePropertyReferenceExpression(
+                        new CodeTypeReferenceExpression(typeof(UnmanagedType)),
+                        UnmanagedType.ByValArray.ToString())));
+
+            value.Arguments.Add(
+                new CodeAttributeArgument(
+                    "SizeConst",
+                    new CodePrimitiveExpression(size)));
+
+            return value;
+        }
+
         public static CodeAttributeDeclaration MarshalAsDeclaration(UnmanagedType type, CodeTypeReference customMarshaler = null)
         {
             var value = new CodeAttributeDeclaration(
