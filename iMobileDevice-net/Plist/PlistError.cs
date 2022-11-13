@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// <copyright file="PlistErr.cs" company="Quamotion">
+// <copyright file="PlistError.cs" company="Quamotion">
 // Copyright (c) 2016-2021 Quamotion. All rights reserved.
 // Copyright (c) 2022 Wayne Bonnici.
 // </copyright>
@@ -31,19 +31,19 @@ namespace iMobileDevice.Plist
     public enum PlistError : int
     {
         
-        ErrSuccess = 0,
+        Success = 0,
         
-        ErrInvalidArg = -1,
+        InvalidArg = -1,
         
-        ErrFormat = -2,
+        Format = -2,
         
-        ErrParse = -3,
+        Parse = -3,
         
-        ErrNoMem = -4,
+        NoMem = -4,
         
         /// <summary>
         /// an unspecified error occurred 
         /// </summary>
-        ErrUnknown = -255,
+        Unknown = -255,
     }
 }

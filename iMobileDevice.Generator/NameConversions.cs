@@ -30,6 +30,7 @@ namespace iMobileDevice.Generator
             patchedName = patchedName.Replace("COMPANION_PROXY", "companionproxy");
             patchedName = patchedName.Replace("libideviceactivation", "ideviceactivation");
             patchedName = patchedName.Replace("libirecovery", "irecv");
+            patchedName = patchedName.Replace("plist_err", "plist_error");
 
             List<string> parts = new List<string>(patchedName.Split('_'));
 
