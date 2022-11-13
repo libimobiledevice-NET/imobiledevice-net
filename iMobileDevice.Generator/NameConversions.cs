@@ -53,6 +53,12 @@ namespace iMobileDevice.Generator
                     continue;
                 }
 
+                if (i == 1 && parts[i] == "ERR")
+                {
+                    i++;
+                    continue;
+                }
+
                 if (parts[i] == "t")
                 {
                     i++;
