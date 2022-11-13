@@ -26,6 +26,8 @@ namespace iMobileDevice.Generator
             patchedName = patchedName.Replace("PROPERTY_LIST_SERVICE", "propertylistservice");
             patchedName = patchedName.Replace("SYSLOG_RELAY", "syslogrelay");
             patchedName = patchedName.Replace("FILE_RELAY", "filerelay");
+            patchedName = patchedName.Replace("BT_PACKET_LOGGER", "btpacketlogger");
+            patchedName = patchedName.Replace("REVERSE_PROXY", "reverseproxy");
             patchedName = patchedName.Replace("IDEVICE_ACTIVATION", "ideviceactivation");
             patchedName = patchedName.Replace("COMPANION_PROXY", "companionproxy");
             patchedName = patchedName.Replace("libideviceactivation", "ideviceactivation");
@@ -168,6 +170,17 @@ namespace iMobileDevice.Generator
                 else if (parts[i] == "compproxy")
                 {
                     parts[i] = "Companion";
+                    parts.Insert(i + 1, "Proxy");
+                }
+                else if (parts[i] == "btpacketlogger")
+                {
+                    parts[i] = "Bt";
+                    parts.Insert(i + 1, "Packet");
+                    parts.Insert(i + 2, "Logger");
+                }
+                else if (parts[i] == "reverseproxy")
+                {
+                    parts[i] = "Reverse";
                     parts.Insert(i + 1, "Proxy");
                 }
 
