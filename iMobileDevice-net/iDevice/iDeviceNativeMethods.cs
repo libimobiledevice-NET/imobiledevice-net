@@ -36,6 +36,16 @@ namespace iMobileDevice.iDevice
         }
         
         /// <summary>
+        /// Sets the callback to invoke when writing out debug messages. If this callback is set, messages
+        /// will be written to this callback instead of the standard output.
+        /// </summary>
+        /// <param name="callback">
+        /// The callback which will receive the debug messages. Set to NULL to redirect to stdout.
+        /// </param>
+        [System.Runtime.InteropServices.DllImportAttribute(iDeviceNativeMethods.LibraryName, EntryPoint="idevice_set_debug_callback", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern void idevice_set_debug_callback(iDeviceDebugCallBack callback);
+        
+        /// <summary>
         /// Set the level of debugging.
         /// </summary>
         /// <param name="level">
