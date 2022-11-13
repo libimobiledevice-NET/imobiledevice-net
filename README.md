@@ -1,10 +1,20 @@
 # .NET bindings for imobiledevice
-[![Build Status](https://dev.azure.com/libimobiledevice-win32/imobiledevice-net/_apis/build/status/libimobiledevice-win32.imobiledevice-net?branchName=master)](https://dev.azure.com/libimobiledevice-win32/imobiledevice-net/_build/latest?definitionId=1&branchName=master) [![NuGet Status](http://img.shields.io/nuget/v/imobiledevice-net.svg?style=flat)](https://www.nuget.org/packages/imobiledevice-net/)
+[![NuGet Status](http://img.shields.io/nuget/v/imobiledevice-net.svg?style=flat)](https://www.nuget.org/packages/imobiledevice-net/)
 
 imobiledevice-net is a library which allows you to interact with iOS devices on Windows, macOS and Linux using .NET
 languages (such as C# or Visual Basic). It is based on the libimobiledevice library.
 
 imobiledevice-net is compatible with recent versions of .NET Framework and .NET Core.
+
+## Maintenance 🔧
+
+This project is currently in maintenance mode and may not compile using the latest commit.
+
+* Added generator support for new enums
+* Added BtPacketLogger and ReverseProxy APIs
+* Regenerated the libimobiledevice API
+* ideviceactivation binary is now included with all platform distributions
+* Added byte array PInvoke handler for uint_8 arrays in C style structs
 
 ## Installing
 You can install imobiledevice-net as a [NuGet package](https://www.nuget.org/packages/imobiledevice-net)
