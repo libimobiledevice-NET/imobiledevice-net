@@ -4,7 +4,7 @@
     <Description>.NET bindings for libimobiledevice, allows you to interact with devices running iOS, such as iPhones or iPads, using C# or VB.NET code</Description>
     <AssemblyTitle>.NET client for iOS devices (libimobiledevice-net)</AssemblyTitle>
     <VersionPrefix>1.2.1</VersionPrefix>
-    <Authors>Quamotion</Authors>
+    <Authors>Quamotion, Wayne Bonnici</Authors>
     <TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">netcoreapp3.0;netstandard2.0;net45</TargetFrameworks>
     <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netcoreapp3.0;netstandard2.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -15,9 +15,10 @@
     <PackageTags>libimobiledevice;ios;iphone;ipad;imobiledevice;netcore</PackageTags>
     <PackageLicenseUrl>https://raw.githubusercontent.com/libimobiledevice-win32/imobiledevice-net/blob/master/LICENSE.txt</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageProjectUrl>http://github.com/libimobiledevice-win32/imobiledevice-net</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/waynebonc/imobiledevice-net</PackageProjectUrl>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <Company>Wayne Bonnici</Company>
   </PropertyGroup>
 
   <ItemGroup>
@@ -41,8 +42,7 @@
       <PackagePath>runtimes/win-x86/native/%(Filename)%(Extension)</PackagePath>
       <Pack>true</Pack>
     </Content>
-    <Content Include="$(SYSTEM_ARTIFACTSDIRECTORY)/libimobiledevice/win-x86/bin/*.exe"
-             Exclude="$(SYSTEM_ARTIFACTSDIRECTORY)/libimobiledevice/win-x86/bin/ideviceactivation.exe">
+    <Content Include="$(SYSTEM_ARTIFACTSDIRECTORY)/libimobiledevice/win-x86/bin/*.exe" Exclude="$(SYSTEM_ARTIFACTSDIRECTORY)/libimobiledevice/win-x86/bin/ideviceactivation.exe">
       <PackagePath>runtimes/win-x86/native/%(Filename)%(Extension)</PackagePath>
       <Pack>true</Pack>
     </Content>
@@ -61,8 +61,7 @@
       <PackagePath>runtimes/ubuntu.16.04-x64/native/%(Filename)%(Extension)</PackagePath>
       <Pack>true</Pack>
     </Content>
-    <Content Include="$(SYSTEM_ARTIFACTSDIRECTORY)/libimobiledevice/ubuntu.16.04-x64/bin/*"
-             Exclude="$(SYSTEM_ARTIFACTSDIRECTORY)/libimobiledevice/ubuntu.16.04-x64/bin/ideviceactivation">
+    <Content Include="$(SYSTEM_ARTIFACTSDIRECTORY)/libimobiledevice/ubuntu.16.04-x64/bin/*" Exclude="$(SYSTEM_ARTIFACTSDIRECTORY)/libimobiledevice/ubuntu.16.04-x64/bin/ideviceactivation">
       <PackagePath>runtimes/ubuntu.16.04-x64/native/</PackagePath>
       <Pack>true</Pack>
     </Content>
@@ -76,8 +75,7 @@
       <PackagePath>runtimes/osx-x64/native/%(Filename)%(Extension)</PackagePath>
       <Pack>true</Pack>
     </Content>
-    <Content Include="$(SYSTEM_ARTIFACTSDIRECTORY)/libimobiledevice/osx-x64/bin/*"
-             Exclude="$(SYSTEM_ARTIFACTSDIRECTORY)/libimobiledevice/osx-x64/bin/ideviceactivation">
+    <Content Include="$(SYSTEM_ARTIFACTSDIRECTORY)/libimobiledevice/osx-x64/bin/*" Exclude="$(SYSTEM_ARTIFACTSDIRECTORY)/libimobiledevice/osx-x64/bin/ideviceactivation">
       <PackagePath>runtimes/osx-x64/native/</PackagePath>
       <Pack>true</Pack>
     </Content>
