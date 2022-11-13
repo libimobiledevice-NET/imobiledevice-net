@@ -99,18 +99,3 @@ to name a few) in the [libimobiledevice-win32](https://github.com/libimobiledevi
 For macOS and Linux, you can use autotools to compile and install the native binaries from source.
 For Windows, you can use the Visual Studio solution and projects hosted in the [libimobiledevice-vs](https://github.com/libimobiledevice-win32/libimobiledevice-vs)
 repository.
-
-## Consulting, Training and Support
-This repository is maintained by [Quamotion](http://quamotion.mobi). Quamotion develops test software for iOS and 
-Android applications, based on the WebDriver protocol.
-
-Quamotion offers various technologies related to automating iOS devices using computers running Windows or Linux.
-This includes:
-* The ability to remotely control iOS devices
-* Extensions to libimobiledevice with support for the Instruments protocol
-* Running Xcode UI Tests and Facebook WebDriverAgent tests
-
-In certain cases, Quamotion also offers professional services - such as consulting, training and support - related
-to imobiledivice-net and libimobiledevice.
-
-Contact us at [info@quamotion.mobi](mailto:info@quamotion.mobi) for more information.
