@@ -34,6 +34,18 @@ We've done some work to make sure imobiledevice-net "just works":
 ## How it works
 We use `libclang` to parse the libimobiledevice C headers and generate the C# P/Invoke code.
 
+## Generating
+To use the custom generator, prepare a folder named `headers` containing `usbmuxd.h`, `libirecovery.h`, `libideviceactivation.h` along with the `plist` and `libimobiledevice` directories from the `include` folder of their respective project.
+
+Then build `iMobileDevice.Generator` on Windows, open command prompt and run:
+```
+cd [iMobileDevice.Generator\bin\x64\Release\netcoreapp3.1 dir]
+iMobileDevice.Generator.exe generate -s [the path of the header folder you created]
+```
+The generator will update the source code for every API. You should double check for any warning messages and review every change it made before compiling. The generator may create broken XML comment changes which you can discard.
+
+**Make sure the headers you feed into the generator correspond to the library you compile. Failure to do so can result in library runtime crashes.**
+
 ## Documentation
 See the [API Documentation](https://libimobiledevice-win32.github.io/imobiledevice-net/index.html) for more information on imobiledevice-net.
 
