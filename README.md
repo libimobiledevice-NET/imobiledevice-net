@@ -14,7 +14,7 @@ This project is currently in maintenance mode and may not compile using the late
 * Added BtPacketLogger and ReverseProxy APIs
 * Regenerated the libimobiledevice API
 * ideviceactivation binary is now included with all platform distributions
-* Added byte array PInvoke handler for uint_8 arrays in C style structs
+* Added byte array PInvoke handler for uint8_t arrays in C style structs
 
 ## Installing
 You can install imobiledevice-net as a [NuGet package](https://www.nuget.org/packages/imobiledevice-net)
