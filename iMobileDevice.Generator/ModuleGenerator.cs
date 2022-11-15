@@ -81,13 +81,13 @@ namespace iMobileDevice.Generator
             this.NameMapping.Add(nativeName, type.Name);
         }
 
-        public void Generate(string targetDirectory, string libraryName = "imobiledevice")
+        public void Generate(string targetDirectory, string libraryName = "libimobiledevice")
         {
             this.GenerateTypes(libraryName);
             this.WriteTypes(targetDirectory);
         }
 
-        public unsafe void GenerateTypes(string libraryName = "imobiledevice")
+        public unsafe void GenerateTypes(string libraryName = "libimobiledevice")
         {
             string[] arguments =
             {

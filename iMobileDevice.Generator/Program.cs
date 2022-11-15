@@ -132,19 +132,19 @@ namespace iMobileDevice.Generator
 
                             if (string.Equals(Path.GetFileName(file), "libideviceactivation.h", StringComparison.OrdinalIgnoreCase))
                             {
-                                generator.Generate(targetDirectory, "ideviceactivation");
+                                generator.Generate(targetDirectory, "libideviceactivation");
                             }
                             else if (string.Equals(Path.GetFileName(file), "plist.h", StringComparison.OrdinalIgnoreCase))
                             {
-                                generator.Generate(targetDirectory, "plist");
+                                generator.Generate(targetDirectory, "libplist");
                             }
                             else if (string.Equals(Path.GetFileName(file), "usbmuxd.h", StringComparison.OrdinalIgnoreCase))
                             {
-                                generator.Generate(targetDirectory, "usbmuxd");
+                                generator.Generate(targetDirectory, "libusbmuxd");
                             }
                             else if (string.Equals(Path.GetFileName(file), "libirecovery.h", StringComparison.OrdinalIgnoreCase))
                             {
-                                generator.Generate(targetDirectory, "irecovery");
+                                generator.Generate(targetDirectory, "libirecovery");
                             }
                             else
                             {
