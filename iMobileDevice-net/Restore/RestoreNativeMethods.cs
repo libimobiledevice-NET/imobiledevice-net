@@ -28,7 +28,7 @@ namespace iMobileDevice.Restore
     public partial class RestoreNativeMethods
     {
         
-        public const string LibraryName = "imobiledevice";
+        public const string LibraryName = "libimobiledevice";
         
         static RestoreNativeMethods()
         {

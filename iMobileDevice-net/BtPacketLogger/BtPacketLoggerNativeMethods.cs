@@ -28,7 +28,7 @@ namespace iMobileDevice.BtPacketLogger
     public partial class BtPacketLoggerNativeMethods
     {
         
-        public const string LibraryName = "imobiledevice";
+        public const string LibraryName = "libimobiledevice";
         
         static BtPacketLoggerNativeMethods()
         {

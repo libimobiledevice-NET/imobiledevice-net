@@ -28,7 +28,7 @@ namespace iMobileDevice.SyslogRelay
     public partial class SyslogRelayNativeMethods
     {
         
-        public const string LibraryName = "imobiledevice";
+        public const string LibraryName = "libimobiledevice";
         
         static SyslogRelayNativeMethods()
         {

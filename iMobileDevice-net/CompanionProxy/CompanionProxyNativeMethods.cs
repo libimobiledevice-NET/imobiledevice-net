@@ -28,7 +28,7 @@ namespace iMobileDevice.CompanionProxy
     public partial class CompanionProxyNativeMethods
     {
         
-        public const string LibraryName = "imobiledevice";
+        public const string LibraryName = "libimobiledevice";
         
         static CompanionProxyNativeMethods()
         {

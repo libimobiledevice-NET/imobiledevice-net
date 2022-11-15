@@ -28,7 +28,7 @@ namespace iMobileDevice.Lockdown
     public partial class LockdownNativeMethods
     {
         
-        public const string LibraryName = "imobiledevice";
+        public const string LibraryName = "libimobiledevice";
         
         static LockdownNativeMethods()
         {

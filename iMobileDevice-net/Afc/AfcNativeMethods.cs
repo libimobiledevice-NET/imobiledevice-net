@@ -28,7 +28,7 @@ namespace iMobileDevice.Afc
     public partial class AfcNativeMethods
     {
         
-        public const string LibraryName = "imobiledevice";
+        public const string LibraryName = "libimobiledevice";
         
         static AfcNativeMethods()
         {

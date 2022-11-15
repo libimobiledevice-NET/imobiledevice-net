@@ -28,7 +28,7 @@ namespace iMobileDevice.DebugServer
     public partial class DebugServerNativeMethods
     {
         
-        public const string LibraryName = "imobiledevice";
+        public const string LibraryName = "libimobiledevice";
         
         static DebugServerNativeMethods()
         {

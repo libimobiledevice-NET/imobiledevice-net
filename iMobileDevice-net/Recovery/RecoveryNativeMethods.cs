@@ -28,7 +28,7 @@ namespace iMobileDevice.Recovery
     public partial class RecoveryNativeMethods
     {
         
-        public const string LibraryName = "irecovery";
+        public const string LibraryName = "libirecovery";
         
         static RecoveryNativeMethods()
         {

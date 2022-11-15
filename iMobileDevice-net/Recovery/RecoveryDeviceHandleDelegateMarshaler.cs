@@ -14,6 +14,7 @@
 #pragma warning disable 1591
 #pragma warning disable 1572
 #pragma warning disable 1573
+#pragma warning disable 1574
 
 namespace iMobileDevice.Recovery
 {

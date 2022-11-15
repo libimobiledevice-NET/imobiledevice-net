@@ -28,7 +28,7 @@ namespace iMobileDevice.SpringBoardServices
     public partial class SpringBoardServicesNativeMethods
     {
         
-        public const string LibraryName = "imobiledevice";
+        public const string LibraryName = "libimobiledevice";
         
         static SpringBoardServicesNativeMethods()
         {

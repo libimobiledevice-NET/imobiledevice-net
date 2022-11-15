@@ -28,7 +28,7 @@ namespace iMobileDevice.NotificationProxy
     public partial class NotificationProxyNativeMethods
     {
         
-        public const string LibraryName = "imobiledevice";
+        public const string LibraryName = "libimobiledevice";
         
         static NotificationProxyNativeMethods()
         {

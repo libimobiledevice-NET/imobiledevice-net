@@ -28,7 +28,7 @@ namespace iMobileDevice.Misagent
     public partial class MisagentNativeMethods
     {
         
-        public const string LibraryName = "imobiledevice";
+        public const string LibraryName = "libimobiledevice";
         
         static MisagentNativeMethods()
         {

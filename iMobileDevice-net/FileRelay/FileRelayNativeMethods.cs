@@ -28,7 +28,7 @@ namespace iMobileDevice.FileRelay
     public partial class FileRelayNativeMethods
     {
         
-        public const string LibraryName = "imobiledevice";
+        public const string LibraryName = "libimobiledevice";
         
         static FileRelayNativeMethods()
         {

@@ -28,7 +28,7 @@ namespace iMobileDevice.MobileSync
     public partial class MobileSyncNativeMethods
     {
         
-        public const string LibraryName = "imobiledevice";
+        public const string LibraryName = "libimobiledevice";
         
         static MobileSyncNativeMethods()
         {

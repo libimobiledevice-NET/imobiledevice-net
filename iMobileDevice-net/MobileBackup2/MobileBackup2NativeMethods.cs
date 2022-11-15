@@ -28,7 +28,7 @@ namespace iMobileDevice.MobileBackup2
     public partial class MobileBackup2NativeMethods
     {
         
-        public const string LibraryName = "imobiledevice";
+        public const string LibraryName = "libimobiledevice";
         
         static MobileBackup2NativeMethods()
         {

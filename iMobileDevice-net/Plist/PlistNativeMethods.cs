@@ -28,7 +28,7 @@ namespace iMobileDevice.Plist
     public partial class PlistNativeMethods
     {
         
-        public const string LibraryName = "plist";
+        public const string LibraryName = "libplist";
         
         static PlistNativeMethods()
         {

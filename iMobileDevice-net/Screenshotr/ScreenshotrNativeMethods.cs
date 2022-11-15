@@ -28,7 +28,7 @@ namespace iMobileDevice.Screenshotr
     public partial class ScreenshotrNativeMethods
     {
         
-        public const string LibraryName = "imobiledevice";
+        public const string LibraryName = "libimobiledevice";
         
         static ScreenshotrNativeMethods()
         {

@@ -28,7 +28,7 @@ namespace iMobileDevice.MobileImageMounter
     public partial class MobileImageMounterNativeMethods
     {
         
-        public const string LibraryName = "imobiledevice";
+        public const string LibraryName = "libimobiledevice";
         
         static MobileImageMounterNativeMethods()
         {

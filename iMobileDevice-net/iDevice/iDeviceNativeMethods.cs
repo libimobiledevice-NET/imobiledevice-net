@@ -28,7 +28,7 @@ namespace iMobileDevice.iDevice
     public partial class iDeviceNativeMethods
     {
         
-        public const string LibraryName = "imobiledevice";
+        public const string LibraryName = "libimobiledevice";
         
         static iDeviceNativeMethods()
         {

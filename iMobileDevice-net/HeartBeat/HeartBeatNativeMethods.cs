@@ -28,7 +28,7 @@ namespace iMobileDevice.HeartBeat
     public partial class HeartBeatNativeMethods
     {
         
-        public const string LibraryName = "imobiledevice";
+        public const string LibraryName = "libimobiledevice";
         
         static HeartBeatNativeMethods()
         {

@@ -28,7 +28,7 @@ namespace iMobileDevice.iDeviceActivation
     public partial class iDeviceActivationNativeMethods
     {
         
-        public const string LibraryName = "ideviceactivation";
+        public const string LibraryName = "libideviceactivation";
         
         static iDeviceActivationNativeMethods()
         {

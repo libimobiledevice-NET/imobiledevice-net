@@ -28,7 +28,7 @@ namespace iMobileDevice.Service
     public partial class ServiceNativeMethods
     {
         
-        public const string LibraryName = "imobiledevice";
+        public const string LibraryName = "libimobiledevice";
         
         static ServiceNativeMethods()
         {

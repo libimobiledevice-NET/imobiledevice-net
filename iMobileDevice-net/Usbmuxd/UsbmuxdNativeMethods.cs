@@ -28,7 +28,7 @@ namespace iMobileDevice.Usbmuxd
     public partial class UsbmuxdNativeMethods
     {
         
-        public const string LibraryName = "usbmuxd";
+        public const string LibraryName = "libusbmuxd";
         
         static UsbmuxdNativeMethods()
         {

@@ -229,7 +229,7 @@ namespace iMobileDevice.Preboard
         {
             return PreboardNativeMethods.preboard_create_stashbag(client, manifest, statusCallBack, userData);
         }
-        
+
         /// <summary>
         /// Instructs the preboard service to commit a previously created stashbag.
         /// The callback or following preboard_receive* invocations will usually

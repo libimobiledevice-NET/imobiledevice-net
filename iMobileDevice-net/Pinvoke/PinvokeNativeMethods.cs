@@ -28,7 +28,7 @@ namespace iMobileDevice.Pinvoke
     public partial class PinvokeNativeMethods
     {
         
-        public const string LibraryName = "imobiledevice";
+        public const string LibraryName = "libimobiledevice";
         
         static PinvokeNativeMethods()
         {

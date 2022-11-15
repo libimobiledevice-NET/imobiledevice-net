@@ -28,7 +28,7 @@ namespace iMobileDevice.ReverseProxy
     public partial class ReverseProxyNativeMethods
     {
         
-        public const string LibraryName = "imobiledevice";
+        public const string LibraryName = "libimobiledevice";
         
         static ReverseProxyNativeMethods()
         {

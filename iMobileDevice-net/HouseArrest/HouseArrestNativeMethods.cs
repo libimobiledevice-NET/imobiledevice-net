@@ -28,7 +28,7 @@ namespace iMobileDevice.HouseArrest
     public partial class HouseArrestNativeMethods
     {
         
-        public const string LibraryName = "imobiledevice";
+        public const string LibraryName = "libimobiledevice";
         
         static HouseArrestNativeMethods()
         {

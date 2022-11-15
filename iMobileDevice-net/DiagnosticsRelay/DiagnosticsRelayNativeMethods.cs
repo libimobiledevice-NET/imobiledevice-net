@@ -28,7 +28,7 @@ namespace iMobileDevice.DiagnosticsRelay
     public partial class DiagnosticsRelayNativeMethods
     {
         
-        public const string LibraryName = "imobiledevice";
+        public const string LibraryName = "libimobiledevice";
         
         static DiagnosticsRelayNativeMethods()
         {
