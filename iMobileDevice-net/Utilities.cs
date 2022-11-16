@@ -45,14 +45,14 @@ namespace iMobileDevice
         private static bool sourcedFromNuGet = true;
 
         private static readonly bool isWindows =
-#if NET45
+#if NET462
             true;
 #else
             RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
 #endif
 
         private static readonly bool isLinux =
-#if NET45
+#if NET462
             false;
 #else
             RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
