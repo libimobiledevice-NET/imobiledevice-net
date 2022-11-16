@@ -130,7 +130,7 @@ namespace iMobileDevice
         }
 
         /// <summary>
-        /// Returns the filename of the <c>mobiledevice-net-lighthouse-x64</c> module.
+        /// Returns the absolute path of the <c>mobiledevice-net-lighthouse</c> module (Ansi).
         /// </summary>
         /// <param name="filename">
         /// A <see cref="StringBuilder"/> which will receive the filename of the module.
@@ -145,7 +145,7 @@ namespace iMobileDevice
         private static extern int GetMobileDeviceDotNetDirUnix(StringBuilder filename, int length);
 
         /// <summary>
-        /// Returns the filename of the <c>mobiledevice-net-lighthouse-x64</c> module.
+        /// Returns the absolute path of the <c>mobiledevice-net-lighthouse</c> module (Unicode).
         /// </summary>
         /// <param name="filename">
         /// A <see cref="StringBuilder"/> which will receive the filename of the module.
