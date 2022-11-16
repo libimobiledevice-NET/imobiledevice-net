@@ -130,26 +130,6 @@ namespace iMobileDevice
         }
 
         /// <summary>
-        /// Gets the full path of the <c>usbmuxd.exe</c> executable.
-        /// </summary>
-        /// <returns>
-        /// The full path of the <c>usbmuxd.exe</c> executable.
-        /// </returns>
-        public static string GetUsbMuxdPath()
-        {
-            if (isLinux && !sourcedFromNuGet)
-            {
-                // Special case, usbmuxd ships to /usr/sbin/usbmuxd on Linux
-                return "/usr/sbin/usbmuxd";
-            }
-
-            var executable = isWindows ? "usbmuxd.exe" : "usbmuxd";
-
-            var proxyPath = Path.Combine(GetMobileDeviceDotNetDirectory(), executable);
-            return proxyPath;
-        }
-
-        /// <summary>
         /// Returns the filename of the <c>mobiledevice-net-lighthouse-x64</c> module.
         /// </summary>
         /// <param name="filename">
