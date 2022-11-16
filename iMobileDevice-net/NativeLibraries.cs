@@ -94,8 +94,8 @@ namespace iMobileDevice
             {
                 string[] windowsLibariesToLoad = new string[]
                 {
-                    "imobiledevice",
-                    "ideviceactivation",
+                    "libimobiledevice",
+                    "libideviceactivation",
                 };
 
                 string nativeLibrariesDirectory = directory;
