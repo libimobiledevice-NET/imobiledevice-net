@@ -48,7 +48,7 @@ namespace MobileDevice.Demo
                 idevice.idevice_new(out deviceHandle, udid).ThrowOnError();
 
                 LockdownClientHandle lockdownHandle;
-                lockdown.lockdownd_client_new_with_handshake(deviceHandle, out lockdownHandle, "Quamotion").ThrowOnError();
+                lockdown.lockdownd_client_new_with_handshake(deviceHandle, out lockdownHandle, "iMobileDevice-net.Demo").ThrowOnError();
 
                 string deviceName;
                 lockdown.lockdownd_get_device_name(lockdownHandle, out deviceName).ThrowOnError();
