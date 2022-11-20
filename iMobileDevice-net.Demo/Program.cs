@@ -32,7 +32,7 @@ namespace MobileDevice.Demo
 
             var ret = idevice.idevice_get_device_list(out udids, ref count);
 
-            if (ret == iDeviceError.NoDevice)
+            if (ret == iDeviceError.NoDevice || (ret == iDeviceError.Success && count == 0))
             {
                 // Not actually an error in our case
                 Console.WriteLine("No devices found");
