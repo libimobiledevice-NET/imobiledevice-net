@@ -141,6 +141,6 @@
       <LineText Include="%(Line.Text)" />
     </ItemGroup>
     <WriteLinesToFile File="../iMobileDevice.IntegrationTests.netcoreapp31/Directory.Build.props" Lines="@(LineText)" Overwrite="true" />
-    <WriteLinesToFile File="../iMobileDevice.IntegrationTests.net461/Directory.Build.props" Lines="@(LineText)" Overwrite="true" />
+    <WriteLinesToFile File="../iMobileDevice.IntegrationTests.net462/Directory.Build.props" Lines="@(LineText)" Overwrite="true" />
   </Target>
 </Project>

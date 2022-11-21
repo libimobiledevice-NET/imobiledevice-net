@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iMobileDevice.IntegrationTests.net461", "iMobileDevice.IntegrationTests.net461.csproj", "{D55760A7-6EF7-4AE6-B92B-BC87360A0D21}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iMobileDevice.IntegrationTests.net462", "iMobileDevice.IntegrationTests.net462.csproj", "{D55760A7-6EF7-4AE6-B92B-BC87360A0D21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
