@@ -1,4 +1,4 @@
-$buildPropsPath = $env:SYSTEM_ARTIFACTSDIRECTORY + "\imobiledevice-net\Directory.Build.props"
+$buildPropsPath = (Get-Item .).FullName + "\Directory.Build.props"
 
 [xml]$buildProps = Get-Content $buildPropsPath
 $version = $buildProps.Project.PropertyGroup.MobileDeviceDotNetNuGetVersion
