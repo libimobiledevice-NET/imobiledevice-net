@@ -13,7 +13,7 @@
     <SignAssembly>true</SignAssembly>
     <PackageId>iMobileDevice-net</PackageId>
     <PackageTags>libimobiledevice;ios;iphone;ipad;imobiledevice;netcore</PackageTags>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/libimobiledevice-win32/imobiledevice-net/blob/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/libimobiledevice-NET/imobiledevice-net/master/LICENSE.txt</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://github.com/libimobiledevice-NET/imobiledevice-net</PackageProjectUrl>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
