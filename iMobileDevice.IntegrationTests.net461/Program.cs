@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 
-namespace iMobileDevice.IntegrationTests.net45
+namespace iMobileDevice.IntegrationTests.net461
 {
     class Program
     {

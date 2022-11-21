@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("iMobileDevice.IntegrationTests.net45")]
+[assembly: AssemblyTitle("iMobileDevice.IntegrationTests.net461")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("iMobileDevice.IntegrationTests.net45")]
+[assembly: AssemblyProduct("iMobileDevice.IntegrationTests.net461")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
