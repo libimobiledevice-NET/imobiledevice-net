@@ -16,6 +16,11 @@ This project is currently in maintenance mode and may not compile using the late
 * ideviceactivation binary is now included with all platform distributions
 * Added byte array PInvoke handler for uint8_t arrays in C style structs
 
+### Status
+* Azure Pipelines and workflows broken
+* macOS support broken
+* Ubuntu support broken
+
 ## Installing
 You can install imobiledevice-net as a [NuGet package](https://www.nuget.org/packages/imobiledevice-net)
 
