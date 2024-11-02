@@ -21,6 +21,15 @@ namespace iMobileDevice.Generator
             }
 
             patchedName = patchedName.Replace("DIAGNOSTICS_RELAY", "diagnosticsrelay");
+            patchedName = patchedName.Replace("DIAGNOSTICS_RELAY_ACTION", "diagnosticsrelayaction");
+            patchedName = patchedName.Replace("IDEVICE_ACTIVATION_CLIENT", "ideviceactivationclient");
+            patchedName = patchedName.Replace("LOCKDOWN_CU_PAIRING", "lockdowncupairing");
+            patchedName = patchedName.Replace("MOBILESYNC_SYNC_TYPE", "mobilesynctype");
+            patchedName = patchedName.Replace("RP_DATA_DIRECTION", "rpdatadirection");
+            patchedName = patchedName.Replace("RP_STATUS", "rpstatus");
+            patchedName = patchedName.Replace("SBSERVICES_INTERFACE_ORIENTATION", "sbservicesinterfaceorientation");
+            patchedName = patchedName.Replace("CONNECTION_TYPE", "connectiontype");
+            patchedName = patchedName.Replace("DEVICE_LOOKUP", "devicelookup");
             patchedName = patchedName.Replace("HOUSE_ARREST", "housearrest");
             patchedName = patchedName.Replace("MOBILE_IMAGE_MOUNTER", "mobileimagemounter");
             patchedName = patchedName.Replace("PROPERTY_LIST_SERVICE", "propertylistservice");
@@ -56,7 +65,7 @@ namespace iMobileDevice.Generator
                     continue;
                 }
 
-                if (i == 1 && parts[i] == "ERR")
+                if (i == 1 && (parts[i] == "ERR" || parts[i] == "OPT" || parts[i] == "FORMAT"))
                 {
                     i++;
                     continue;
