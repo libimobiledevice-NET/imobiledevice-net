@@ -9,7 +9,7 @@
 
 // <copyright file="PlistNativeMethods.cs" company="Quamotion">
 // Copyright (c) 2016-2021 Quamotion. All rights reserved.
-// Copyright (c) 2022 Wayne Bonnici.
+// Copyright (c) 2022-2024 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -78,7 +78,7 @@ namespace iMobileDevice.Plist
         public static extern PlistHandle plist_new_bool(char val);
         
         /// <summary>
-        /// Create a new plist_t type #PLIST_UINT
+        /// Create a new plist_t type #PLIST_INT with an unsigned integer value
         /// </summary>
         /// <param name="val">
         /// the unsigned integer value
@@ -86,8 +86,28 @@ namespace iMobileDevice.Plist
         /// <returns>
         /// the created item
         /// </returns>
+        /// <remarks>
+        /// The value is always stored as uint64_t internally.
+        /// Use #plist_get_uint_val or #plist_get_int_val to get the unsigned or signed value.
+        /// </remarks>
         [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_new_uint", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
         public static extern PlistHandle plist_new_uint(ulong val);
+        
+        /// <summary>
+        /// Create a new plist_t type #PLIST_INT with a signed integer value
+        /// </summary>
+        /// <param name="val">
+        /// the signed integer value
+        /// </param>
+        /// <returns>
+        /// the created item
+        /// </returns>
+        /// <remarks>
+        /// The value is always stored as uint64_t internally.
+        /// Use #plist_get_uint_val or #plist_get_int_val to get the unsigned or signed value.
+        /// </remarks>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_new_int", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern PlistHandle plist_new_int(long val);
         
         /// <summary>
         /// Create a new plist_t type #PLIST_REAL
@@ -416,21 +436,6 @@ namespace iMobileDevice.Plist
         public static extern void plist_dict_set_item(PlistHandle node, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string key, PlistHandle item);
         
         /// <summary>
-        /// Insert a new item into a #PLIST_DICT node.
-        /// </summary>
-        /// <param name="node">
-        /// the node of type #PLIST_DICT
-        /// </param>
-        /// <param name="item">
-        /// the new item to insert
-        /// </param>
-        /// <param name="key">
-        /// The identifier of the item to insert.
-        /// </param>
-        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_dict_insert_item", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
-        public static extern void plist_dict_insert_item(PlistHandle node, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string key, PlistHandle item);
-        
-        /// <summary>
         /// Remove an existing position in a #PLIST_DICT node.
         /// Removed position will be freed using #plist_free
         /// </summary>
@@ -456,6 +461,222 @@ namespace iMobileDevice.Plist
         /// </param>
         [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_dict_merge", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
         public static extern void plist_dict_merge(out PlistHandle target, PlistHandle source);
+        
+        /// <summary>
+        /// Get a boolean value from a given #PLIST_DICT entry.
+        /// The value node can be of type #PLIST_BOOLEAN, but also
+        /// #PLIST_STRING (either 'true' or 'false'),
+        /// #PLIST_INT with a numerical value of 0 or >= 1,
+        /// or #PLIST_DATA with a single byte with a value of 0 or >= 1.
+        /// </summary>
+        /// <param name="dict">
+        /// A node of type #PLIST_DICT
+        /// </param>
+        /// <param name="key">
+        /// The key to look for in dict
+        /// </param>
+        /// <returns>
+        /// 0 or 1 depending on the value of the node.
+        /// </returns>
+        /// <remarks>
+        /// This function returns 0 if the dictionary does not contain an
+        /// entry for the given key, if the value node is of any other than
+        /// the above mentioned type, or has any mismatching value.
+        /// </remarks>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_dict_get_bool", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern char plist_dict_get_bool(PlistHandle dict, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string key);
+        
+        /// <summary>
+        /// Get a signed integer value from a given #PLIST_DICT entry.
+        /// The value node can be of type #PLIST_INT, but also
+        /// #PLIST_STRING with a numerical value as string (decimal or hexadecimal),
+        /// or #PLIST_DATA with a size of 1, 2, 4, or 8 bytes in little endian byte order.
+        /// </summary>
+        /// <param name="dict">
+        /// A node of type #PLIST_DICT
+        /// </param>
+        /// <param name="key">
+        /// The key to look for in dict
+        /// </param>
+        /// <returns>
+        /// Signed integer value depending on the value of the node.
+        /// </returns>
+        /// <remarks>
+        /// This function returns 0 if the dictionary does not contain an
+        /// entry for the given key, if the value node is of any other than
+        /// the above mentioned type, or has any mismatching value.
+        /// </remarks>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_dict_get_int", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern long plist_dict_get_int(PlistHandle dict, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string key);
+        
+        /// <summary>
+        /// Get an unsigned integer value from a given #PLIST_DICT entry.
+        /// The value node can be of type #PLIST_INT, but also
+        /// #PLIST_STRING with a numerical value as string (decimal or hexadecimal),
+        /// or #PLIST_DATA with a size of 1, 2, 4, or 8 bytes in little endian byte order.
+        /// </summary>
+        /// <param name="dict">
+        /// A node of type #PLIST_DICT
+        /// </param>
+        /// <param name="key">
+        /// The key to look for in dict
+        /// </param>
+        /// <returns>
+        /// Signed integer value depending on the value of the node.
+        /// </returns>
+        /// <remarks>
+        /// This function returns 0 if the dictionary does not contain an
+        /// entry for the given key, if the value node is of any other than
+        /// the above mentioned type, or has any mismatching value.
+        /// </remarks>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_dict_get_uint", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern ulong plist_dict_get_uint(PlistHandle dict, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string key);
+        
+        /// <summary>
+        /// Copy a node from *source_dict* to *target_dict*.
+        /// The node is looked up in *source_dict* with given *key*, unless *alt_source_key*
+        /// is non-NULL, in which case it is looked up with *alt_source_key*.
+        /// The entry in *target_dict* is **always** created with *key*.
+        /// </summary>
+        /// <param name="target_dict">
+        /// The target dictionary to copy to.
+        /// </param>
+        /// <param name="source_dict">
+        /// The source dictionary to copy from.
+        /// </param>
+        /// <param name="key">
+        /// The key for the node to copy.
+        /// </param>
+        /// <param name="alt_source_key">
+        /// The alternative source key for lookup in *source_dict* or NULL.
+        /// </param>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_dict_copy_item", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern PlistError plist_dict_copy_item(PlistHandle targetDict, PlistHandle sourceDict, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string key, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string altSourceKey);
+        
+        /// <summary>
+        /// Copy a boolean value from *source_dict* to *target_dict*.
+        /// The node is looked up in *source_dict* with given *key*, unless *alt_source_key*
+        /// is non-NULL, in which case it is looked up with *alt_source_key*.
+        /// The entry in *target_dict* is **always** created with *key*.
+        /// </summary>
+        /// <param name="target_dict">
+        /// The target dictionary to copy to.
+        /// </param>
+        /// <param name="source_dict">
+        /// The source dictionary to copy from.
+        /// </param>
+        /// <param name="key">
+        /// The key for the node to copy.
+        /// </param>
+        /// <param name="alt_source_key">
+        /// The alternative source key for lookup in *source_dict* or NULL.
+        /// </param>
+        /// <remarks>
+        /// The boolean value from *source_dict* is retrieved with #plist_dict_get_bool,
+        /// but is **always** created as #PLIST_BOOLEAN in *target_dict*.
+        /// </remarks>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_dict_copy_bool", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern PlistError plist_dict_copy_bool(PlistHandle targetDict, PlistHandle sourceDict, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string key, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string altSourceKey);
+        
+        /// <summary>
+        /// Copy a signed integer value from *source_dict* to *target_dict*.
+        /// The node is looked up in *source_dict* with given *key*, unless *alt_source_key*
+        /// is non-NULL, in which case it is looked up with *alt_source_key*.
+        /// The entry in *target_dict* is **always** created with *key*.
+        /// </summary>
+        /// <param name="target_dict">
+        /// The target dictionary to copy to.
+        /// </param>
+        /// <param name="source_dict">
+        /// The source dictionary to copy from.
+        /// </param>
+        /// <param name="key">
+        /// The key for the node value to copy.
+        /// </param>
+        /// <param name="alt_source_key">
+        /// The alternative source key for lookup in *source_dict* or NULL.
+        /// </param>
+        /// <remarks>
+        /// The signed integer value from *source_dict* is retrieved with #plist_dict_get_int,
+        /// but is **always** created as #PLIST_INT.
+        /// </remarks>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_dict_copy_int", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern PlistError plist_dict_copy_int(PlistHandle targetDict, PlistHandle sourceDict, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string key, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string altSourceKey);
+        
+        /// <summary>
+        /// Copy an unsigned integer value from *source_dict* to *target_dict*.
+        /// The node is looked up in *source_dict* with given *key*, unless *alt_source_key*
+        /// is non-NULL, in which case it is looked up with *alt_source_key*.
+        /// The entry in *target_dict* is **always** created with *key*.
+        /// </summary>
+        /// <param name="target_dict">
+        /// The target dictionary to copy to.
+        /// </param>
+        /// <param name="source_dict">
+        /// The source dictionary to copy from.
+        /// </param>
+        /// <param name="key">
+        /// The key for the node value to copy.
+        /// </param>
+        /// <param name="alt_source_key">
+        /// The alternative source key for lookup in *source_dict* or NULL.
+        /// </param>
+        /// <remarks>
+        /// The unsigned integer value from *source_dict* is retrieved with #plist_dict_get_uint,
+        /// but is **always** created as #PLIST_INT.
+        /// </remarks>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_dict_copy_uint", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern PlistError plist_dict_copy_uint(PlistHandle targetDict, PlistHandle sourceDict, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string key, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string altSourceKey);
+        
+        /// <summary>
+        /// Copy a #PLIST_DATA node from *source_dict* to *target_dict*.
+        /// The node is looked up in *source_dict* with given *key*, unless *alt_source_key*
+        /// is non-NULL, in which case it is looked up with *alt_source_key*.
+        /// The entry in *target_dict* is **always** created with *key*.
+        /// </summary>
+        /// <param name="target_dict">
+        /// The target dictionary to copy to.
+        /// </param>
+        /// <param name="source_dict">
+        /// The source dictionary to copy from.
+        /// </param>
+        /// <param name="key">
+        /// The key for the node value to copy.
+        /// </param>
+        /// <param name="alt_source_key">
+        /// The alternative source key for lookup in *source_dict* or NULL.
+        /// </param>
+        /// <remarks>
+        /// This function is like #plist_dict_copy_item, except that it fails
+        /// if the source node is not of type #PLIST_DATA.
+        /// </remarks>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_dict_copy_data", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern PlistError plist_dict_copy_data(PlistHandle targetDict, PlistHandle sourceDict, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string key, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string altSourceKey);
+        
+        /// <summary>
+        /// Copy a #PLIST_STRING node from *source_dict* to *target_dict*.
+        /// The node is looked up in *source_dict* with given *key*, unless *alt_source_key*
+        /// is non-NULL, in which case it is looked up with *alt_source_key*.
+        /// The entry in *target_dict* is **always** created with *key*.
+        /// </summary>
+        /// <param name="target_dict">
+        /// The target dictionary to copy to.
+        /// </param>
+        /// <param name="source_dict">
+        /// The source dictionary to copy from.
+        /// </param>
+        /// <param name="key">
+        /// The key for the node value to copy.
+        /// </param>
+        /// <param name="alt_source_key">
+        /// The alternative source key for lookup in *source_dict* or NULL.
+        /// </param>
+        /// <remarks>
+        /// This function is like #plist_dict_copy_item, except that it fails
+        /// if the source node is not of type #PLIST_STRING.
+        /// </remarks>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_dict_copy_string", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern PlistError plist_dict_copy_string(PlistHandle targetDict, PlistHandle sourceDict, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string key, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string altSourceKey);
         
         /// <summary>
         /// Get the parent of a node
@@ -545,8 +766,8 @@ namespace iMobileDevice.Plist
         public static extern void plist_get_bool_val(PlistHandle node, ref char val);
         
         /// <summary>
-        /// Get the value of a #PLIST_UINT node.
-        /// This function does nothing if node is not of type #PLIST_UINT
+        /// Get the unsigned integer value of a #PLIST_INT node.
+        /// This function does nothing if node is not of type #PLIST_INT
         /// </summary>
         /// <param name="node">
         /// the node
@@ -556,6 +777,19 @@ namespace iMobileDevice.Plist
         /// </param>
         [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_get_uint_val", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
         public static extern void plist_get_uint_val(PlistHandle node, ref ulong val);
+        
+        /// <summary>
+        /// Get the signed integer value of a #PLIST_INT node.
+        /// This function does nothing if node is not of type #PLIST_INT
+        /// </summary>
+        /// <param name="node">
+        /// the node
+        /// </param>
+        /// <param name="val">
+        /// a pointer to a int64_t variable.
+        /// </param>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_get_int_val", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern void plist_get_int_val(PlistHandle node, ref long val);
         
         /// <summary>
         /// Get the value of a #PLIST_REAL node.
@@ -680,7 +914,7 @@ namespace iMobileDevice.Plist
         
         /// <summary>
         /// Set the value of a node.
-        /// Forces type of node to #PLIST_UINT
+        /// Forces type of node to #PLIST_INT
         /// </summary>
         /// <param name="node">
         /// the node
@@ -690,6 +924,19 @@ namespace iMobileDevice.Plist
         /// </param>
         [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_set_uint_val", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
         public static extern void plist_set_uint_val(PlistHandle node, ulong val);
+        
+        /// <summary>
+        /// Set the value of a node.
+        /// Forces type of node to #PLIST_INT
+        /// </summary>
+        /// <param name="node">
+        /// the node
+        /// </param>
+        /// <param name="val">
+        /// the signed integer value
+        /// </param>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_set_int_val", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern void plist_set_int_val(PlistHandle node, long val);
         
         /// <summary>
         /// Set the value of a node.
@@ -820,6 +1067,31 @@ namespace iMobileDevice.Plist
         public static extern PlistError plist_to_json(PlistHandle plist, out System.IntPtr plistJson, ref uint length, int prettify);
         
         /// <summary>
+        /// Export the #plist_t structure to OpenStep format.
+        /// </summary>
+        /// <param name="plist">
+        /// the root node to export
+        /// </param>
+        /// <param name="plist_openstep">
+        /// a pointer to a char* buffer. This function allocates the memory,
+        /// caller is responsible for freeing it.
+        /// </param>
+        /// <param name="length">
+        /// a pointer to an uint32_t variable. Represents the length of the allocated buffer.
+        /// </param>
+        /// <param name="prettify">
+        /// pretty print the output if != 0
+        /// </param>
+        /// <returns>
+        /// PLIST_ERR_SUCCESS on success or a #plist_err_t on failure
+        /// </returns>
+        /// <remarks>
+        /// Use plist_mem_free() to free the allocated memory.
+        /// </remarks>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_to_openstep", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern PlistError plist_to_openstep(PlistHandle plist, out System.IntPtr plistOpenstep, ref uint length, int prettify);
+        
+        /// <summary>
         /// Import the #plist_t structure from XML format.
         /// </summary>
         /// <param name="plist_xml">
@@ -874,13 +1146,10 @@ namespace iMobileDevice.Plist
         public static extern PlistError plist_from_json([System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string json, uint length, out PlistHandle plist);
         
         /// <summary>
-        /// Import the #plist_t structure from memory data.
-        /// This method will look at the first bytes of plist_data
-        /// to determine if plist_data contains a binary, JSON, or XML plist
-        /// and tries to parse the data in the appropriate format.
+        /// Import the #plist_t structure from OpenStep plist format.
         /// </summary>
-        /// <param name="plist_data">
-        /// a pointer to the memory buffer containing plist data.
+        /// <param name="openstep">
+        /// a pointer to the OpenStep plist buffer.
         /// </param>
         /// <param name="length">
         /// length of the buffer to read.
@@ -891,15 +1160,155 @@ namespace iMobileDevice.Plist
         /// <returns>
         /// PLIST_ERR_SUCCESS on success or a #plist_err_t on failure
         /// </returns>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_from_openstep", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern PlistError plist_from_openstep([System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string openstep, uint length, out PlistHandle plist);
+        
+        /// <summary>
+        /// Import the #plist_t structure from memory data.
+        /// This function will look at the first bytes of plist_data
+        /// to determine if plist_data contains a binary, JSON, OpenStep, or XML plist
+        /// and tries to parse the data in the appropriate format.
+        /// </summary>
+        /// <param name="plist_data">
+        /// A pointer to the memory buffer containing plist data.
+        /// </param>
+        /// <param name="length">
+        /// Length of the buffer to read.
+        /// </param>
+        /// <param name="plist">
+        /// A pointer to the imported plist.
+        /// </param>
+        /// <param name="format">
+        /// If non-NULL, the #plist_format_t value pointed to will be set to the parsed format.
+        /// </param>
+        /// <returns>
+        /// PLIST_ERR_SUCCESS on success or a #plist_err_t on failure
+        /// </returns>
         /// <remarks>
         /// This is just a convenience function and the format detection is
         /// very basic. It checks with plist_is_binary() if the data supposedly
-        /// contains binary plist data, if not it checks if the first byte is
-        /// either '{' or '[' and assumes JSON format, otherwise it will try
-        /// to parse the data as XML.
+        /// contains binary plist data, if not it checks if the first bytes have
+        /// either '{' or '[' and assumes JSON format, and XML tags will result
+        /// in parsing as XML, otherwise it will try to parse as OpenStep.
         /// </remarks>
         [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_from_memory", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
-        public static extern PlistError plist_from_memory([System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string plistData, uint length, out PlistHandle plist);
+        public static extern PlistError plist_from_memory([System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string plistData, uint length, out PlistHandle plist, ref PlistFormat format);
+        
+        /// <summary>
+        /// Import the #plist_t structure directly from file.
+        /// This function will look at the first bytes of the file data
+        /// to determine if it contains a binary, JSON, OpenStep, or XML plist
+        /// and tries to parse the data in the appropriate format.
+        /// Uses plist_from_memory() internally.
+        /// </summary>
+        /// <param name="filename">
+        /// The name of the file to parse.
+        /// </param>
+        /// <param name="plist">
+        /// A pointer to the imported plist.
+        /// </param>
+        /// <param name="format">
+        /// If non-NULL, the #plist_format_t value pointed to will be set to the parsed format.
+        /// </param>
+        /// <returns>
+        /// PLIST_ERR_SUCCESS on success or a #plist_err_t on failure
+        /// </returns>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_read_from_file", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern PlistError plist_read_from_file([System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string filename, out PlistHandle plist, ref PlistFormat format);
+        
+        /// <summary>
+        /// Write the #plist_t structure to a NULL-terminated string using the given format and options.
+        /// </summary>
+        /// <param name="plist">
+        /// The input plist structure
+        /// </param>
+        /// <param name="output">
+        /// Pointer to a char* buffer. This function allocates the memory,
+        /// caller is responsible for freeing it.
+        /// </param>
+        /// <param name="length">
+        /// A pointer to a uint32_t value that will receive the lenght of the allocated buffer.
+        /// </param>
+        /// <param name="format">
+        /// A #plist_format_t value that specifies the output format to use.
+        /// </param>
+        /// <param name="options">
+        /// One or more bitwise ORed values of #plist_write_options_t.
+        /// </param>
+        /// <returns>
+        /// PLIST_ERR_SUCCESS on success or a #plist_err_t on failure.
+        /// </returns>
+        /// <remarks>
+        /// Use plist_mem_free() to free the allocated memory.
+        /// #PLIST_FORMAT_BINARY is not supported by this function.
+        /// </remarks>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_write_to_string", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern PlistError plist_write_to_string(PlistHandle plist, out System.IntPtr output, ref uint length, PlistFormat format, PlistWriteOptions options);
+        
+        /// <summary>
+        /// Write the #plist_t structure to a FILE* stream using the given format and options.
+        /// </summary>
+        /// <param name="plist">
+        /// The input plist structure
+        /// </param>
+        /// <param name="stream">
+        /// A writeable FILE* stream that the data will be written to.
+        /// </param>
+        /// <param name="format">
+        /// A #plist_format_t value that specifies the output format to use.
+        /// </param>
+        /// <param name="options">
+        /// One or more bitwise ORed values of #plist_write_options_t.
+        /// </param>
+        /// <returns>
+        /// PLIST_ERR_SUCCESS on success or a #plist_err_t on failure.
+        /// </returns>
+        /// <remarks>
+        /// While this function allows all formats to be written to the given stream,
+        /// only the formats #PLIST_FORMAT_PRINT, #PLIST_FORMAT_LIMD, and #PLIST_FORMAT_PLUTIL
+        /// (basically all output-only formats) are directly and efficiently written to the stream;
+        /// the other formats are written to a memory buffer first.
+        /// </remarks>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_write_to_stream", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern PlistError plist_write_to_stream(PlistHandle plist, FilePtrHandle stream, PlistFormat format, PlistWriteOptions options);
+        
+        /// <summary>
+        /// Write the #plist_t structure to a file at given path using the given format and options.
+        /// </summary>
+        /// <param name="plist">
+        /// The input plist structure
+        /// </param>
+        /// <param name="filename">
+        /// The file name of the file to write to. Existing files will be overwritten.
+        /// </param>
+        /// <param name="format">
+        /// A #plist_format_t value that specifies the output format to use.
+        /// </param>
+        /// <param name="options">
+        /// One or more bitwise ORed values of #plist_write_options_t.
+        /// </param>
+        /// <returns>
+        /// PLIST_ERR_SUCCESS on success or a #plist_err_t on failure.
+        /// </returns>
+        /// <remarks>
+        /// Use plist_mem_free() to free the allocated memory.
+        /// </remarks>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_write_to_file", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern PlistError plist_write_to_file(PlistHandle plist, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string filename, PlistFormat format, PlistWriteOptions options);
+        
+        /// <summary>
+        /// Print the given plist in human-readable format to standard output.
+        /// This is equivalent to
+        /// plist_write_to_stream(plist, stdout, PLIST_FORMAT_PRINT, PLIST_OPT_PARTIAL_DATA);
+        /// </summary>
+        /// <param name="plist">
+        /// The #plist_t structure to print
+        /// </param>
+        /// <remarks>
+        /// For #PLIST_DATA nodes, only a maximum of 24 bytes (first 16 and last 8) are written.
+        /// </remarks>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_print", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern void plist_print(PlistHandle plist);
         
         /// <summary>
         /// Test if in-memory plist data is in binary format.
@@ -980,18 +1389,47 @@ namespace iMobileDevice.Plist
         /// node of type PLIST_BOOL
         /// </param>
         /// <returns>
-        /// 1 if the boolean node has a value of TRUE, 0 if FALSE,
-        /// or -1 if the node is not of type PLIST_BOOL
+        /// 1 if the boolean node has a value of TRUE or 0 if FALSE.
         /// </returns>
         [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_bool_val_is_true", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
         public static extern int plist_bool_val_is_true(PlistHandle boolnode);
         
         /// <summary>
-        /// Helper function to compare the value of a PLIST_UINT node against
-        /// a given value.
+        /// Helper function to test if a given #PLIST_INT node's value is negative
+        /// </summary>
+        /// <param name="intnode">
+        /// node of type PLIST_INT
+        /// </param>
+        /// <returns>
+        /// 1 if the node's value is negative, or 0 if positive.
+        /// </returns>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_int_val_is_negative", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern int plist_int_val_is_negative(PlistHandle intnode);
+        
+        /// <summary>
+        /// Helper function to compare the value of a PLIST_INT node against
+        /// a given signed integer value.
         /// </summary>
         /// <param name="uintnode">
-        /// node of type PLIST_UINT
+        /// node of type PLIST_INT
+        /// </param>
+        /// <param name="cmpval">
+        /// value to compare against
+        /// </param>
+        /// <returns>
+        /// 0 if the node's value and cmpval are equal,
+        /// 1 if the node's value is greater than cmpval,
+        /// or -1 if the node's value is less than cmpval.
+        /// </returns>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_int_val_compare", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern int plist_int_val_compare(PlistHandle uintnode, long cmpval);
+        
+        /// <summary>
+        /// Helper function to compare the value of a PLIST_INT node against
+        /// a given unsigned integer value.
+        /// </summary>
+        /// <param name="uintnode">
+        /// node of type PLIST_INT
         /// </param>
         /// <param name="cmpval">
         /// value to compare against
@@ -1264,6 +1702,16 @@ namespace iMobileDevice.Plist
         public static extern int plist_data_val_contains(PlistHandle datanode, ref char cmpval, uint n);
         
         /// <summary>
+        /// Sort all PLIST_DICT key/value pairs in a property list lexicographically
+        /// by key. Recurses into the child nodes if necessary.
+        /// </summary>
+        /// <param name="plist">
+        /// The property list to perform the sorting operation on.
+        /// </param>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_sort", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern void plist_sort(PlistHandle plist);
+        
+        /// <summary>
         /// Free memory allocated by relevant libplist API calls:
         /// - plist_to_xml()
         /// - plist_to_bin()
@@ -1280,5 +1728,53 @@ namespace iMobileDevice.Plist
         /// </remarks>
         [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_mem_free", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
         public static extern void plist_mem_free(System.IntPtr ptr);
+        
+        /// <summary>
+        /// Set debug level for the format parsers.
+        /// </summary>
+        /// <param name="debug">
+        /// Debug level. Currently, only 0 (off) and 1 (enabled) are supported.
+        /// </param>
+        /// <remarks>
+        /// This function does nothing if libplist was not configured with --enable-debug .
+        /// </remarks>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_set_debug", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern void plist_set_debug(int debug);
+        
+        /// <summary>
+        /// Returns a static string of the libplist version.
+        /// </summary>
+        /// <returns>
+        /// The libplist version as static ascii string
+        /// </returns>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="libplist_version", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern System.IntPtr libplist_version();
+        
+        /// <summary>
+        /// Creates a FILE* given the name and mode.
+        /// </summary>
+        /// <param name="filename">
+        /// File name.
+        /// </param>
+        /// <param name="mode">
+        /// File mode.
+        /// </param>
+        /// <remarks>
+        /// Used so a stream can be passed to plist_write_to_stream(). Must be closed afterwards using file_close().
+        /// </remarks>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_stream_file_open", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern FilePtrHandle plist_stream_file_open([System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string filename, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string mode);
+        
+        /// <summary>
+        /// Closes a file.
+        /// </summary>
+        /// <param name="file">
+        /// The file to close.
+        /// </param>
+        /// <remarks>
+        /// Used to close after a stream is passed to plist_write_to_stream().
+        /// </remarks>
+        [System.Runtime.InteropServices.DllImportAttribute(PlistNativeMethods.LibraryName, EntryPoint="plist_stream_file_close", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern int plist_stream_file_close(FilePtrHandle file);
     }
 }

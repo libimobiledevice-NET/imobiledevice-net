@@ -9,7 +9,7 @@
 
 // <copyright file="IAfcApi.cs" company="Quamotion">
 // Copyright (c) 2016-2021 Quamotion. All rights reserved.
-// Copyright (c) 2022 Wayne Bonnici.
+// Copyright (c) 2022-2024 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -438,5 +438,13 @@ namespace iMobileDevice.Afc
         /// AFC_E_SUCCESS on success or an AFC_E_* error value.
         /// </returns>
         AfcError afc_dictionary_free(System.IntPtr dictionary);
+        
+        /// <summary>
+        /// Gets a readable error string for a given AFC error code.
+        /// </summary>
+        /// <param name="err">
+        /// An AFC error code
+        /// </param>
+        System.IntPtr afc_strerror(AfcError err);
     }
 }

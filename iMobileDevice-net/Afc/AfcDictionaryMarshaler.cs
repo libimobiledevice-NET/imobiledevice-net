@@ -9,7 +9,7 @@
 
 // <copyright file="AfcDictionaryMarshaler.cs" company="Quamotion">
 // Copyright (c) 2016-2021 Quamotion. All rights reserved.
-// Copyright (c) 2022 Wayne Bonnici.
+// Copyright (c) 2022-2024 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572

@@ -9,7 +9,7 @@
 
 // <copyright file="IiDeviceApi.cs" company="Quamotion">
 // Copyright (c) 2016-2021 Quamotion. All rights reserved.
-// Copyright (c) 2022 Wayne Bonnici.
+// Copyright (c) 2022-2024 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -411,6 +411,14 @@ namespace iMobileDevice.iDevice
         /// IDEVICE_E_SUCCESS on success, otherwise an error code.
         /// </returns>
         iDeviceError idevice_get_udid(iDeviceHandle device, out string udid);
+        
+        /// <summary>
+        /// Returns a static string of the libimobiledevice version.
+        /// </summary>
+        /// <returns>
+        /// The libimobiledevice version as static ascii string
+        /// </returns>
+        System.IntPtr libimobiledevice_version();
         
         /// <summary>
         /// Sets the socket type (Unix socket or TCP socket) libimobiledevice should use when connecting

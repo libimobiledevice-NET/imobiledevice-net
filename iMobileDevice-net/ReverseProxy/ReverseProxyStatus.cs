@@ -9,7 +9,7 @@
 
 // <copyright file="ReverseProxyStatus.cs" company="Quamotion">
 // Copyright (c) 2016-2021 Quamotion. All rights reserved.
-// Copyright (c) 2022 Wayne Bonnici.
+// Copyright (c) 2022-2024 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -31,16 +31,16 @@ namespace iMobileDevice.ReverseProxy
     public enum ReverseProxyStatus : int
     {
         
-        StatusReady = 1,
+        Ready = 1,
         
-        StatusTerminate = 2,
+        Terminate = 2,
         
-        StatusConnectReq = 3,
+        ConnectReq = 3,
         
-        StatusShutdownReq = 4,
+        ShutdownReq = 4,
         
-        StatusConnected = 5,
+        Connected = 5,
         
-        StatusDisconnected = 6,
+        Disconnected = 6,
     }
 }

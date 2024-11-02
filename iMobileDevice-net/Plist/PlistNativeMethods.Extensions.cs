@@ -9,7 +9,7 @@
 
 // <copyright file="PlistNativeMethods.cs" company="Quamotion">
 // Copyright (c) 2016-2021 Quamotion. All rights reserved.
-// Copyright (c) 2022 Wayne Bonnici.
+// Copyright (c) 2022-2024 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -100,6 +100,26 @@ namespace iMobileDevice.Plist
             PlistError returnValue = PlistNativeMethods.plist_to_json(plist, out plistJsonNative, ref length, prettify);
             plistJson = ((string)plistJsonMarshaler.MarshalNativeToManaged(plistJsonNative));
             plistJsonMarshaler.CleanUpNativeData(plistJsonNative);
+            return returnValue;
+        }
+        
+        public static PlistError plist_to_openstep(PlistHandle plist, out string plistOpenstep, ref uint length, int prettify)
+        {
+            System.Runtime.InteropServices.ICustomMarshaler plistOpenstepMarshaler = NativeStringMarshaler.GetInstance(null);
+            System.IntPtr plistOpenstepNative = System.IntPtr.Zero;
+            PlistError returnValue = PlistNativeMethods.plist_to_openstep(plist, out plistOpenstepNative, ref length, prettify);
+            plistOpenstep = ((string)plistOpenstepMarshaler.MarshalNativeToManaged(plistOpenstepNative));
+            plistOpenstepMarshaler.CleanUpNativeData(plistOpenstepNative);
+            return returnValue;
+        }
+        
+        public static PlistError plist_write_to_string(PlistHandle plist, out string output, ref uint length, PlistFormat format, PlistWriteOptions options)
+        {
+            System.Runtime.InteropServices.ICustomMarshaler outputMarshaler = NativeStringMarshaler.GetInstance(null);
+            System.IntPtr outputNative = System.IntPtr.Zero;
+            PlistError returnValue = PlistNativeMethods.plist_write_to_string(plist, out outputNative, ref length, format, options);
+            output = ((string)outputMarshaler.MarshalNativeToManaged(outputNative));
+            outputMarshaler.CleanUpNativeData(outputNative);
             return returnValue;
         }
     }

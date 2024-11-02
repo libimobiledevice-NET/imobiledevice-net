@@ -9,7 +9,7 @@
 
 // <copyright file="RecoveryDeviceInfo.cs" company="Quamotion">
 // Copyright (c) 2016-2021 Quamotion. All rights reserved.
-// Copyright (c) 2022 Wayne Bonnici.
+// Copyright (c) 2022-2024 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -58,6 +58,8 @@ namespace iMobileDevice.Recovery
         public System.IntPtr sep_nonce;
         
         public uint sep_nonce_size;
+        
+        public ushort pid;
         
         public string srnmString
         {

@@ -9,7 +9,7 @@
 
 // <copyright file="iDeviceOptions.cs" company="Quamotion">
 // Copyright (c) 2016-2021 Quamotion. All rights reserved.
-// Copyright (c) 2022 Wayne Bonnici.
+// Copyright (c) 2022-2024 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -31,13 +31,13 @@ namespace iMobileDevice.iDevice
     public enum iDeviceOptions : int
     {
         
-        LookupUsbmux = 2,
+        Usbmux = 2,
         
-        LookupNetwork = 4,
+        Network = 4,
         
         /// <summary>
         /// prefer network connection if device is available via USBMUX *and* network 
         /// </summary>
-        LookupPreferNetwork = 8,
+        PreferNetwork = 8,
     }
 }

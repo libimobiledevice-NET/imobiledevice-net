@@ -9,7 +9,7 @@
 
 // <copyright file="PlistType.cs" company="Quamotion">
 // Copyright (c) 2016-2021 Quamotion. All rights reserved.
-// Copyright (c) 2022 Wayne Bonnici.
+// Copyright (c) 2022-2024 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -31,9 +31,11 @@ namespace iMobileDevice.Plist
     public enum PlistType : int
     {
         
+        None = -1,
+        
         Boolean = 0,
         
-        Uint = 1,
+        Int = 1,
         
         Real = 2,
         
@@ -52,10 +54,5 @@ namespace iMobileDevice.Plist
         Uid = 9,
         
         Null = 10,
-        
-        /// <summary>
-        /// No type 
-        /// </summary>
-        None = 11,
     }
 }

@@ -9,7 +9,7 @@
 
 // <copyright file="IRecoveryApi.cs" company="Quamotion">
 // Copyright (c) 2016-2021 Quamotion. All rights reserved.
-// Copyright (c) 2022 Wayne Bonnici.
+// Copyright (c) 2022-2024 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -43,6 +43,8 @@ namespace iMobileDevice.Recovery
         void irecv_init();
         
         void irecv_exit();
+        
+        System.IntPtr irecv_version();
         
         RecoveryError irecv_open_with_ecid(out RecoveryClientHandle client, ulong ecid);
         
@@ -80,13 +82,13 @@ namespace iMobileDevice.Recovery
         
         RecoveryError irecv_event_unsubscribe(RecoveryClientHandle client, RecoveryEventType type);
         
-        RecoveryError irecv_send_file(RecoveryClientHandle client, string filename, int dfuNotifyFinished);
+        RecoveryError irecv_send_file(RecoveryClientHandle client, string filename, uint options);
         
         RecoveryError irecv_send_command(RecoveryClientHandle client, string command);
         
         RecoveryError irecv_send_command_breq(RecoveryClientHandle client, string command, char bRequest);
         
-        RecoveryError irecv_send_buffer(RecoveryClientHandle client, ref char buffer, int length, int dfuNotifyFinished);
+        RecoveryError irecv_send_buffer(RecoveryClientHandle client, ref char buffer, int length, uint options);
         
         RecoveryError irecv_recv_buffer(RecoveryClientHandle client, System.IntPtr buffer, int length);
         

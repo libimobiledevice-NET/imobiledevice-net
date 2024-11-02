@@ -9,7 +9,7 @@
 
 // <copyright file="UsbmuxdNativeMethods.cs" company="Quamotion">
 // Copyright (c) 2016-2021 Quamotion. All rights reserved.
-// Copyright (c) 2022 Wayne Bonnici.
+// Copyright (c) 2022-2024 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -375,6 +375,15 @@ namespace iMobileDevice.Usbmuxd
         
         [System.Runtime.InteropServices.DllImportAttribute(UsbmuxdNativeMethods.LibraryName, EntryPoint="libusbmuxd_set_debug_level", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
         public static extern void libusbmuxd_set_debug_level(int level);
+        
+        /// <summary>
+        /// Returns a static string of the libusbmuxd version.
+        /// </summary>
+        /// <returns>
+        /// The libusbmuxd version as static ascii string
+        /// </returns>
+        [System.Runtime.InteropServices.DllImportAttribute(UsbmuxdNativeMethods.LibraryName, EntryPoint="libusbmuxd_version", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern System.IntPtr libusbmuxd_version();
         
         /// <summary>
         /// Sets the socket type (Unix socket or TCP socket) libusbmuxd should use when connecting

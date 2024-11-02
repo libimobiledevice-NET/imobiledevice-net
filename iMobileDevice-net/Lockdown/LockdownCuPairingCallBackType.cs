@@ -9,7 +9,7 @@
 
 // <copyright file="LockdownCuPairingCallBackType.cs" company="Quamotion">
 // Copyright (c) 2016-2021 Quamotion. All rights reserved.
-// Copyright (c) 2022 Wayne Bonnici.
+// Copyright (c) 2022-2024 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -31,13 +31,13 @@ namespace iMobileDevice.Lockdown
     public enum LockdownCuPairingCallBackType : int
     {
         
-        CuPairingPinRequested = 0,
+        PinRequested = 0,
         
-        CuPairingDeviceInfo = 1,
+        DeviceInfo = 1,
         
         /// <summary>
         /// pairing error message available: data_ptr is a NULL-terminated char* buffer containing the error message, and data_size is ignored. Buffer needs to be copied if it shall persist outside the callback. 
         /// </summary>
-        CuPairingError = 2,
+        Error = 2,
     }
 }

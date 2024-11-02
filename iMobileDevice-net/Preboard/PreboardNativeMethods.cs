@@ -9,7 +9,7 @@
 
 // <copyright file="PreboardNativeMethods.cs" company="Quamotion">
 // Copyright (c) 2016-2021 Quamotion. All rights reserved.
-// Copyright (c) 2022 Wayne Bonnici.
+// Copyright (c) 2022-2024 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -147,7 +147,7 @@ namespace iMobileDevice.Preboard
         /// </returns>
         [System.Runtime.InteropServices.DllImportAttribute(PreboardNativeMethods.LibraryName, EntryPoint="preboard_receive_with_timeout", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
         public static extern PreboardError preboard_receive_with_timeout(PreboardClientHandle client, out PlistHandle plist, uint timeoutMs);
-
+        
         /// <summary>
         /// Tells the preboard service to create a stashbag. This will make the device
         /// show a passcode entry so it can generate and store a token that is later
@@ -161,8 +161,10 @@ namespace iMobileDevice.Preboard
         /// followed by { HideDialog: true }
         /// If the user aborts the passcode entry, the device sends a dictionary:
         /// { Error: 1, ErrorString:
-        /// <error 
-        /// string> }
+        /// <
+        /// error string
+        /// >
+        /// }
         /// followed by { HideDialog: true }
         /// </summary>
         /// <param name="client">
@@ -185,7 +187,7 @@ namespace iMobileDevice.Preboard
         /// </returns>
         [System.Runtime.InteropServices.DllImportAttribute(PreboardNativeMethods.LibraryName, EntryPoint="preboard_create_stashbag", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
         public static extern PreboardError preboard_create_stashbag(PreboardClientHandle client, PlistHandle manifest, PreboardStatusCallBack statusCallBack, System.IntPtr userData);
-
+        
         /// <summary>
         /// Instructs the preboard service to commit a previously created stashbag.
         /// The callback or following preboard_receive* invocations will usually
@@ -193,10 +195,14 @@ namespace iMobileDevice.Preboard
         /// { StashbagCommitComplete: true }
         /// or in case of an error:
         /// { StashbagCommitComplete: 0, Error: 1,
-        /// <optional
-        /// > ErrorString:
-        /// <error 
-        /// string> }
+        /// <
+        /// optional
+        /// >
+        /// ErrorString:
+        /// <
+        /// error string
+        /// >
+        /// }
         /// </summary>
         /// <param name="client">
         /// The preboard client to use for receiving

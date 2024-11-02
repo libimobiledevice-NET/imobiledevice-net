@@ -9,7 +9,7 @@
 
 // <copyright file="AfcNativeMethods.cs" company="Quamotion">
 // Copyright (c) 2016-2021 Quamotion. All rights reserved.
-// Copyright (c) 2022 Wayne Bonnici.
+// Copyright (c) 2022-2024 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -460,5 +460,14 @@ namespace iMobileDevice.Afc
         /// </returns>
         [System.Runtime.InteropServices.DllImportAttribute(AfcNativeMethods.LibraryName, EntryPoint="afc_dictionary_free", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
         public static extern AfcError afc_dictionary_free(System.IntPtr dictionary);
+        
+        /// <summary>
+        /// Gets a readable error string for a given AFC error code.
+        /// </summary>
+        /// <param name="err">
+        /// An AFC error code
+        /// </param>
+        [System.Runtime.InteropServices.DllImportAttribute(AfcNativeMethods.LibraryName, EntryPoint="afc_strerror", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        public static extern System.IntPtr afc_strerror(AfcError err);
     }
 }

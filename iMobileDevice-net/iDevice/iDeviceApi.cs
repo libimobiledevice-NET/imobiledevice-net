@@ -9,7 +9,7 @@
 
 // <copyright file="iDeviceApi.cs" company="Quamotion">
 // Copyright (c) 2016-2021 Quamotion. All rights reserved.
-// Copyright (c) 2022 Wayne Bonnici.
+// Copyright (c) 2022-2024 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -511,6 +511,17 @@ namespace iMobileDevice.iDevice
         public virtual iDeviceError idevice_get_udid(iDeviceHandle device, out string udid)
         {
             return iDeviceNativeMethods.idevice_get_udid(device, out udid);
+        }
+        
+        /// <summary>
+        /// Returns a static string of the libimobiledevice version.
+        /// </summary>
+        /// <returns>
+        /// The libimobiledevice version as static ascii string
+        /// </returns>
+        public virtual System.IntPtr libimobiledevice_version()
+        {
+            return iDeviceNativeMethods.libimobiledevice_version();
         }
         
         /// <summary>

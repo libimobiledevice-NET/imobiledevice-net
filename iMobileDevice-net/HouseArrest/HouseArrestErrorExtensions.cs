@@ -9,9 +9,10 @@
 
 // <copyright file="HouseArrestErrorExtensions.cs" company="Quamotion">
 // Copyright (c) 2016-2021 Quamotion. All rights reserved.
-// Copyright (c) 2022 Wayne Bonnici.
+// Copyright (c) 2022-2024 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
+#pragma warning disable 1570
 #pragma warning disable 1572
 #pragma warning disable 1573
 #pragma warning disable 1574

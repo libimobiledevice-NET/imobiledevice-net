@@ -9,7 +9,7 @@
 
 // <copyright file="PreboardApi.cs" company="Quamotion">
 // Copyright (c) 2016-2021 Quamotion. All rights reserved.
-// Copyright (c) 2022 Wayne Bonnici.
+// Copyright (c) 2022-2024 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -189,7 +189,7 @@ namespace iMobileDevice.Preboard
             plist.Api = this.Parent;
             return returnValue;
         }
-
+        
         /// <summary>
         /// Tells the preboard service to create a stashbag. This will make the device
         /// show a passcode entry so it can generate and store a token that is later
@@ -203,8 +203,10 @@ namespace iMobileDevice.Preboard
         /// followed by { HideDialog: true }
         /// If the user aborts the passcode entry, the device sends a dictionary:
         /// { Error: 1, ErrorString:
-        /// <error
-        /// string> }
+        /// <
+        /// error string
+        /// >
+        /// }
         /// followed by { HideDialog: true }
         /// </summary>
         /// <param name="client">
@@ -229,7 +231,7 @@ namespace iMobileDevice.Preboard
         {
             return PreboardNativeMethods.preboard_create_stashbag(client, manifest, statusCallBack, userData);
         }
-
+        
         /// <summary>
         /// Instructs the preboard service to commit a previously created stashbag.
         /// The callback or following preboard_receive* invocations will usually
@@ -237,10 +239,14 @@ namespace iMobileDevice.Preboard
         /// { StashbagCommitComplete: true }
         /// or in case of an error:
         /// { StashbagCommitComplete: 0, Error: 1,
-        /// <optional
-        /// > ErrorString:
-        /// <error 
-        /// string> }
+        /// <
+        /// optional
+        /// >
+        /// ErrorString:
+        /// <
+        /// error string
+        /// >
+        /// }
         /// </summary>
         /// <param name="client">
         /// The preboard client to use for receiving

@@ -9,7 +9,7 @@
 
 // <copyright file="RecoveryApi.cs" company="Quamotion">
 // Copyright (c) 2016-2021 Quamotion. All rights reserved.
-// Copyright (c) 2022 Wayne Bonnici.
+// Copyright (c) 2022-2024 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -71,6 +71,11 @@ namespace iMobileDevice.Recovery
         public virtual void irecv_exit()
         {
             RecoveryNativeMethods.irecv_exit();
+        }
+        
+        public virtual System.IntPtr irecv_version()
+        {
+            return RecoveryNativeMethods.irecv_version();
         }
         
         public virtual RecoveryError irecv_open_with_ecid(out RecoveryClientHandle client, ulong ecid)
@@ -175,9 +180,9 @@ namespace iMobileDevice.Recovery
             return RecoveryNativeMethods.irecv_event_unsubscribe(client, type);
         }
         
-        public virtual RecoveryError irecv_send_file(RecoveryClientHandle client, string filename, int dfuNotifyFinished)
+        public virtual RecoveryError irecv_send_file(RecoveryClientHandle client, string filename, uint options)
         {
-            return RecoveryNativeMethods.irecv_send_file(client, filename, dfuNotifyFinished);
+            return RecoveryNativeMethods.irecv_send_file(client, filename, options);
         }
         
         public virtual RecoveryError irecv_send_command(RecoveryClientHandle client, string command)
@@ -190,9 +195,9 @@ namespace iMobileDevice.Recovery
             return RecoveryNativeMethods.irecv_send_command_breq(client, command, bRequest);
         }
         
-        public virtual RecoveryError irecv_send_buffer(RecoveryClientHandle client, ref char buffer, int length, int dfuNotifyFinished)
+        public virtual RecoveryError irecv_send_buffer(RecoveryClientHandle client, ref char buffer, int length, uint options)
         {
-            return RecoveryNativeMethods.irecv_send_buffer(client, ref buffer, length, dfuNotifyFinished);
+            return RecoveryNativeMethods.irecv_send_buffer(client, ref buffer, length, options);
         }
         
         public virtual RecoveryError irecv_recv_buffer(RecoveryClientHandle client, System.IntPtr buffer, int length)

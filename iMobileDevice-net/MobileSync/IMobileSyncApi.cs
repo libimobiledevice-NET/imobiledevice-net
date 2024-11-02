@@ -9,7 +9,7 @@
 
 // <copyright file="IMobileSyncApi.cs" company="Quamotion">
 // Copyright (c) 2016-2021 Quamotion. All rights reserved.
-// Copyright (c) 2022 Wayne Bonnici.
+// Copyright (c) 2022-2024 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -324,7 +324,7 @@ namespace iMobileDevice.MobileSync
         /// Pointer that will be set to a newly allocated
         /// #mobilesync_anchors_t struct. Must be freed using mobilesync_anchors_free().
         /// </param>
-        MobileSyncError mobilesync_anchors_new(string deviceAnchor, string computerAnchor, out MobileSyncAnchorsHandle anchor);
+        MobileSyncError mobilesync_anchors_new(string deviceAnchor, string computerAnchor, out MobileSyncAnchorsHandle client);
         
         /// <summary>
         /// Free memory used by anchors.

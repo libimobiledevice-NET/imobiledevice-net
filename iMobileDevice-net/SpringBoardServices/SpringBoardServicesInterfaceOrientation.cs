@@ -9,7 +9,7 @@
 
 // <copyright file="SpringBoardServicesInterfaceOrientation.cs" company="Quamotion">
 // Copyright (c) 2016-2021 Quamotion. All rights reserved.
-// Copyright (c) 2022 Wayne Bonnici.
+// Copyright (c) 2022-2024 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -31,14 +31,14 @@ namespace iMobileDevice.SpringBoardServices
     public enum SpringBoardServicesInterfaceOrientation : int
     {
         
-        InterfaceOrientationUnknown = 0,
+        Unknown = 0,
         
-        InterfaceOrientationPortrait = 1,
+        Portrait = 1,
         
-        InterfaceOrientationPortraitUpsideDown = 2,
+        PortraitUpsideDown = 2,
         
-        InterfaceOrientationLandscapeRight = 3,
+        LandscapeRight = 3,
         
-        InterfaceOrientationLandscapeLeft = 4,
+        LandscapeLeft = 4,
     }
 }

@@ -9,7 +9,7 @@
 
 // <copyright file="UsbmuxConnectionType.cs" company="Quamotion">
 // Copyright (c) 2016-2021 Quamotion. All rights reserved.
-// Copyright (c) 2022 Wayne Bonnici.
+// Copyright (c) 2022-2024 Wayne Bonnici.
 // </copyright>
 #pragma warning disable 1591
 #pragma warning disable 1572
@@ -31,8 +31,8 @@ namespace iMobileDevice.Usbmuxd
     public enum UsbmuxConnectionType : int
     {
         
-        TypeUsb = 1,
+        Usb = 1,
         
-        TypeNetwork = 2,
+        Network = 2,
     }
 }
