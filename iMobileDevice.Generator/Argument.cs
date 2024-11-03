@@ -100,7 +100,8 @@ namespace iMobileDevice.Generator
                 && functionKind != FunctionType.Delegate
                 && type.IsDoubleCharPointer()
                 && !name.Contains("data")
-                && name != "appids")
+                && name != "appids"
+                && name != "sources")
             {
                 parameter.Type = new CodeTypeReference(typeof(string));
                 parameter.Direction = FieldDirection.Out;

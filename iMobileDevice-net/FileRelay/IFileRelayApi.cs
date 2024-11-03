@@ -129,7 +129,7 @@ namespace iMobileDevice.FileRelay
         /// A directory mobile_file_relay.XXXX used for creating the archive will
         /// remain in the /tmp directory otherwise.
         /// </remarks>
-        FileRelayError file_relay_request_sources(FileRelayClientHandle client, out string sources, out iDeviceConnectionHandle connection);
+        FileRelayError file_relay_request_sources(FileRelayClientHandle client, System.Collections.ObjectModel.ReadOnlyCollection<string> sources, out iDeviceConnectionHandle connection);
         
         /// <summary>
         /// Request data for the given sources. Calls file_relay_request_sources_timeout() with
@@ -172,6 +172,6 @@ namespace iMobileDevice.FileRelay
         /// A directory mobile_file_relay.XXXX used for creating the archive will
         /// remain in the /tmp directory otherwise.
         /// </remarks>
-        FileRelayError file_relay_request_sources_timeout(FileRelayClientHandle client, out string sources, out iDeviceConnectionHandle connection, uint timeout);
+        FileRelayError file_relay_request_sources_timeout(FileRelayClientHandle client, System.Collections.ObjectModel.ReadOnlyCollection<string> sources, out iDeviceConnectionHandle connection, uint timeout);
     }
 }

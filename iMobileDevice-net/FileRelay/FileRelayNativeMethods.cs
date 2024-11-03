@@ -132,7 +132,7 @@ namespace iMobileDevice.FileRelay
         /// remain in the /tmp directory otherwise.
         /// </remarks>
         [System.Runtime.InteropServices.DllImportAttribute(FileRelayNativeMethods.LibraryName, EntryPoint="file_relay_request_sources", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
-        public static extern FileRelayError file_relay_request_sources(FileRelayClientHandle client, out System.IntPtr sources, out iDeviceConnectionHandle connection);
+        public static extern FileRelayError file_relay_request_sources(FileRelayClientHandle client, System.IntPtr sources, out iDeviceConnectionHandle connection);
         
         /// <summary>
         /// Request data for the given sources. Calls file_relay_request_sources_timeout() with
@@ -176,6 +176,6 @@ namespace iMobileDevice.FileRelay
         /// remain in the /tmp directory otherwise.
         /// </remarks>
         [System.Runtime.InteropServices.DllImportAttribute(FileRelayNativeMethods.LibraryName, EntryPoint="file_relay_request_sources_timeout", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
-        public static extern FileRelayError file_relay_request_sources_timeout(FileRelayClientHandle client, out System.IntPtr sources, out iDeviceConnectionHandle connection, uint timeout);
+        public static extern FileRelayError file_relay_request_sources_timeout(FileRelayClientHandle client, System.IntPtr sources, out iDeviceConnectionHandle connection, uint timeout);
     }
 }

@@ -161,10 +161,10 @@ namespace iMobileDevice.FileRelay
         /// A directory mobile_file_relay.XXXX used for creating the archive will
         /// remain in the /tmp directory otherwise.
         /// </remarks>
-        public virtual FileRelayError file_relay_request_sources(FileRelayClientHandle client, out string sources, out iDeviceConnectionHandle connection)
+        public virtual FileRelayError file_relay_request_sources(FileRelayClientHandle client, System.Collections.ObjectModel.ReadOnlyCollection<string> sources, out iDeviceConnectionHandle connection)
         {
             FileRelayError returnValue;
-            returnValue = FileRelayNativeMethods.file_relay_request_sources(client, out sources, out connection);
+            returnValue = FileRelayNativeMethods.file_relay_request_sources(client, sources, out connection);
             connection.Api = this.Parent;
             return returnValue;
         }
@@ -210,10 +210,10 @@ namespace iMobileDevice.FileRelay
         /// A directory mobile_file_relay.XXXX used for creating the archive will
         /// remain in the /tmp directory otherwise.
         /// </remarks>
-        public virtual FileRelayError file_relay_request_sources_timeout(FileRelayClientHandle client, out string sources, out iDeviceConnectionHandle connection, uint timeout)
+        public virtual FileRelayError file_relay_request_sources_timeout(FileRelayClientHandle client, System.Collections.ObjectModel.ReadOnlyCollection<string> sources, out iDeviceConnectionHandle connection, uint timeout)
         {
             FileRelayError returnValue;
-            returnValue = FileRelayNativeMethods.file_relay_request_sources_timeout(client, out sources, out connection, timeout);
+            returnValue = FileRelayNativeMethods.file_relay_request_sources_timeout(client, sources, out connection, timeout);
             connection.Api = this.Parent;
             return returnValue;
         }

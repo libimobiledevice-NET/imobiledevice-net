@@ -28,23 +28,19 @@ namespace iMobileDevice.FileRelay
     public partial class FileRelayNativeMethods
     {
         
-        public static FileRelayError file_relay_request_sources(FileRelayClientHandle client, out string sources, out iDeviceConnectionHandle connection)
+        public static FileRelayError file_relay_request_sources(FileRelayClientHandle client, System.Collections.ObjectModel.ReadOnlyCollection<string> sources, out iDeviceConnectionHandle connection)
         {
-            System.Runtime.InteropServices.ICustomMarshaler sourcesMarshaler = NativeStringMarshaler.GetInstance(null);
-            System.IntPtr sourcesNative = System.IntPtr.Zero;
-            FileRelayError returnValue = FileRelayNativeMethods.file_relay_request_sources(client, out sourcesNative, out connection);
-            sources = ((string)sourcesMarshaler.MarshalNativeToManaged(sourcesNative));
-            sourcesMarshaler.CleanUpNativeData(sourcesNative);
+            System.Runtime.InteropServices.ICustomMarshaler sourcesMarshaler = NativeStringArrayMarshaler.GetInstance(null);
+            System.IntPtr sourcesNative = sourcesMarshaler.MarshalManagedToNative(sources);
+            FileRelayError returnValue = FileRelayNativeMethods.file_relay_request_sources(client, sourcesNative, out connection);
             return returnValue;
         }
         
-        public static FileRelayError file_relay_request_sources_timeout(FileRelayClientHandle client, out string sources, out iDeviceConnectionHandle connection, uint timeout)
+        public static FileRelayError file_relay_request_sources_timeout(FileRelayClientHandle client, System.Collections.ObjectModel.ReadOnlyCollection<string> sources, out iDeviceConnectionHandle connection, uint timeout)
         {
-            System.Runtime.InteropServices.ICustomMarshaler sourcesMarshaler = NativeStringMarshaler.GetInstance(null);
-            System.IntPtr sourcesNative = System.IntPtr.Zero;
-            FileRelayError returnValue = FileRelayNativeMethods.file_relay_request_sources_timeout(client, out sourcesNative, out connection, timeout);
-            sources = ((string)sourcesMarshaler.MarshalNativeToManaged(sourcesNative));
-            sourcesMarshaler.CleanUpNativeData(sourcesNative);
+            System.Runtime.InteropServices.ICustomMarshaler sourcesMarshaler = NativeStringArrayMarshaler.GetInstance(null);
+            System.IntPtr sourcesNative = sourcesMarshaler.MarshalManagedToNative(sources);
+            FileRelayError returnValue = FileRelayNativeMethods.file_relay_request_sources_timeout(client, sourcesNative, out connection, timeout);
             return returnValue;
         }
     }
