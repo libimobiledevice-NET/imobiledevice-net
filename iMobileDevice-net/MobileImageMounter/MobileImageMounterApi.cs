@@ -182,9 +182,9 @@ namespace iMobileDevice.MobileImageMounter
         /// MOBILE_IMAGE_MOUNTER_E_SUCCESS on succes, or a
         /// MOBILE_IMAGE_MOUNTER_E_* error code otherwise.
         /// </returns>
-        public virtual MobileImageMounterError mobile_image_mounter_upload_image(MobileImageMounterClientHandle client, string imageType, uint imageSize, ref char signature, uint signatureSize, MobileImageMounterUploadCallBack uploadCallBack, System.IntPtr userdata)
+        public virtual MobileImageMounterError mobile_image_mounter_upload_image(MobileImageMounterClientHandle client, string imageType, uint imageSize, byte[] signature, uint signatureSize, MobileImageMounterUploadCallBack uploadCallBack, System.IntPtr userdata)
         {
-            return MobileImageMounterNativeMethods.mobile_image_mounter_upload_image(client, imageType, imageSize, ref signature, signatureSize, uploadCallBack, userdata);
+            return MobileImageMounterNativeMethods.mobile_image_mounter_upload_image(client, imageType, imageSize, signature, signatureSize, uploadCallBack, userdata);
         }
         
         /// <summary>
@@ -222,10 +222,10 @@ namespace iMobileDevice.MobileImageMounter
         /// This function may return MOBILE_IMAGE_MOUNTER_E_SUCCESS even if the
         /// operation has failed. Check the resulting plist for further information.
         /// </remarks>
-        public virtual MobileImageMounterError mobile_image_mounter_mount_image_with_options(MobileImageMounterClientHandle client, string imagePath, ref char signature, uint signatureSize, string imageType, PlistHandle options, out PlistHandle result)
+        public virtual MobileImageMounterError mobile_image_mounter_mount_image_with_options(MobileImageMounterClientHandle client, string imagePath, byte[] signature, uint signatureSize, string imageType, PlistHandle options, out PlistHandle result)
         {
             MobileImageMounterError returnValue;
-            returnValue = MobileImageMounterNativeMethods.mobile_image_mounter_mount_image_with_options(client, imagePath, ref signature, signatureSize, imageType, options, out result);
+            returnValue = MobileImageMounterNativeMethods.mobile_image_mounter_mount_image_with_options(client, imagePath, signature, signatureSize, imageType, options, out result);
             result.Api = this.Parent;
             return returnValue;
         }
@@ -262,10 +262,10 @@ namespace iMobileDevice.MobileImageMounter
         /// This function may return MOBILE_IMAGE_MOUNTER_E_SUCCESS even if the
         /// operation has failed. Check the resulting plist for further information.
         /// </remarks>
-        public virtual MobileImageMounterError mobile_image_mounter_mount_image(MobileImageMounterClientHandle client, string imagePath, ref char signature, uint signatureSize, string imageType, out PlistHandle result)
+        public virtual MobileImageMounterError mobile_image_mounter_mount_image(MobileImageMounterClientHandle client, string imagePath, byte[] signature, uint signatureSize, string imageType, out PlistHandle result)
         {
             MobileImageMounterError returnValue;
-            returnValue = MobileImageMounterNativeMethods.mobile_image_mounter_mount_image(client, imagePath, ref signature, signatureSize, imageType, out result);
+            returnValue = MobileImageMounterNativeMethods.mobile_image_mounter_mount_image(client, imagePath, signature, signatureSize, imageType, out result);
             result.Api = this.Parent;
             return returnValue;
         }
@@ -399,9 +399,9 @@ namespace iMobileDevice.MobileImageMounter
         /// MOBILE_IMAGE_MOUNTER_E_SUCCESS on success,
         /// or a MOBILE_IMAGE_MOUNTER_E_* error code on error.
         /// </returns>
-        public virtual MobileImageMounterError mobile_image_mounter_query_personalization_manifest(MobileImageMounterClientHandle client, string imageType, ref char signature, uint signatureSize, ref System.IntPtr manifest, ref uint manifestSize)
+        public virtual MobileImageMounterError mobile_image_mounter_query_personalization_manifest(MobileImageMounterClientHandle client, string imageType, byte[] signature, uint signatureSize, ref System.IntPtr manifest, ref uint manifestSize)
         {
-            return MobileImageMounterNativeMethods.mobile_image_mounter_query_personalization_manifest(client, imageType, ref signature, signatureSize, ref manifest, ref manifestSize);
+            return MobileImageMounterNativeMethods.mobile_image_mounter_query_personalization_manifest(client, imageType, signature, signatureSize, ref manifest, ref manifestSize);
         }
         
         /// <summary>

@@ -148,7 +148,7 @@ namespace iMobileDevice.Generator
                                 // case, it maps to a byte[] array or just an IntPtr.
                                 if (functionKind != FunctionType.PInvoke && type.IsPtrToConstChar())
                                 {
-                                    if (!name.Contains("data") && name != "signature")
+                                    if (!name.Contains("data"))
                                     {
                                         parameter.Type = new CodeTypeReference(typeof(string));
                                         parameter.CustomAttributes.Add(MarshalAsDeclaration(UnmanagedType.LPStr));
@@ -166,6 +166,21 @@ namespace iMobileDevice.Generator
                                 {
                                     // if it's not a const, it's best to go with IntPtr
                                     parameter.Type = new CodeTypeReference(typeof(IntPtr));
+                                }
+
+                                break;
+
+                            case CXTypeKind.CXType_UChar:
+
+                                if (name.Equals("signature") && type.PointeeType.IsConstQualified && type.PointeeType.kind == CXTypeKind.CXType_UChar)
+                                {
+                                    parameter.Type = new CodeTypeReference(typeof(byte[]));
+                                }
+                                else
+                                {
+                                    // if it's not an argument we're familiar with, it's best to go with IntPtr
+                                    parameter.Type = pointee.ToCodeTypeReference(paramCXCursor, generator);
+                                    isPointer = true;
                                 }
 
                                 break;

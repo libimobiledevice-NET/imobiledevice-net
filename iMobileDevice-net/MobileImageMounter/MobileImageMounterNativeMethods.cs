@@ -148,7 +148,7 @@ namespace iMobileDevice.MobileImageMounter
         /// MOBILE_IMAGE_MOUNTER_E_* error code otherwise.
         /// </returns>
         [System.Runtime.InteropServices.DllImportAttribute(MobileImageMounterNativeMethods.LibraryName, EntryPoint="mobile_image_mounter_upload_image", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
-        public static extern MobileImageMounterError mobile_image_mounter_upload_image(MobileImageMounterClientHandle client, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string imageType, uint imageSize, ref char signature, uint signatureSize, MobileImageMounterUploadCallBack uploadCallBack, System.IntPtr userdata);
+        public static extern MobileImageMounterError mobile_image_mounter_upload_image(MobileImageMounterClientHandle client, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string imageType, uint imageSize, byte[] signature, uint signatureSize, MobileImageMounterUploadCallBack uploadCallBack, System.IntPtr userdata);
         
         /// <summary>
         /// Mounts an image on the device.
@@ -186,7 +186,7 @@ namespace iMobileDevice.MobileImageMounter
         /// operation has failed. Check the resulting plist for further information.
         /// </remarks>
         [System.Runtime.InteropServices.DllImportAttribute(MobileImageMounterNativeMethods.LibraryName, EntryPoint="mobile_image_mounter_mount_image_with_options", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
-        public static extern MobileImageMounterError mobile_image_mounter_mount_image_with_options(MobileImageMounterClientHandle client, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string imagePath, ref char signature, uint signatureSize, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string imageType, PlistHandle options, out PlistHandle result);
+        public static extern MobileImageMounterError mobile_image_mounter_mount_image_with_options(MobileImageMounterClientHandle client, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string imagePath, byte[] signature, uint signatureSize, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string imageType, PlistHandle options, out PlistHandle result);
         
         /// <summary>
         /// Mounts an image on the device.
@@ -221,7 +221,7 @@ namespace iMobileDevice.MobileImageMounter
         /// operation has failed. Check the resulting plist for further information.
         /// </remarks>
         [System.Runtime.InteropServices.DllImportAttribute(MobileImageMounterNativeMethods.LibraryName, EntryPoint="mobile_image_mounter_mount_image", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
-        public static extern MobileImageMounterError mobile_image_mounter_mount_image(MobileImageMounterClientHandle client, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string imagePath, ref char signature, uint signatureSize, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string imageType, out PlistHandle result);
+        public static extern MobileImageMounterError mobile_image_mounter_mount_image(MobileImageMounterClientHandle client, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string imagePath, byte[] signature, uint signatureSize, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string imageType, out PlistHandle result);
         
         /// <summary>
         /// Unmount a mounted image at given path on the device.
@@ -337,7 +337,7 @@ namespace iMobileDevice.MobileImageMounter
         /// or a MOBILE_IMAGE_MOUNTER_E_* error code on error.
         /// </returns>
         [System.Runtime.InteropServices.DllImportAttribute(MobileImageMounterNativeMethods.LibraryName, EntryPoint="mobile_image_mounter_query_personalization_manifest", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
-        public static extern MobileImageMounterError mobile_image_mounter_query_personalization_manifest(MobileImageMounterClientHandle client, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string imageType, ref char signature, uint signatureSize, ref System.IntPtr manifest, ref uint manifestSize);
+        public static extern MobileImageMounterError mobile_image_mounter_query_personalization_manifest(MobileImageMounterClientHandle client, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPStr)] string imageType, byte[] signature, uint signatureSize, ref System.IntPtr manifest, ref uint manifestSize);
         
         /// <summary>
         /// Roll the personalization nonce.
