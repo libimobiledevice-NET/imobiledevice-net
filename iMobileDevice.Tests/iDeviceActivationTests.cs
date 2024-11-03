@@ -18,7 +18,7 @@ namespace iMobileDevice.Tests
         public void iDeviceActivationDrmHandshakeRequestNew()
         {
             iDeviceActivationRequestHandle request;
-            Assert.Equal(iDeviceActivationError.Success, this.api.iDeviceActivation.idevice_activation_drm_handshake_request_new(iDeviceActivationClientType.ClientItunes, out request));
+            Assert.Equal(iDeviceActivationError.Success, this.api.iDeviceActivation.idevice_activation_drm_handshake_request_new(iDeviceActivationClientType.Itunes, out request));
             Assert.NotNull(request);
             request.Dispose();
         }
@@ -33,7 +33,7 @@ namespace iMobileDevice.Tests
         public void iDeviceActivationRequestGetSetField()
         {
             iDeviceActivationRequestHandle request;
-            Assert.Equal(iDeviceActivationError.Success, this.api.iDeviceActivation.idevice_activation_request_new(iDeviceActivationClientType.ClientItunes, out request));
+            Assert.Equal(iDeviceActivationError.Success, this.api.iDeviceActivation.idevice_activation_request_new(iDeviceActivationClientType.Itunes, out request));
             Assert.NotNull(request);
 
             this.api.iDeviceActivation.idevice_activation_request_set_field(request, "test", "value");
@@ -46,7 +46,7 @@ namespace iMobileDevice.Tests
         public void iDeviceActivationRequestGetFields()
         {
             iDeviceActivationRequestHandle request;
-            Assert.Equal(iDeviceActivationError.Success, this.api.iDeviceActivation.idevice_activation_request_new(iDeviceActivationClientType.ClientItunes, out request));
+            Assert.Equal(iDeviceActivationError.Success, this.api.iDeviceActivation.idevice_activation_request_new(iDeviceActivationClientType.Itunes, out request));
             Assert.NotNull(request);
 
             this.api.iDeviceActivation.idevice_activation_request_set_field(request, "field1", "value1");
@@ -64,7 +64,7 @@ namespace iMobileDevice.Tests
         public void iDeviceActivationRequestGetSetUrl()
         {
             iDeviceActivationRequestHandle request;
-            Assert.Equal(iDeviceActivationError.Success, this.api.iDeviceActivation.idevice_activation_request_new(iDeviceActivationClientType.ClientItunes, out request));
+            Assert.Equal(iDeviceActivationError.Success, this.api.iDeviceActivation.idevice_activation_request_new(iDeviceActivationClientType.Itunes, out request));
             this.api.iDeviceActivation.idevice_activation_request_set_url(request, "http://quamotion.mobi");
             this.api.iDeviceActivation.idevice_activation_request_get_url(request, out string url);
 
@@ -75,7 +75,7 @@ namespace iMobileDevice.Tests
         [Fact]
         public void iDeviceActivationRequestNew()
         {
-            Assert.Equal(iDeviceActivationError.Success, this.api.iDeviceActivation.idevice_activation_request_new(iDeviceActivationClientType.ClientItunes, out iDeviceActivationRequestHandle request));
+            Assert.Equal(iDeviceActivationError.Success, this.api.iDeviceActivation.idevice_activation_request_new(iDeviceActivationClientType.Itunes, out iDeviceActivationRequestHandle request));
             Assert.NotNull(request);
             Assert.False(request.IsInvalid);
             request.Dispose();
@@ -84,14 +84,14 @@ namespace iMobileDevice.Tests
         [Fact]
         public void iDeviceActivationRequestNewFromLockdownd()
         {
-            Assert.Equal(iDeviceActivationError.InternalError, this.api.iDeviceActivation.idevice_activation_request_new_from_lockdownd(iDeviceActivationClientType.ClientItunes, IntPtr.Zero, out iDeviceActivationRequestHandle request));
+            Assert.Equal(iDeviceActivationError.InternalError, this.api.iDeviceActivation.idevice_activation_request_new_from_lockdownd(iDeviceActivationClientType.Itunes, IntPtr.Zero, out iDeviceActivationRequestHandle request));
         }
 
         [Fact]
         public void iDeviceActivationRequestGetSetFields()
         {
             iDeviceActivationRequestHandle request;
-            Assert.Equal(iDeviceActivationError.Success, this.api.iDeviceActivation.idevice_activation_request_new(iDeviceActivationClientType.ClientItunes, out request));
+            Assert.Equal(iDeviceActivationError.Success, this.api.iDeviceActivation.idevice_activation_request_new(iDeviceActivationClientType.Itunes, out request));
 
             var plist = this.api.Plist.plist_new_dict();
             this.api.Plist.plist_dict_set_item(plist, "field1", this.api.Plist.plist_new_string("value1"));
