@@ -199,6 +199,7 @@ namespace iMobileDevice.Generator
                 {
                     // Get the parameter name
                     var paramName = childComment.ParamCommandComment_ParamName.CString;
+                    paramName = NameConversions.ToClrName(paramName, NameConversion.Parameter);
 
                     if (hasParameter)
                     {
