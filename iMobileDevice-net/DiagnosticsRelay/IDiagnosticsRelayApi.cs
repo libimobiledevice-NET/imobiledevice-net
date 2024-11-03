@@ -211,10 +211,10 @@ namespace iMobileDevice.DiagnosticsRelay
         /// <param name="client">
         /// The diagnostics_relay client
         /// </param>
-        /// <param name="entry_name">
+        /// <param name="entryName">
         /// The IORegistry entry name to query.
         /// </param>
-        /// <param name="entry_class">
+        /// <param name="entryClass">
         /// The IORegistry class to query.
         /// </param>
         /// <param name="result">

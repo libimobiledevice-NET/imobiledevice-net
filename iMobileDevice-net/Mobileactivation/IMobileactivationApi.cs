@@ -155,7 +155,7 @@ namespace iMobileDevice.Mobileactivation
         /// <param name="client">
         /// The mobileactivation client
         /// </param>
-        /// <param name="handshake_response">
+        /// <param name="handshakeResponse">
         /// The handshake response returned from drmHandshake
         /// </param>
         /// <param name="info">
@@ -178,7 +178,7 @@ namespace iMobileDevice.Mobileactivation
         /// <param name="client">
         /// The mobileactivation client
         /// </param>
-        /// <param name="activation_record">
+        /// <param name="activationRecord">
         /// The activation record plist dictionary
         /// </param>
         /// <returns>
@@ -195,7 +195,7 @@ namespace iMobileDevice.Mobileactivation
         /// <param name="client">
         /// The mobileactivation client
         /// </param>
-        /// <param name="activation_record">
+        /// <param name="activationRecord">
         /// The activation record in plist format
         /// </param>
         /// <param name="headers">

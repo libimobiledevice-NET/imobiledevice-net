@@ -129,7 +129,7 @@ namespace iMobileDevice.MobileImageMounter
         /// <param name="client">
         /// The client use
         /// </param>
-        /// <param name="image_type">
+        /// <param name="imageType">
         /// The type of the image to look up
         /// </param>
         /// <param name="result">
@@ -157,21 +157,21 @@ namespace iMobileDevice.MobileImageMounter
         /// <param name="client">
         /// The connected mobile_image_mounter client.
         /// </param>
-        /// <param name="image_type">
+        /// <param name="imageType">
         /// Type of image that is being uploaded.
         /// </param>
-        /// <param name="image_size">
+        /// <param name="imageSize">
         /// Total size of the image.
         /// </param>
         /// <param name="signature">
         /// Buffer with a signature of the image being uploaded. If
         /// NULL, no signature will be used.
         /// </param>
-        /// <param name="signature_size">
+        /// <param name="signatureSize">
         /// Total size of the image signature buffer. If 0, no
         /// signature will be used.
         /// </param>
-        /// <param name="upload_cb">
+        /// <param name="uploadCallBack">
         /// Callback function that gets the data chunks for uploading
         /// the image.
         /// </param>
@@ -193,17 +193,17 @@ namespace iMobileDevice.MobileImageMounter
         /// <param name="client">
         /// The connected mobile_image_mounter client.
         /// </param>
-        /// <param name="image_path">
+        /// <param name="imagePath">
         /// The absolute path of the image to mount. The image must
         /// be present before calling this function.
         /// </param>
         /// <param name="signature">
         /// Pointer to a buffer holding the images' signature
         /// </param>
-        /// <param name="signature_size">
+        /// <param name="signatureSize">
         /// Length of the signature image_signature points to
         /// </param>
-        /// <param name="image_type">
+        /// <param name="imageType">
         /// Type of image to mount
         /// </param>
         /// <param name="options">
@@ -236,17 +236,17 @@ namespace iMobileDevice.MobileImageMounter
         /// <param name="client">
         /// The connected mobile_image_mounter client.
         /// </param>
-        /// <param name="image_path">
+        /// <param name="imagePath">
         /// The absolute path of the image to mount. The image must
         /// be present before calling this function.
         /// </param>
         /// <param name="signature">
         /// Pointer to a buffer holding the images' signature
         /// </param>
-        /// <param name="signature_size">
+        /// <param name="signatureSize">
         /// Length of the signature image_signature points to
         /// </param>
-        /// <param name="image_type">
+        /// <param name="imageType">
         /// Type of image to mount
         /// </param>
         /// <param name="result">
@@ -276,7 +276,7 @@ namespace iMobileDevice.MobileImageMounter
         /// <param name="client">
         /// The connected mobile_image_mounter client.
         /// </param>
-        /// <param name="mount_path">
+        /// <param name="mountPath">
         /// The mount path of the mounted image on the device.
         /// </param>
         /// <returns>
@@ -334,13 +334,13 @@ namespace iMobileDevice.MobileImageMounter
         /// <param name="client">
         /// The connected mobile_image_mounter client.
         /// </param>
-        /// <param name="image_type">
+        /// <param name="imageType">
         /// The image_type to get the personalization nonce for, usually `DeveloperDiskImage`.
         /// </param>
         /// <param name="nonce">
         /// Pointer that will be set to an allocated buffer with the nonce value.
         /// </param>
-        /// <param name="nonce_size">
+        /// <param name="nonceSize">
         /// Pointer to an unsigned int that will receive the size of the nonce value.
         /// </param>
         /// <returns>
@@ -358,7 +358,7 @@ namespace iMobileDevice.MobileImageMounter
         /// <param name="client">
         /// The connected mobile_image_mounter client.
         /// </param>
-        /// <param name="image_type">
+        /// <param name="imageType">
         /// The image_type to get the personalization identifiers for. Can be NULL.
         /// </param>
         /// <param name="result">
@@ -380,19 +380,19 @@ namespace iMobileDevice.MobileImageMounter
         /// <param name="client">
         /// The connected mobile_image_mounter client.
         /// </param>
-        /// <param name="image_type">
+        /// <param name="imageType">
         /// The image_type to get the personalization identifiers for. Can be NULL.
         /// </param>
         /// <param name="signature">
         /// The signature of the corresponding personalized image.
         /// </param>
-        /// <param name="signature_size">
+        /// <param name="signatureSize">
         /// The size of signature.
         /// </param>
         /// <param name="manifest">
         /// Pointer that will be set to an allocated buffer with the manifest data.
         /// </param>
-        /// <param name="manifest_size">
+        /// <param name="manifestSize">
         /// Pointer to an unsigned int that will be set to the size of the manifest data.
         /// </param>
         /// <returns>

@@ -188,7 +188,7 @@ namespace iMobileDevice.PropertyListService
         /// <param name="client">
         /// The property list service client
         /// </param>
-        /// <param name="service_client">
+        /// <param name="serviceClient">
         /// Pointer to be assigned to the parent #service_client_t
         /// </param>
         /// <returns>

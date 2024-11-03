@@ -100,7 +100,7 @@ namespace iMobileDevice.SyslogRelay
         /// <param name="callback">
         /// Callback to receive each character from the syslog.
         /// </param>
-        /// <param name="user_data">
+        /// <param name="userData">
         /// Custom pointer passed to the callback function.
         /// </param>
         /// <returns>
@@ -124,7 +124,7 @@ namespace iMobileDevice.SyslogRelay
         /// <param name="callback">
         /// Callback to receive each character from the syslog.
         /// </param>
-        /// <param name="user_data">
+        /// <param name="userData">
         /// Custom pointer passed to the callback function.
         /// </param>
         /// <returns>

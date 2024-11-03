@@ -177,7 +177,7 @@ namespace iMobileDevice.DebugServer
         /// <param name="response">
         /// Response received for the command (can be NULL to ignore)
         /// </param>
-        /// <param name="response_size">
+        /// <param name="responseSize">
         /// Pointer to receive response size. Set to NULL to ignore.
         /// </param>
         /// <returns>
@@ -195,7 +195,7 @@ namespace iMobileDevice.DebugServer
         /// <param name="response">
         /// Response received for last command (can be NULL to ignore)
         /// </param>
-        /// <param name="response_size">
+        /// <param name="responseSize">
         /// Pointer to receive response size. Set to NULL to ignore.
         /// </param>
         /// <returns>
@@ -226,13 +226,13 @@ namespace iMobileDevice.DebugServer
         /// <param name="client">
         /// The debugserver client
         /// </param>
-        /// <param name="cancel_receive">
+        /// <param name="cancelReceive">
         /// A function pointer that will be called approximately
         /// every receive_loop_timeout milliseconds; the function should return a
         /// boolean flag specifying whether to stop waiting for a response. If NULL,
         /// behaves as if it always returns true.
         /// </param>
-        /// <param name="receive_loop_timeout">
+        /// <param name="receiveLoopTimeout">
         /// Time in milliseconds between calls to
         /// cancel_receive.
         /// </param>
@@ -320,10 +320,10 @@ namespace iMobileDevice.DebugServer
         /// <param name="buffer">
         /// String to encode into hex notiation
         /// </param>
-        /// <param name="encoded_buffer">
+        /// <param name="encodedBuffer">
         /// The buffer receives a hex encoded string
         /// </param>
-        /// <param name="encoded_length">
+        /// <param name="encodedLength">
         /// Length of the hex encoded string
         /// </param>
         void debugserver_encode_string(string buffer, out string encodedBuffer, ref uint encodedLength);
@@ -331,10 +331,10 @@ namespace iMobileDevice.DebugServer
         /// <summary>
         /// Decodes a hex encoded string.
         /// </summary>
-        /// <param name="encoded_buffer">
+        /// <param name="encodedBuffer">
         /// The buffer with a hex encoded string
         /// </param>
-        /// <param name="encoded_length">
+        /// <param name="encodedLength">
         /// Length of the encoded buffer
         /// </param>
         /// <param name="buffer">

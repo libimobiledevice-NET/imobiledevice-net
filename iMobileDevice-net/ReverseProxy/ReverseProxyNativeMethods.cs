@@ -77,7 +77,7 @@ namespace iMobileDevice.ReverseProxy
         /// Pointer that will be set to a newly allocated reverse_proxy_client_t
         /// upon successful return.
         /// </param>
-        /// <param name="device_port">
+        /// <param name="devicePort">
         /// An open port on the device. Unless it's being used for
         /// a custom implementation, pass REVERSE_PROXY_DEFAULT_PORT here.
         /// </param>
@@ -107,7 +107,7 @@ namespace iMobileDevice.ReverseProxy
         /// <param name="client">
         /// The reverse proxy client to start.
         /// </param>
-        /// <param name="control_protocol_version">
+        /// <param name="controlProtocolVersion">
         /// The control protocol version to use.
         /// This is either 1 or 2. Recent devices use 2.
         /// </param>
@@ -129,7 +129,7 @@ namespace iMobileDevice.ReverseProxy
         /// The status callback function that will be called
         /// when the status of the reverse proxy changes.
         /// </param>
-        /// <param name="user_data">
+        /// <param name="userData">
         /// A pointer that will be passed to the callback function.
         /// </param>
         /// <remarks>
@@ -148,7 +148,7 @@ namespace iMobileDevice.ReverseProxy
         /// The log callback function that will be called
         /// when the reverse proxy logs something.
         /// </param>
-        /// <param name="user_data">
+        /// <param name="userData">
         /// A pointer that will be passed to the callback function.
         /// </param>
         /// <remarks>
@@ -167,7 +167,7 @@ namespace iMobileDevice.ReverseProxy
         /// The status callback function that will be called
         /// when the status of the reverse proxy changes.
         /// </param>
-        /// <param name="user_data">
+        /// <param name="userData">
         /// A pointer that will be passed to the callback function.
         /// </param>
         /// <remarks>

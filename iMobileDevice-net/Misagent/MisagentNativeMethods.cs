@@ -162,7 +162,7 @@ namespace iMobileDevice.Misagent
         /// <param name="client">
         /// The connected misagent to use.
         /// </param>
-        /// <param name="profileID">
+        /// <param name="profileid">
         /// Identifier of the provisioning profile to remove.
         /// This is a UUID that can be obtained from the provisioning profile data.
         /// </param>

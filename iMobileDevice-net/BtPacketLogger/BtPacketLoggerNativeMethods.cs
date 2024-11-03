@@ -102,7 +102,7 @@ namespace iMobileDevice.BtPacketLogger
         /// <param name="callback">
         /// Callback to receive each packet from the hci interface.
         /// </param>
-        /// <param name="user_data">
+        /// <param name="userData">
         /// Custom pointer passed to the callback function.
         /// </param>
         /// <returns>

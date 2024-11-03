@@ -49,7 +49,7 @@ namespace iMobileDevice.Usbmuxd
         /// <param name="callback">
         /// A callback function that is executed when an event occurs.
         /// </param>
-        /// <param name="user_data">
+        /// <param name="userData">
         /// Custom data passed on to the callback function. The data
         /// needs to be kept available until the callback function is unsubscribed.
         /// </param>
@@ -77,7 +77,7 @@ namespace iMobileDevice.Usbmuxd
         /// <param name="callback">
         /// A callback function that is executed when an event occurs.
         /// </param>
-        /// <param name="user_data">
+        /// <param name="userData">
         /// Custom data passed on to the callback function. The data
         /// needs to be kept available until the callback function is unsubscribed.
         /// </param>
@@ -105,7 +105,7 @@ namespace iMobileDevice.Usbmuxd
         /// <summary>
         /// Contacts usbmuxd and retrieves a list of connected devices.
         /// </summary>
-        /// <param name="device_list">
+        /// <param name="deviceList">
         /// A pointer to an array of usbmuxd_device_info_t
         /// that will hold records of the connected devices. The last record
         /// is a null-terminated record with all fields set to 0/NULL.
@@ -123,7 +123,7 @@ namespace iMobileDevice.Usbmuxd
         /// <summary>
         /// Frees the device list returned by an usbmuxd_get_device_list call
         /// </summary>
-        /// <param name="device_list">
+        /// <param name="deviceList">
         /// A pointer to an array of usbmuxd_device_info_t to free.
         /// </param>
         /// <returns>
@@ -191,7 +191,7 @@ namespace iMobileDevice.Usbmuxd
         /// returned in the usbmux_device_info_t structure via
         /// usbmuxd_get_device() or usbmuxd_get_device_list().
         /// </param>
-        /// <param name="tcp_port">
+        /// <param name="tcpPort">
         /// TCP port number on device, in range 0-65535.
         /// common values are 62078 for lockdown, and 22 for SSH.
         /// </param>
@@ -226,7 +226,7 @@ namespace iMobileDevice.Usbmuxd
         /// <param name="len">
         /// size of buffer to send
         /// </param>
-        /// <param name="sent_bytes">
+        /// <param name="sentBytes">
         /// how many bytes sent
         /// </param>
         /// <returns>
@@ -247,7 +247,7 @@ namespace iMobileDevice.Usbmuxd
         /// <param name="len">
         /// number of bytes to receive
         /// </param>
-        /// <param name="recv_bytes">
+        /// <param name="recvBytes">
         /// number of bytes received
         /// </param>
         /// <param name="timeout">
@@ -271,7 +271,7 @@ namespace iMobileDevice.Usbmuxd
         /// <param name="len">
         /// number of bytes to receive
         /// </param>
-        /// <param name="recv_bytes">
+        /// <param name="recvBytes">
         /// number of bytes received
         /// </param>
         /// <returns>
@@ -296,14 +296,14 @@ namespace iMobileDevice.Usbmuxd
         /// <summary>
         /// Read a pairing record
         /// </summary>
-        /// <param name="record_id">
+        /// <param name="recordId">
         /// the record identifier of the pairing record to retrieve
         /// </param>
-        /// <param name="record_data">
+        /// <param name="recordData">
         /// pointer to a variable that will be set to point to a
         /// newly allocated buffer containing the pairing record data
         /// </param>
-        /// <param name="record_size">
+        /// <param name="recordSize">
         /// pointer to a variable that will be set to the size of
         /// the buffer returned in record_data
         /// </param>
@@ -316,13 +316,13 @@ namespace iMobileDevice.Usbmuxd
         /// <summary>
         /// Save a pairing record
         /// </summary>
-        /// <param name="record_id">
+        /// <param name="recordId">
         /// the record identifier of the pairing record to save
         /// </param>
-        /// <param name="record_data">
+        /// <param name="recordData">
         /// buffer containing the pairing record data
         /// </param>
-        /// <param name="record_size">
+        /// <param name="recordSize">
         /// size of the buffer passed in record_data
         /// </param>
         /// <returns>
@@ -334,16 +334,16 @@ namespace iMobileDevice.Usbmuxd
         /// <summary>
         /// Save a pairing record with device identifier
         /// </summary>
-        /// <param name="record_id">
+        /// <param name="recordId">
         /// the record identifier of the pairing record to save
         /// </param>
-        /// <param name="device_id">
+        /// <param name="deviceId">
         /// the device identifier of the connected device, or 0
         /// </param>
-        /// <param name="record_data">
+        /// <param name="recordData">
         /// buffer containing the pairing record data
         /// </param>
-        /// <param name="record_size">
+        /// <param name="recordSize">
         /// size of the buffer passed in record_data
         /// </param>
         /// <returns>
@@ -355,7 +355,7 @@ namespace iMobileDevice.Usbmuxd
         /// <summary>
         /// Delete a pairing record
         /// </summary>
-        /// <param name="record_id">
+        /// <param name="recordId">
         /// the record identifier of the pairing record to delete.
         /// </param>
         /// <returns>

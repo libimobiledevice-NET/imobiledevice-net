@@ -63,7 +63,7 @@ namespace iMobileDevice.Service
         /// <param name="device">
         /// The device to connect to.
         /// </param>
-        /// <param name="service_name">
+        /// <param name="serviceName">
         /// The name of the service to start.
         /// </param>
         /// <param name="client">
@@ -75,10 +75,10 @@ namespace iMobileDevice.Service
         /// The label to use for communication. Usually the program name.
         /// Pass NULL to disable sending the label in requests to lockdownd.
         /// </param>
-        /// <param name="constructor_func">
+        /// <param name="constructorFunc">
         /// Constructor function for the service client to create (e.g. afc_client_new())
         /// </param>
-        /// <param name="error_code">
+        /// <param name="errorCode">
         /// Pointer to an int32_t that will receive the service start error code.
         /// </param>
         /// <returns>
@@ -211,7 +211,7 @@ namespace iMobileDevice.Service
         /// <param name="client">
         /// The connected service client for which SSL should be disabled.
         /// </param>
-        /// <param name="sslBypass">
+        /// <param name="sslbypass">
         /// A boolean value indicating wether to disable SSL with a proper
         /// SSL shutdown (0), or bypass the shutdown (1).
         /// </param>

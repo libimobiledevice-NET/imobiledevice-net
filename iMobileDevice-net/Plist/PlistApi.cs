@@ -679,16 +679,16 @@ namespace iMobileDevice.Plist
         /// is non-NULL, in which case it is looked up with *alt_source_key*.
         /// The entry in *target_dict* is **always** created with *key*.
         /// </summary>
-        /// <param name="target_dict">
+        /// <param name="targetDict">
         /// The target dictionary to copy to.
         /// </param>
-        /// <param name="source_dict">
+        /// <param name="sourceDict">
         /// The source dictionary to copy from.
         /// </param>
         /// <param name="key">
         /// The key for the node to copy.
         /// </param>
-        /// <param name="alt_source_key">
+        /// <param name="altSourceKey">
         /// The alternative source key for lookup in *source_dict* or NULL.
         /// </param>
         public virtual PlistError plist_dict_copy_item(PlistHandle targetDict, PlistHandle sourceDict, string key, string altSourceKey)
@@ -702,16 +702,16 @@ namespace iMobileDevice.Plist
         /// is non-NULL, in which case it is looked up with *alt_source_key*.
         /// The entry in *target_dict* is **always** created with *key*.
         /// </summary>
-        /// <param name="target_dict">
+        /// <param name="targetDict">
         /// The target dictionary to copy to.
         /// </param>
-        /// <param name="source_dict">
+        /// <param name="sourceDict">
         /// The source dictionary to copy from.
         /// </param>
         /// <param name="key">
         /// The key for the node to copy.
         /// </param>
-        /// <param name="alt_source_key">
+        /// <param name="altSourceKey">
         /// The alternative source key for lookup in *source_dict* or NULL.
         /// </param>
         /// <remarks>
@@ -729,16 +729,16 @@ namespace iMobileDevice.Plist
         /// is non-NULL, in which case it is looked up with *alt_source_key*.
         /// The entry in *target_dict* is **always** created with *key*.
         /// </summary>
-        /// <param name="target_dict">
+        /// <param name="targetDict">
         /// The target dictionary to copy to.
         /// </param>
-        /// <param name="source_dict">
+        /// <param name="sourceDict">
         /// The source dictionary to copy from.
         /// </param>
         /// <param name="key">
         /// The key for the node value to copy.
         /// </param>
-        /// <param name="alt_source_key">
+        /// <param name="altSourceKey">
         /// The alternative source key for lookup in *source_dict* or NULL.
         /// </param>
         /// <remarks>
@@ -756,16 +756,16 @@ namespace iMobileDevice.Plist
         /// is non-NULL, in which case it is looked up with *alt_source_key*.
         /// The entry in *target_dict* is **always** created with *key*.
         /// </summary>
-        /// <param name="target_dict">
+        /// <param name="targetDict">
         /// The target dictionary to copy to.
         /// </param>
-        /// <param name="source_dict">
+        /// <param name="sourceDict">
         /// The source dictionary to copy from.
         /// </param>
         /// <param name="key">
         /// The key for the node value to copy.
         /// </param>
-        /// <param name="alt_source_key">
+        /// <param name="altSourceKey">
         /// The alternative source key for lookup in *source_dict* or NULL.
         /// </param>
         /// <remarks>
@@ -783,16 +783,16 @@ namespace iMobileDevice.Plist
         /// is non-NULL, in which case it is looked up with *alt_source_key*.
         /// The entry in *target_dict* is **always** created with *key*.
         /// </summary>
-        /// <param name="target_dict">
+        /// <param name="targetDict">
         /// The target dictionary to copy to.
         /// </param>
-        /// <param name="source_dict">
+        /// <param name="sourceDict">
         /// The source dictionary to copy from.
         /// </param>
         /// <param name="key">
         /// The key for the node value to copy.
         /// </param>
-        /// <param name="alt_source_key">
+        /// <param name="altSourceKey">
         /// The alternative source key for lookup in *source_dict* or NULL.
         /// </param>
         /// <remarks>
@@ -810,16 +810,16 @@ namespace iMobileDevice.Plist
         /// is non-NULL, in which case it is looked up with *alt_source_key*.
         /// The entry in *target_dict* is **always** created with *key*.
         /// </summary>
-        /// <param name="target_dict">
+        /// <param name="targetDict">
         /// The target dictionary to copy to.
         /// </param>
-        /// <param name="source_dict">
+        /// <param name="sourceDict">
         /// The source dictionary to copy from.
         /// </param>
         /// <param name="key">
         /// The key for the node value to copy.
         /// </param>
-        /// <param name="alt_source_key">
+        /// <param name="altSourceKey">
         /// The alternative source key for lookup in *source_dict* or NULL.
         /// </param>
         /// <remarks>
@@ -1203,7 +1203,7 @@ namespace iMobileDevice.Plist
         /// <param name="plist">
         /// the root node to export
         /// </param>
-        /// <param name="plist_xml">
+        /// <param name="plistXml">
         /// a pointer to a C-string. This function allocates the memory,
         /// caller is responsible for freeing it. Data is UTF-8 encoded.
         /// </param>
@@ -1227,7 +1227,7 @@ namespace iMobileDevice.Plist
         /// <param name="plist">
         /// the root node to export
         /// </param>
-        /// <param name="plist_bin">
+        /// <param name="plistBin">
         /// a pointer to a char* buffer. This function allocates the memory,
         /// caller is responsible for freeing it.
         /// </param>
@@ -1251,7 +1251,7 @@ namespace iMobileDevice.Plist
         /// <param name="plist">
         /// the root node to export
         /// </param>
-        /// <param name="plist_json">
+        /// <param name="plistJson">
         /// a pointer to a char* buffer. This function allocates the memory,
         /// caller is responsible for freeing it.
         /// </param>
@@ -1278,7 +1278,7 @@ namespace iMobileDevice.Plist
         /// <param name="plist">
         /// the root node to export
         /// </param>
-        /// <param name="plist_openstep">
+        /// <param name="plistOpenstep">
         /// a pointer to a char* buffer. This function allocates the memory,
         /// caller is responsible for freeing it.
         /// </param>
@@ -1302,7 +1302,7 @@ namespace iMobileDevice.Plist
         /// <summary>
         /// Import the #plist_t structure from XML format.
         /// </summary>
-        /// <param name="plist_xml">
+        /// <param name="plistXml">
         /// a pointer to the xml buffer.
         /// </param>
         /// <param name="length">
@@ -1325,7 +1325,7 @@ namespace iMobileDevice.Plist
         /// <summary>
         /// Import the #plist_t structure from binary format.
         /// </summary>
-        /// <param name="plist_bin">
+        /// <param name="plistBin">
         /// a pointer to the xml buffer.
         /// </param>
         /// <param name="length">
@@ -1397,7 +1397,7 @@ namespace iMobileDevice.Plist
         /// to determine if plist_data contains a binary, JSON, OpenStep, or XML plist
         /// and tries to parse the data in the appropriate format.
         /// </summary>
-        /// <param name="plist_data">
+        /// <param name="plistData">
         /// A pointer to the memory buffer containing plist data.
         /// </param>
         /// <param name="length">
@@ -1561,7 +1561,7 @@ namespace iMobileDevice.Plist
         /// This function will look at the first bytes of plist_data to determine
         /// if it supposedly contains a binary plist.
         /// </summary>
-        /// <param name="plist_data">
+        /// <param name="plistData">
         /// a pointer to the memory buffer containing plist data.
         /// </param>
         /// <param name="length">
@@ -1628,10 +1628,10 @@ namespace iMobileDevice.Plist
         /// <summary>
         /// Compare two node values
         /// </summary>
-        /// <param name="node_l">
+        /// <param name="nodeL">
         /// left node to compare
         /// </param>
-        /// <param name="node_r">
+        /// <param name="nodeR">
         /// rigth node to compare
         /// </param>
         /// <returns>

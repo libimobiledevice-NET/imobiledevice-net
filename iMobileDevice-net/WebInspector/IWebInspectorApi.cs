@@ -130,7 +130,7 @@ namespace iMobileDevice.WebInspector
         /// pointer to a plist_t that will point to the received plist
         /// upon successful return
         /// </param>
-        /// <param name="timeout_ms">
+        /// <param name="timeoutMs">
         /// Maximum time in milliseconds to wait for data.
         /// </param>
         /// <returns>

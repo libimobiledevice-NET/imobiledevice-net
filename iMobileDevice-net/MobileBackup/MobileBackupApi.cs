@@ -169,16 +169,16 @@ namespace iMobileDevice.MobileBackup
         /// <param name="client">
         /// The connected MobileBackup client to use.
         /// </param>
-        /// <param name="backup_manifest">
+        /// <param name="backupManifest">
         /// The backup manifest, a plist_t of type PLIST_DICT
         /// containing the backup state of the last backup. For a first-time backup
         /// set this parameter to NULL.
         /// </param>
-        /// <param name="base_path">
+        /// <param name="basePath">
         /// The base path on the device to use for the backup
         /// operation, usually "/".
         /// </param>
-        /// <param name="proto_version">
+        /// <param name="protoVersion">
         /// A string denoting the version of the backup protocol
         /// to use. Latest known version is "1.6"
         /// </param>
@@ -215,7 +215,7 @@ namespace iMobileDevice.MobileBackup
         /// <param name="client">
         /// The connected MobileBackup client to use.
         /// </param>
-        /// <param name="backup_manifest">
+        /// <param name="backupManifest">
         /// The backup manifest, a plist_t of type PLIST_DICT
         /// containing the backup state to be restored.
         /// </param>
@@ -226,7 +226,7 @@ namespace iMobileDevice.MobileBackup
         /// MB_RESTORE_PRESERVE_SETTINGS - do not overwrite any settings
         /// MB_RESTORE_PRESERVE_CAMERA_ROLL - preserve the photos of the camera roll
         /// </param>
-        /// <param name="proto_version">
+        /// <param name="protoVersion">
         /// A string denoting the version of the backup protocol
         /// to use. Latest known version is "1.6". Ideally this value should be
         /// extracted from the given manifest plist.

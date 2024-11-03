@@ -65,7 +65,7 @@ namespace iMobileDevice.iDevice
         /// <param name="callback">
         /// Callback function to call.
         /// </param>
-        /// <param name="user_data">
+        /// <param name="userData">
         /// Application-specific data passed as parameter
         /// to the registered callback function.
         /// </param>
@@ -93,7 +93,7 @@ namespace iMobileDevice.iDevice
         /// <param name="callback">
         /// Callback function to call.
         /// </param>
-        /// <param name="user_data">
+        /// <param name="userData">
         /// Application-specific data passed as parameter
         /// to the registered callback function.
         /// </param>
@@ -268,7 +268,7 @@ namespace iMobileDevice.iDevice
         /// <param name="len">
         /// Size of the buffer to send.
         /// </param>
-        /// <param name="sent_bytes">
+        /// <param name="sentBytes">
         /// Pointer to an uint32_t that will be filled
         /// with the number of bytes actually sent.
         /// </param>
@@ -292,7 +292,7 @@ namespace iMobileDevice.iDevice
         /// <param name="len">
         /// Buffer size or number of bytes to receive.
         /// </param>
-        /// <param name="recv_bytes">
+        /// <param name="recvBytes">
         /// Number of bytes actually received.
         /// </param>
         /// <param name="timeout">
@@ -319,7 +319,7 @@ namespace iMobileDevice.iDevice
         /// <param name="len">
         /// Buffer size or number of bytes to receive.
         /// </param>
-        /// <param name="recv_bytes">
+        /// <param name="recvBytes">
         /// Number of bytes actually received.
         /// </param>
         /// <returns>
@@ -359,7 +359,7 @@ namespace iMobileDevice.iDevice
         /// <param name="connection">
         /// The connection to disable SSL for.
         /// </param>
-        /// <param name="sslBypass">
+        /// <param name="sslbypass">
         /// if true ssl connection will not be terminated but just cleaned up, allowing
         /// plain text data going on underlying connection
         /// </param>

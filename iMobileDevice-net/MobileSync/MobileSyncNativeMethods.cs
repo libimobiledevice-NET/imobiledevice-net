@@ -136,7 +136,7 @@ namespace iMobileDevice.MobileSync
         /// <param name="client">
         /// The mobilesync client
         /// </param>
-        /// <param name="data_class">
+        /// <param name="dataClass">
         /// The data class identifier to sync
         /// </param>
         /// <param name="anchors">
@@ -144,16 +144,16 @@ namespace iMobileDevice.MobileSync
         /// allow the device to tell if the synchronization information on the computer
         /// and device are consistent to determine what sync type is required.
         /// </param>
-        /// <param name="computer_data_class_version">
+        /// <param name="computerDataClassVersion">
         /// The version of the data class storage on the computer
         /// </param>
-        /// <param name="sync_type">
+        /// <param name="syncType">
         /// A pointer to store the sync type reported by the device_anchor
         /// </param>
-        /// <param name="device_data_class_version">
+        /// <param name="deviceDataClassVersion">
         /// The version of the data class storage on the device
         /// </param>
-        /// <param name="error_description">
+        /// <param name="errorDescription">
         /// A pointer to store an error message if reported by the device
         /// </param>
         [System.Runtime.InteropServices.DllImportAttribute(MobileSyncNativeMethods.LibraryName, EntryPoint="mobilesync_start", CallingConvention=System.Runtime.InteropServices.CallingConvention.Cdecl)]
@@ -241,7 +241,7 @@ namespace iMobileDevice.MobileSync
         /// <param name="entities">
         /// A pointer to store the changed entity records as a PLIST_DICT
         /// </param>
-        /// <param name="is_last_record">
+        /// <param name="isLastRecord">
         /// A pointer to store a flag indicating if this submission is the last one
         /// </param>
         /// <param name="actions">
@@ -294,7 +294,7 @@ namespace iMobileDevice.MobileSync
         /// <param name="entities">
         /// The changed entity records as a PLIST_DICT
         /// </param>
-        /// <param name="is_last_record">
+        /// <param name="isLastRecord">
         /// A flag indicating if this submission is the last one
         /// </param>
         /// <param name="actions">
@@ -328,11 +328,11 @@ namespace iMobileDevice.MobileSync
         /// Allocates memory for a new anchors struct initialized with the passed anchors.
         /// MOBILESYNC_E_SUCCESS on success
         /// </summary>
-        /// <param name="device_anchor">
+        /// <param name="deviceAnchor">
         /// An anchor the device reported the last time or NULL
         /// if none is known yet which for instance is true on first synchronization.
         /// </param>
-        /// <param name="computer_anchor">
+        /// <param name="computerAnchor">
         /// An arbitrary string to use as anchor for the computer.
         /// </param>
         /// <param name="client">

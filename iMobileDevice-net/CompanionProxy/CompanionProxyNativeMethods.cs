@@ -130,7 +130,7 @@ namespace iMobileDevice.CompanionProxy
         /// <param name="client">
         /// The companion_proxy client
         /// </param>
-        /// <param name="paired_devices">
+        /// <param name="pairedDevices">
         /// Point that will receive a PLIST_ARRAY with paired device UDIDs
         /// </param>
         /// <returns>
@@ -187,7 +187,7 @@ namespace iMobileDevice.CompanionProxy
         /// <param name="client">
         /// The companion_proxy client
         /// </param>
-        /// <param name="companion_udid">
+        /// <param name="companionUdid">
         /// UDID of the (paired) companion device
         /// </param>
         /// <param name="key">
@@ -215,13 +215,13 @@ namespace iMobileDevice.CompanionProxy
         /// <param name="client">
         /// The companion_proxy client
         /// </param>
-        /// <param name="remote_port">
+        /// <param name="remotePort">
         /// remote port
         /// </param>
-        /// <param name="service_name">
+        /// <param name="serviceName">
         /// The name of the service that shall be forwarded
         /// </param>
-        /// <param name="forward_port">
+        /// <param name="forwardPort">
         /// Pointer that will receive the newly-assigned port accessible via USB/Network on the idevice
         /// </param>
         /// <param name="options">
@@ -241,7 +241,7 @@ namespace iMobileDevice.CompanionProxy
         /// <param name="client">
         /// The companion_proxy client
         /// </param>
-        /// <param name="remote_port">
+        /// <param name="remotePort">
         /// remote port
         /// </param>
         /// <returns>

@@ -131,7 +131,7 @@ namespace iMobileDevice.SpringBoardServices
         /// Pointer that will point to a newly allocated plist containing
         /// the current icon state. It is up to the caller to free the memory.
         /// </param>
-        /// <param name="format_version">
+        /// <param name="formatVersion">
         /// A string to be passed as formatVersion along with
         /// the request, or NULL if no formatVersion should be passed. This is only
         /// supported since iOS 4.0 so for older firmware versions this must be set
@@ -173,7 +173,7 @@ namespace iMobileDevice.SpringBoardServices
         /// <param name="client">
         /// The connected sbservices client to use.
         /// </param>
-        /// <param name="bundleId">
+        /// <param name="bundleid">
         /// The bundle identifier of the app to retrieve the icon for.
         /// </param>
         /// <param name="pngdata">
@@ -201,7 +201,7 @@ namespace iMobileDevice.SpringBoardServices
         /// <param name="client">
         /// The connected sbservices client to use.
         /// </param>
-        /// <param name="interface_orientation">
+        /// <param name="interfaceOrientation">
         /// The interface orientation upon successful return.
         /// </param>
         /// <returns>

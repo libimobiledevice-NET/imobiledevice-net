@@ -230,13 +230,13 @@ namespace iMobileDevice.Lockdown
         /// <param name="client">
         /// The lockdownd client
         /// </param>
-        /// <param name="host_id">
+        /// <param name="hostId">
         /// The HostID of the computer
         /// </param>
-        /// <param name="session_id">
+        /// <param name="sessionId">
         /// The new session_id of the created session
         /// </param>
-        /// <param name="ssl_enabled">
+        /// <param name="sslEnabled">
         /// Whether SSL communication is used in the session
         /// </param>
         /// <returns>
@@ -254,7 +254,7 @@ namespace iMobileDevice.Lockdown
         /// <param name="client">
         /// The lockdown client
         /// </param>
-        /// <param name="session_id">
+        /// <param name="sessionId">
         /// The id of a running session
         /// </param>
         /// <returns>
@@ -305,7 +305,7 @@ namespace iMobileDevice.Lockdown
         /// <param name="client">
         /// The lockdown client
         /// </param>
-        /// <param name="pair_record">
+        /// <param name="pairRecord">
         /// The pair record to use for pairing. If NULL is passed, then
         /// the pair records from the current machine are used. New records will be
         /// generated automatically when pairing is done for the first time.
@@ -326,7 +326,7 @@ namespace iMobileDevice.Lockdown
         /// <param name="client">
         /// The lockdown client
         /// </param>
-        /// <param name="pair_record">
+        /// <param name="pairRecord">
         /// The pair record to use for pairing. If NULL is passed, then
         /// the pair records from the current machine are used. New records will be
         /// generated automatically when pairing is done for the first time.
@@ -357,7 +357,7 @@ namespace iMobileDevice.Lockdown
         /// <param name="client">
         /// The lockdown client
         /// </param>
-        /// <param name="pair_record">
+        /// <param name="pairRecord">
         /// The pair record to validate pairing with. If NULL is
         /// passed, then the pair record is read from the internal pairing record
         /// management.
@@ -379,7 +379,7 @@ namespace iMobileDevice.Lockdown
         /// <param name="client">
         /// The lockdown client
         /// </param>
-        /// <param name="pair_record">
+        /// <param name="pairRecord">
         /// The pair record to use for unpair. If NULL is passed, then
         /// the pair records from the current machine are used.
         /// </param>
@@ -401,7 +401,7 @@ namespace iMobileDevice.Lockdown
         /// <param name="client">
         /// The lockdown client
         /// </param>
-        /// <param name="activation_record">
+        /// <param name="activationRecord">
         /// The activation record plist dictionary
         /// </param>
         /// <returns>
@@ -468,16 +468,16 @@ namespace iMobileDevice.Lockdown
         /// <param name="client">
         /// The lockdown client to perform the CU pairing for
         /// </param>
-        /// <param name="pairing_callback">
+        /// <param name="pairingCallback">
         /// Callback function that is used to supply the PIN
         /// for the pairing process, but also to receive device information or
         /// pairing error messages.
         /// </param>
-        /// <param name="cb_user_data">
+        /// <param name="callBackUserData">
         /// User data that will be passed as additional argument
         /// to the callback function.
         /// </param>
-        /// <param name="host_info">
+        /// <param name="hostInfo">
         /// (Optional) A dictionary containing host information to
         /// send to the device when finalizing the CU pairing. The supplied
         /// values will override the default values gathered for the current host.
@@ -507,7 +507,7 @@ namespace iMobileDevice.Lockdown
         /// <param name="request">
         /// The request to perform.
         /// </param>
-        /// <param name="request_payload">
+        /// <param name="requestPayload">
         /// The payload for the request.
         /// </param>
         /// <param name="reply">
@@ -602,7 +602,7 @@ namespace iMobileDevice.Lockdown
         /// <param name="client">
         /// An initialized lockdownd client.
         /// </param>
-        /// <param name="device_name">
+        /// <param name="deviceName">
         /// Holds the name of the device. The caller is
         /// responsible for freeing the memory.
         /// </param>

@@ -119,7 +119,7 @@ namespace iMobileDevice.MobileBackup2
         /// <param name="client">
         /// The connected MobileBackup client to use.
         /// </param>
-        /// <param name="msg_plist">
+        /// <param name="msgPlist">
         /// Pointer to a plist that will be set to the contents of the
         /// message plist upon successful return.
         /// </param>
@@ -203,13 +203,13 @@ namespace iMobileDevice.MobileBackup2
         /// <param name="client">
         /// The MobileBackup client to use.
         /// </param>
-        /// <param name="local_versions">
+        /// <param name="localVersions">
         /// An array of supported versions to send to the remote.
         /// </param>
         /// <param name="count">
         /// The number of items in local_versions.
         /// </param>
-        /// <param name="remote_version">
+        /// <param name="remoteVersion">
         /// Holds the protocol version of the remote on success.
         /// </param>
         /// <returns>
@@ -226,10 +226,10 @@ namespace iMobileDevice.MobileBackup2
         /// The request to send to the backup service.
         /// Currently, this is one of "Backup", "Restore", "Info", or "List".
         /// </param>
-        /// <param name="target_identifier">
+        /// <param name="targetIdentifier">
         /// UDID of the target device.
         /// </param>
-        /// <param name="source_identifier">
+        /// <param name="sourceIdentifier">
         /// UDID of backup data?
         /// </param>
         /// <param name="options">
@@ -248,7 +248,7 @@ namespace iMobileDevice.MobileBackup2
         /// <param name="client">
         /// The MobileBackup client to use.
         /// </param>
-        /// <param name="status_code">
+        /// <param name="statusCode">
         /// The status code to send.
         /// </param>
         /// <param name="status1">

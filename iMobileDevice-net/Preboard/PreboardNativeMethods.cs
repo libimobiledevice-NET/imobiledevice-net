@@ -136,7 +136,7 @@ namespace iMobileDevice.Preboard
         /// <param name="plist">
         /// Pointer to a plist_t what will be set to the received plist
         /// </param>
-        /// <param name="timeout_ms">
+        /// <param name="timeoutMs">
         /// Timeout in milliseconds
         /// </param>
         /// <returns>
@@ -173,11 +173,11 @@ namespace iMobileDevice.Preboard
         /// <param name="manifest">
         /// An optional manifest
         /// </param>
-        /// <param name="status_cb">
+        /// <param name="statusCallBack">
         /// Callback function that will receive status and error messages.
         /// Can be NULL if you want to handle receiving messages in your own code.
         /// </param>
-        /// <param name="user_data">
+        /// <param name="userData">
         /// User data for callback function or NULL.
         /// </param>
         /// <returns>
@@ -210,11 +210,11 @@ namespace iMobileDevice.Preboard
         /// <param name="manifest">
         /// An optional manifest
         /// </param>
-        /// <param name="status_cb">
+        /// <param name="statusCallBack">
         /// Callback function that will receive status and error messages
         /// Can be NULL if you want to handle receiving messages in your own code.
         /// </param>
-        /// <param name="user_data">
+        /// <param name="userData">
         /// User data for callback function or NULL.
         /// </param>
         /// <returns>

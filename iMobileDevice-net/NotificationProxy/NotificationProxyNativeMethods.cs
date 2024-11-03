@@ -128,7 +128,7 @@ namespace iMobileDevice.NotificationProxy
         /// <param name="client">
         /// The client to send to
         /// </param>
-        /// <param name="notification_spec">
+        /// <param name="notificationSpec">
         /// Specification of the notifications that should be
         /// observed. This is expected to be an array of const char* that MUST have a
         /// terminating NULL entry.
@@ -152,11 +152,11 @@ namespace iMobileDevice.NotificationProxy
         /// <param name="client">
         /// the NP client
         /// </param>
-        /// <param name="notify_cb">
+        /// <param name="notifyCallBack">
         /// pointer to a callback function or NULL to de-register a
         /// previously set callback function.
         /// </param>
-        /// <param name="user_data">
+        /// <param name="userData">
         /// Pointer that will be passed to the callback function as
         /// user data. If notify_cb is NULL, this parameter is ignored.
         /// </param>

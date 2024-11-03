@@ -127,7 +127,7 @@ namespace iMobileDevice.InstallationProxy
         /// <param name="client">
         /// The connected installation_proxy client
         /// </param>
-        /// <param name="client_options">
+        /// <param name="clientOptions">
         /// The client options to use, as PLIST_DICT, or NULL.
         /// Valid client options include:
         /// "ApplicationType" -> "System"
@@ -157,7 +157,7 @@ namespace iMobileDevice.InstallationProxy
         /// <param name="client">
         /// The connected installation_proxy client
         /// </param>
-        /// <param name="client_options">
+        /// <param name="clientOptions">
         /// The client options to use, as PLIST_DICT, or NULL.
         /// Valid client options include:
         /// "ApplicationType" -> "System"
@@ -165,11 +165,11 @@ namespace iMobileDevice.InstallationProxy
         /// "ApplicationType" -> "Internal"
         /// "ApplicationType" -> "Any"
         /// </param>
-        /// <param name="status_cb">
+        /// <param name="statusCallBack">
         /// Callback function to process each page of application
         /// information. Passing a callback is required.
         /// </param>
-        /// <param name="user_data">
+        /// <param name="userData">
         /// Callback data passed to status_cb.
         /// </param>
         /// <returns>
@@ -191,7 +191,7 @@ namespace iMobileDevice.InstallationProxy
         /// An array of bundle identifiers that MUST have a terminating
         /// NULL entry or NULL to lookup all.
         /// </param>
-        /// <param name="client_options">
+        /// <param name="clientOptions">
         /// The client options to use, as PLIST_DICT, or NULL.
         /// Currently there are no known client options, so pass NULL here.
         /// </param>
@@ -217,10 +217,10 @@ namespace iMobileDevice.InstallationProxy
         /// <param name="client">
         /// The connected installation_proxy client
         /// </param>
-        /// <param name="pkg_path">
+        /// <param name="pkgPath">
         /// Path of the installation package (inside the AFC jail)
         /// </param>
-        /// <param name="client_options">
+        /// <param name="clientOptions">
         /// The client options to use, as PLIST_DICT, or NULL.
         /// Valid options include:
         /// "iTunesMetadata" -> PLIST_DATA
@@ -229,11 +229,11 @@ namespace iMobileDevice.InstallationProxy
         /// If PackageType -> Developer is specified, then pkg_path points to
         /// an .app directory instead of an install package.
         /// </param>
-        /// <param name="status_cb">
+        /// <param name="statusCallBack">
         /// Callback function for progress and status information. If
         /// NULL is passed, this function will run synchronously.
         /// </param>
-        /// <param name="user_data">
+        /// <param name="userData">
         /// Callback data passed to status_cb.
         /// </param>
         /// <returns>
@@ -259,10 +259,10 @@ namespace iMobileDevice.InstallationProxy
         /// <param name="client">
         /// The connected installation_proxy client
         /// </param>
-        /// <param name="pkg_path">
+        /// <param name="pkgPath">
         /// Path of the installation package (inside the AFC jail)
         /// </param>
-        /// <param name="client_options">
+        /// <param name="clientOptions">
         /// The client options to use, as PLIST_DICT, or NULL.
         /// Valid options include:
         /// "iTunesMetadata" -> PLIST_DATA
@@ -271,11 +271,11 @@ namespace iMobileDevice.InstallationProxy
         /// If PackageType -> Developer is specified, then pkg_path points to
         /// an .app directory instead of an install package.
         /// </param>
-        /// <param name="status_cb">
+        /// <param name="statusCallBack">
         /// Callback function for progress and status information. If
         /// NULL is passed, this function will run synchronously.
         /// </param>
-        /// <param name="user_data">
+        /// <param name="userData">
         /// Callback data passed to status_cb.
         /// </param>
         /// <returns>
@@ -302,15 +302,15 @@ namespace iMobileDevice.InstallationProxy
         /// <param name="appid">
         /// ApplicationIdentifier of the app to uninstall
         /// </param>
-        /// <param name="client_options">
+        /// <param name="clientOptions">
         /// The client options to use, as PLIST_DICT, or NULL.
         /// Currently there are no known client options, so pass NULL here.
         /// </param>
-        /// <param name="status_cb">
+        /// <param name="statusCallBack">
         /// Callback function for progress and status information. If
         /// NULL is passed, this function will run synchronously.
         /// </param>
-        /// <param name="user_data">
+        /// <param name="userData">
         /// Callback data passed to status_cb.
         /// </param>
         /// <returns>
@@ -334,7 +334,7 @@ namespace iMobileDevice.InstallationProxy
         /// <param name="client">
         /// The connected installation_proxy client
         /// </param>
-        /// <param name="client_options">
+        /// <param name="clientOptions">
         /// The client options to use, as PLIST_DICT, or NULL.
         /// Currently there are no known client options, so pass NULL here.
         /// </param>
@@ -366,17 +366,17 @@ namespace iMobileDevice.InstallationProxy
         /// <param name="appid">
         /// ApplicationIdentifier of the app to archive.
         /// </param>
-        /// <param name="client_options">
+        /// <param name="clientOptions">
         /// The client options to use, as PLIST_DICT, or NULL.
         /// Valid options include:
         /// "SkipUninstall" -> Boolean
         /// "ArchiveType" -> "ApplicationOnly"
         /// </param>
-        /// <param name="status_cb">
+        /// <param name="statusCallBack">
         /// Callback function for progress and status information. If
         /// NULL is passed, this function will run synchronously.
         /// </param>
-        /// <param name="user_data">
+        /// <param name="userData">
         /// Callback data passed to status_cb.
         /// </param>
         /// <returns>
@@ -404,16 +404,16 @@ namespace iMobileDevice.InstallationProxy
         /// <param name="appid">
         /// ApplicationIdentifier of the app to restore.
         /// </param>
-        /// <param name="client_options">
+        /// <param name="clientOptions">
         /// The client options to use, as PLIST_DICT, or NULL.
         /// Valid options include:
         /// "ArchiveType" -> "DocumentsOnly"
         /// </param>
-        /// <param name="status_cb">
+        /// <param name="statusCallBack">
         /// Callback function for progress and status information. If
         /// NULL is passed, this function will run synchronously.
         /// </param>
-        /// <param name="user_data">
+        /// <param name="userData">
         /// Callback data passed to status_cb.
         /// </param>
         /// <returns>
@@ -442,15 +442,15 @@ namespace iMobileDevice.InstallationProxy
         /// <param name="appid">
         /// ApplicationIdentifier of the archived app to remove.
         /// </param>
-        /// <param name="client_options">
+        /// <param name="clientOptions">
         /// The client options to use, as PLIST_DICT, or NULL.
         /// Currently there are no known client options, so passing NULL is fine.
         /// </param>
-        /// <param name="status_cb">
+        /// <param name="statusCallBack">
         /// Callback function for progress and status information. If
         /// NULL is passed, this function will run synchronously.
         /// </param>
-        /// <param name="user_data">
+        /// <param name="userData">
         /// Callback data passed to status_cb.
         /// </param>
         /// <returns>
@@ -478,7 +478,7 @@ namespace iMobileDevice.InstallationProxy
         /// An array of char* with capability names that MUST have a
         /// terminating NULL entry.
         /// </param>
-        /// <param name="client_options">
+        /// <param name="clientOptions">
         /// The client options to use, as PLIST_DICT, or NULL.
         /// Currently there are no known client options, so pass NULL here.
         /// </param>
@@ -562,10 +562,10 @@ namespace iMobileDevice.InstallationProxy
         /// <param name="total">
         /// Pointer to store the total number of items.
         /// </param>
-        /// <param name="current_index">
+        /// <param name="currentIndex">
         /// Pointer to store the current index of all browsed items.
         /// </param>
-        /// <param name="current_amount">
+        /// <param name="currentAmount">
         /// Pointer to store the amount of items in the
         /// current list.
         /// </param>
@@ -613,7 +613,7 @@ namespace iMobileDevice.InstallationProxy
         /// <summary>
         /// Adds one or more new key:value pairs to the given client_options.
         /// </summary>
-        /// <param name="client_options">
+        /// <param name="clientOptions">
         /// The client options to modify.
         /// </param>
         /// <param name="...">
@@ -632,7 +632,7 @@ namespace iMobileDevice.InstallationProxy
         /// <summary>
         /// Adds attributes to the given client_options to filter browse results.
         /// </summary>
-        /// <param name="client_options">
+        /// <param name="clientOptions">
         /// The client options to modify.
         /// </param>
         /// <param name="...">
@@ -649,7 +649,7 @@ namespace iMobileDevice.InstallationProxy
         /// <summary>
         /// Frees client_options plist.
         /// </summary>
-        /// <param name="client_options">
+        /// <param name="clientOptions">
         /// The client options plist to free. Does nothing if NULL
         /// is passed.
         /// </param>
@@ -664,7 +664,7 @@ namespace iMobileDevice.InstallationProxy
         /// <param name="client">
         /// The connected installation proxy client.
         /// </param>
-        /// <param name="bundle_id">
+        /// <param name="bundleId">
         /// ApplicationIdentifier of app to retrieve the path for.
         /// </param>
         /// <param name="path">

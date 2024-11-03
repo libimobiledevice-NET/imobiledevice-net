@@ -94,7 +94,7 @@ namespace iMobileDevice.Afc
         /// <param name="client">
         /// The client to get device info for.
         /// </param>
-        /// <param name="device_information">
+        /// <param name="deviceInformation">
         /// A char list of device information terminated by an
         /// empty string or NULL if there was an error. Free with
         /// afc_dictionary_free().
@@ -114,7 +114,7 @@ namespace iMobileDevice.Afc
         /// <param name="path">
         /// The directory for listing. (must be a fully-qualified path)
         /// </param>
-        /// <param name="directory_information">
+        /// <param name="directoryInformation">
         /// A char list of files in the directory
         /// terminated by an empty string or NULL if there was an error. Free with
         /// afc_dictionary_free().
@@ -134,7 +134,7 @@ namespace iMobileDevice.Afc
         /// <param name="filename">
         /// The fully-qualified path to the file.
         /// </param>
-        /// <param name="file_information">
+        /// <param name="fileInformation">
         /// Pointer to a buffer that will be filled with a
         /// NULL-terminated list of strings with the file information. Set to NULL
         /// before calling this function. Free with afc_dictionary_free().
@@ -154,7 +154,7 @@ namespace iMobileDevice.Afc
         /// <param name="filename">
         /// The file to open. (must be a fully-qualified path)
         /// </param>
-        /// <param name="file_mode">
+        /// <param name="fileMode">
         /// The mode to use to open the file.
         /// </param>
         /// <param name="handle">
@@ -211,7 +211,7 @@ namespace iMobileDevice.Afc
         /// <param name="length">
         /// The number of bytes to read
         /// </param>
-        /// <param name="bytes_read">
+        /// <param name="bytesRead">
         /// The number of bytes actually read.
         /// </param>
         /// <returns>
@@ -235,7 +235,7 @@ namespace iMobileDevice.Afc
         /// <param name="length">
         /// How much data to write.
         /// </param>
-        /// <param name="bytes_written">
+        /// <param name="bytesWritten">
         /// The number of bytes actually written to the file.
         /// </param>
         /// <returns>
